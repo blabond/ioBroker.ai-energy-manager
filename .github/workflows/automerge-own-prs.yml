@@ -1,4 +1,4 @@
-name: automatisch mergen my PR
+name: Auto approve
 
 on:
   workflow_run:
