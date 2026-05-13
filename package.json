@@ -55,7 +55,7 @@
     "@alcalzone/release-script-plugin-manual-review": "^5.2.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^10.0.1",
     "@iobroker/adapter-react-v5": "^8.2.2",
     "@iobroker/eslint-config": "^2.3.4",
     "@module-federation/runtime": "^2.4.0",
