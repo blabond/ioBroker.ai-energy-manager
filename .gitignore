@@ -8,5 +8,8 @@ dist/
 .env
 .DS_Store
 
+# Local development helper scripts
+scripts/deploy-local-iobroker.sh
+
 # ioBroker repository checker metadata
 .commitinfo
