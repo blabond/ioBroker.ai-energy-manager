@@ -39,6 +39,92 @@ test("integrates battery power from subscribed state changes", async () => {
   assertApproximately(payload.battery_input_wh_total, 0.416667);
 });
 
+test("classifies battery charging as grid charging only with concurrent grid import", async () => {
+  let now = 0;
+  const states = new Map([
+    ["battery.0.power", { val: -1200, ts: 0 }],
+    ["smartmeter.0.power", { val: 800, ts: 0 }],
+  ]);
+  const adapter = fakeAdapter({
+    states,
+    datapointAssignments: [
+      powerAssignment({
+        scopeId: "plant_a",
+        mappingKey: "plant_a.batteryPower",
+        key: "batteryPower",
+        stateId: "battery.0.power",
+      }),
+      powerAssignment({
+        scope: "household",
+        scopeId: "household",
+        mappingKey: "gridPower",
+        key: "gridPower",
+        stateId: "smartmeter.0.power",
+      }),
+    ],
+  });
+  const sampler = new TelemetrySampler(adapter, null, {
+    now: () => now,
+    sendIntervalMs: 60000,
+  });
+  const serverConfig = validServerConfig();
+
+  await sampler.configure(serverConfig);
+  now = 60000;
+  const collected = await sampler.collect(serverConfig);
+
+  assert.equal(collected.payloads.length, 1);
+  const payload = collected.payloads[0];
+  assertApproximately(payload.battery_input_wh_total, 20);
+  assertApproximately(payload.battery_grid_charge_wh_total, 20);
+  assertApproximately(payload.battery_surplus_charge_wh_total, 0);
+});
+
+test("does not infer battery grid charging from interval grid import alone", async () => {
+  let now = 0;
+  const states = new Map([
+    ["battery.0.power", { val: -1200, ts: 0 }],
+    ["meter.import.kwh", { val: 10, ts: 0 }],
+  ]);
+  const adapter = fakeAdapter({
+    states,
+    datapointAssignments: [
+      powerAssignment({
+        scopeId: "plant_a",
+        mappingKey: "plant_a.batteryPower",
+        key: "batteryPower",
+        stateId: "battery.0.power",
+      }),
+      energyAssignment({
+        scope: "household",
+        scopeId: "household",
+        mappingKey: "consumptionWh",
+        key: "consumptionWh",
+        stateId: "meter.import.kwh",
+        sourceUnit: "kWh",
+      }),
+    ],
+  });
+  const sampler = new TelemetrySampler(adapter, null, {
+    now: () => now,
+    sendIntervalMs: 60000,
+  });
+  const serverConfig = validServerConfig();
+
+  await sampler.configure(serverConfig);
+  await sampler.collect(serverConfig);
+  states.set("meter.import.kwh", { val: 10.01, ts: 60000 });
+  now = 60000;
+  const collected = await sampler.collect(serverConfig);
+
+  assert.equal(collected.payloads.length, 1);
+  const payload = collected.payloads[0];
+  assertApproximately(payload.grid_import_wh, 10);
+  assertApproximately(payload.battery_input_wh_total, 20);
+  assert.equal(payload.battery_grid_charge_wh_total, undefined);
+  assert.equal(payload.battery_surplus_charge_wh_total, undefined);
+});
+
 test("uses subscribed grid power as import and export fallback", async () => {
   let now = 0;
   const states = new Map([["smartmeter.0.power", { val: 600, ts: 0 }]]);
