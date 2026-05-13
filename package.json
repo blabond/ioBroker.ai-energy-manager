@@ -2,6 +2,7 @@
   "name": "iobroker.ai-energy-manager",
   "version": "0.1.0",
   "description": "ioBroker adapter for AI-based dynamic-tariff energy, telemetry, battery and wallbox management.",
+  "packageManager": "npm@10.9.7",
   "main": "main.js",
   "scripts": {
     "check": "node --check main.js && node --check lib/*.js && node --check test/*.js",
