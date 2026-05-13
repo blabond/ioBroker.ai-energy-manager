@@ -6,11 +6,19 @@ DEV_DIR="/opt/iobroker/dev-adapters/iobroker.ai-energy-manager"
 NODE_MODULE_DIR="/opt/iobroker/node_modules/iobroker.ai-energy-manager"
 IOB="/opt/iobroker/iobroker"
 
+"$IOB" stop ai-energy-manager.0 || true
+
 mkdir -p "$DEV_DIR"
 rm -rf "$DEV_DIR"
-cp -a "$SOURCE_DIR" "$DEV_DIR"
+mkdir -p "$DEV_DIR"
+tar \
+  --exclude='.git' \
+  --exclude='node_modules' \
+  -C "$SOURCE_DIR" \
+  -cf - . | tar -C "$DEV_DIR" -xf -
 chmod -R a+rwX "$DEV_DIR"
 
+rm -rf "$NODE_MODULE_DIR"
 "$IOB" url "$DEV_DIR" ai-energy-manager
 rm -rf "$NODE_MODULE_DIR"
 cp -a "$DEV_DIR" "$NODE_MODULE_DIR"
