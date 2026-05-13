@@ -105,8 +105,12 @@
     "datapoints": {},
     "datapointAssignments": []
   },
-  "encryptedNative": ["adapterToken"],
-  "protectedNative": ["adapterToken"],
+  "encryptedNative": [
+    "adapterToken"
+  ],
+  "protectedNative": [
+    "adapterToken"
+  ],
   "objects": [],
   "instanceObjects": [
     {
