@@ -1,0 +1,17 @@
+{
+  i18n: true,
+  type: "panel",
+  items: {
+    _aiEnergyManagerConfig: {
+      type: "custom",
+      bundlerType: "module",
+      url: "custom/customComponents.js",
+      name: "ConfigCustomAiEnergyManager/Components/AemConfig",
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+}

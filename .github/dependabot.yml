@@ -1,0 +1,33 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "04:20"
+      timezone: Europe/Berlin
+    open-pull-requests-limit: 10
+    assignees:
+      - blabond
+    versioning-strategy: increase
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: eslint
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "@eslint/js"
+        update-types:
+          - version-update:semver-major
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "04:40"
+      timezone: Europe/Berlin
+    open-pull-requests-limit: 10
+    assignees:
+      - blabond

@@ -1,0 +1,526 @@
+{
+  "common": {
+    "name": "ai-energy-manager",
+    "version": "0.1.0",
+    "news": {
+      "0.1.0": {
+        "en": "AI Energy Manager adapter with backend configuration, telemetry upload, dashboard overview and controlled battery and wallbox commands.",
+        "de": "AI Energy Manager Adapter mit Backend-Konfiguration, Telemetrieübertragung, Dashboard-Übersicht und gesteuerten Batterie- und Wallbox-Befehlen.",
+        "ru": "Адаптер AI Energy Manager с конфигурацией через backend, передачей телеметрии, обзором dashboard и управлением battery and wallbox.",
+        "pt": "Adaptador AI Energy Manager com configuração pelo backend, envio de telemetria, visão geral do dashboard e comandos controlados para bateria e wallbox.",
+        "nl": "AI Energy Manager-adapter met backendconfiguratie, telemetrie-upload, dashboardoverzicht en gecontroleerde batterij- en wallbox-opdrachten.",
+        "fr": "Adaptateur AI Energy Manager avec configuration backend, envoi de télémétrie, vue dashboard et commandes contrôlées de batterie et wallbox.",
+        "it": "Adapter AI Energy Manager con configurazione backend, invio telemetria, panoramica dashboard e comandi controllati per batteria e wallbox.",
+        "es": "Adaptador AI Energy Manager con configuración desde backend, envío de telemetría, vista de dashboard y comandos controlados para batería y wallbox.",
+        "pl": "Adapter AI Energy Manager z konfiguracją backend, wysyłaniem telemetrii, podglądem dashboard oraz sterowaniem baterią i wallbox.",
+        "uk": "Адаптер AI Energy Manager з конфігурацією backend, передачею телеметрії, оглядом dashboard та керуванням battery and wallbox.",
+        "zh-cn": "AI Energy Manager 适配器，支持后端配置、遥测上传、仪表板概览以及受控的电池和 wallbox 命令。"
+      }
+    },
+    "titleLang": {
+      "en": "AI Energy Manager",
+      "de": "AI Energy Manager",
+      "ru": "AI Energy Manager",
+      "pt": "AI Energy Manager",
+      "nl": "AI Energy Manager",
+      "fr": "AI Energy Manager",
+      "it": "AI Energy Manager",
+      "es": "AI Energy Manager",
+      "pl": "AI Energy Manager",
+      "uk": "AI Energy Manager",
+      "zh-cn": "AI Energy Manager"
+    },
+    "desc": {
+      "en": "Connects ioBroker to an AI energy management backend for dynamic tariffs, PV forecasts, battery charging and controlled writable datapoints.",
+      "de": "Verbindet ioBroker mit einem KI-Energiemanagement-Backend für dynamische Tarife, PV-Prognosen, Batterieladung und kontrollierte schreibbare Datenpunkte.",
+      "ru": "Подключает ioBroker к backend AI energy management для dynamic tariffs, PV forecasts, battery charging and controlled writable datapoints.",
+      "pt": "Conecta ioBroker a um backend de gerenciamento de energia com IA para tarifas dinâmicas, previsões PV, carregamento de bateria e datapoints graváveis controlados.",
+      "nl": "Verbindt ioBroker met een AI-energiebeheerbackend voor dynamische tarieven, PV-prognoses, batterij laden en gecontroleerd schrijfbare gegevenspunten.",
+      "fr": "Connecte ioBroker à un backend de gestion d'énergie IA pour tarifs dynamiques, prévisions PV, charge batterie et datapoints écriture contrôlée.",
+      "it": "Collega ioBroker a un backend di gestione energia AI per tariffe dinamiche, previsioni PV, ricarica batteria e datapoint scrivibili controllati.",
+      "es": "Conecta ioBroker con un backend de gestión energética con IA para tarifas dinámicas, previsiones PV, carga de batería y datapoints grabables controlados.",
+      "pl": "Łączy ioBroker z backendem zarządzania energią AI dla taryf dynamicznych, prognoz PV, ładowania baterii i kontrolowanych zapisywalnych datapointów.",
+      "uk": "Підключає ioBroker до backend AI energy management для dynamic tariffs, PV forecasts, battery charging and controlled writable datapoints.",
+      "zh-cn": "将 ioBroker 连接到 AI 能源管理后端，用于动态电价、PV 预测、电池充电和受控可写数据点。"
+    },
+    "authors": [
+      {
+        "name": "Christoph Böhrs",
+        "email": "git@mr-bond.de"
+      }
+    ],
+    "keywords": [
+      "energy",
+      "battery",
+      "dynamic tariff",
+      "pv forecast",
+      "wallbox"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "link": "https://github.com/blabond/ioBroker.ai-energy-manager/blob/main/LICENSE",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "icon": "ai-energy-manager.png",
+    "enabled": true,
+    "messagebox": true,
+    "extIcon": "https://raw.githubusercontent.com/blabond/ioBroker.ai-energy-manager/main/admin/ai-energy-manager.png",
+    "readme": "https://github.com/blabond/ioBroker.ai-energy-manager/blob/main/README.md",
+    "loglevel": "info",
+    "connectionType": "cloud",
+    "dataSource": "push",
+    "compact": true,
+    "adminUI": {
+      "config": "json"
+    },
+    "docs": {
+      "en": "README.md",
+      "de": "docs/de/README.md"
+    },
+    "type": "energy",
+    "tier": 2,
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.20"
+      }
+    ]
+  },
+  "native": {
+    "backendUrl": "https://smartenergy.mr-bond.de",
+    "adapterToken": "",
+    "sendIntervalSeconds": 60,
+    "commandPollIntervalSeconds": 30,
+    "sendOnlyChanged": true,
+    "minWriteIntervalSeconds": 10,
+    "serverConfig": null,
+    "serverConfigLastRequest": "",
+    "serverConfigTokenFingerprint": "",
+    "datapoints": {},
+    "datapointAssignments": []
+  },
+  "encryptedNative": ["adapterToken"],
+  "protectedNative": ["adapterToken"],
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Adapter information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "status",
+      "type": "channel",
+      "common": {
+        "name": "Runtime status"
+      },
+      "native": {}
+    },
+    {
+      "_id": "telemetry",
+      "type": "channel",
+      "common": {
+        "name": "Telemetry"
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard",
+      "type": "channel",
+      "common": {
+        "name": "Dashboard"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "name": "Backend connection",
+        "type": "boolean",
+        "role": "indicator.connected",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.lastSync",
+      "type": "state",
+      "common": {
+        "name": "Last payload sync",
+        "type": "string",
+        "role": "date",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.lastError",
+      "type": "state",
+      "common": {
+        "name": "Last error",
+        "type": "string",
+        "role": "text",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.configValid",
+      "type": "state",
+      "common": {
+        "name": "Server configuration valid",
+        "type": "boolean",
+        "role": "indicator",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.tokenValid",
+      "type": "state",
+      "common": {
+        "name": "Adapter token valid",
+        "type": "boolean",
+        "role": "indicator",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.detectedFeatures",
+      "type": "state",
+      "common": {
+        "name": "Detected server features",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "[]"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.serverConfigVersion",
+      "type": "state",
+      "common": {
+        "name": "Server config version",
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.serverConfigRevision",
+      "type": "state",
+      "common": {
+        "name": "Server config revision",
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.serverConfigLastRequest",
+      "type": "state",
+      "common": {
+        "name": "Last server config request",
+        "type": "string",
+        "role": "date",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "status.backendReachable",
+      "type": "state",
+      "common": {
+        "name": "Backend reachable",
+        "type": "boolean",
+        "role": "indicator.reachable",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "status.lastPayload",
+      "type": "state",
+      "common": {
+        "name": "Last payload summary",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "{}"
+      },
+      "native": {}
+    },
+    {
+      "_id": "status.lastCommand",
+      "type": "state",
+      "common": {
+        "name": "Last command target",
+        "type": "string",
+        "role": "text",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "status.lastCommandResult",
+      "type": "state",
+      "common": {
+        "name": "Last command result",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "{}"
+      },
+      "native": {}
+    },
+    {
+      "_id": "status.lastTelemetryBatch",
+      "type": "state",
+      "common": {
+        "name": "Last telemetry batch",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "{}"
+      },
+      "native": {}
+    },
+    {
+      "_id": "status.lastServerPull",
+      "type": "state",
+      "common": {
+        "name": "Last server pull",
+        "type": "string",
+        "role": "date",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "telemetry.pollOffsetSeconds",
+      "type": "state",
+      "common": {
+        "name": "Persistent telemetry polling offset",
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "def": -1
+      },
+      "native": {}
+    },
+    {
+      "_id": "telemetry.queueLength",
+      "type": "state",
+      "common": {
+        "name": "Pending telemetry queue length",
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "telemetry.queue",
+      "type": "state",
+      "common": {
+        "name": "Pending telemetry queue",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "[]"
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.lite",
+      "type": "state",
+      "common": {
+        "name": "Dashboard",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "{}"
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.lastUpdate",
+      "type": "state",
+      "common": {
+        "name": "Dashboard last update",
+        "type": "string",
+        "role": "date",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.reason",
+      "type": "state",
+      "common": {
+        "name": "Dashboard decision reason",
+        "type": "string",
+        "role": "text",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.plan",
+      "type": "state",
+      "common": {
+        "name": "Dashboard 6 hour plan",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "[]"
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.pattern",
+      "type": "state",
+      "common": {
+        "name": "Dashboard pattern detection",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false,
+        "def": "{}"
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.batteryCapacityKwh",
+      "type": "state",
+      "common": {
+        "name": "Battery capacity",
+        "type": "number",
+        "role": "value.battery",
+        "read": true,
+        "write": false,
+        "unit": "kWh",
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.expectedConsumptionNext24hKwh",
+      "type": "state",
+      "common": {
+        "name": "Consumption forecast next 24h",
+        "type": "number",
+        "role": "value.energy",
+        "read": true,
+        "write": false,
+        "unit": "kWh",
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.expectedPvNext24hKwh",
+      "type": "state",
+      "common": {
+        "name": "PV forecast next 24h",
+        "type": "number",
+        "role": "value.energy",
+        "read": true,
+        "write": false,
+        "unit": "kWh",
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.energyGapNext24hKwh",
+      "type": "state",
+      "common": {
+        "name": "Energy gap next 24h",
+        "type": "number",
+        "role": "value.energy",
+        "read": true,
+        "write": false,
+        "unit": "kWh",
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.operatingMode",
+      "type": "state",
+      "common": {
+        "name": "Operating mode",
+        "type": "string",
+        "role": "text",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.batteryChargingActive",
+      "type": "state",
+      "common": {
+        "name": "Battery charging active",
+        "type": "boolean",
+        "role": "indicator",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
+}
