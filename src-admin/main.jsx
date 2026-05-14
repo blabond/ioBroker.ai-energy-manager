@@ -700,7 +700,9 @@ function Section({ children, title, titleAction = null }) {
         <Typography variant="subtitle1" component="h2">
           {title}
         </Typography>
-        {titleAction ? <Box className="section-title-action">{titleAction}</Box> : null}
+        {titleAction ? (
+          <Box className="section-title-action">{titleAction}</Box>
+        ) : null}
       </Box>
       {children}
     </Paper>
