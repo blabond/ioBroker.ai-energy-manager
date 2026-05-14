@@ -175,8 +175,8 @@
       "id": "ConfigCustomAiEnergyManager:Components",
       "name": "Components",
       "assets": {
-        "js": { "async": [], "sync": ["assets/main-Drtb3urL.js"] },
-        "css": { "async": [], "sync": ["assets/main-BNdF3Bj4.css"] }
+        "js": { "async": [], "sync": ["assets/main-CLCEJKG6.js"] },
+        "css": { "async": [], "sync": ["assets/main-CKlwWW5J.css"] }
       },
       "path": "./Components"
     }
@@ -189,19 +189,19 @@
       "size": 1312
     },
     {
-      "fileName": "assets/index-Vbllx_dQ.js",
+      "fileName": "assets/index-DYxe30Ms.js",
       "type": "chunk",
       "isEntry": true,
       "size": 725
     },
     {
-      "fileName": "assets/main-Drtb3urL.js",
+      "fileName": "assets/main-CLCEJKG6.js",
       "type": "chunk",
       "isEntry": true,
-      "size": 103039
+      "size": 104659
     },
     {
-      "fileName": "assets/virtualExposes-C9LIInO1.js",
+      "fileName": "assets/virtualExposes-DBVGvxsG.js",
       "type": "chunk",
       "isEntry": true,
       "size": 139
@@ -261,22 +261,22 @@
       "size": 826
     },
     {
-      "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-rxIXd_4z.js",
+      "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-384INvDL.js",
       "type": "chunk",
       "isEntry": false,
       "size": 6550
     },
     {
-      "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-SNs-HRdP.js",
+      "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-BVVAwEe3.js",
       "type": "chunk",
       "isEntry": false,
       "size": 917
     },
     {
-      "fileName": "assets/main-BNdF3Bj4.css",
+      "fileName": "assets/main-CKlwWW5J.css",
       "type": "asset",
       "isEntry": false,
-      "size": 3738
+      "size": 3912
     },
     {
       "fileName": "index.html",
@@ -293,8 +293,8 @@
   ],
   "assetAnalysis": {
     "./main.jsx": {
-      "js": { "sync": ["assets/main-Drtb3urL.js"], "async": [] },
-      "css": { "sync": ["assets/main-BNdF3Bj4.css"], "async": [] }
+      "js": { "sync": ["assets/main-CLCEJKG6.js"], "async": [] },
+      "css": { "sync": ["assets/main-CKlwWW5J.css"], "async": [] }
     },
     "react": {
       "js": {

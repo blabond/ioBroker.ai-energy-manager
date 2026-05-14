@@ -1,5 +1,5 @@
-import "./virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-SNs-HRdP.js";
-import "./virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-rxIXd_4z.js";
+import "./virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-BVVAwEe3.js";
+import "./virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-384INvDL.js";
 import {
   A as e,
   F as t,
@@ -22,17 +22,17 @@ import {
   S as g,
   T as ee,
   _,
-  a as te,
-  b as ne,
-  c as re,
-  d as v,
-  f as ie,
-  g as y,
-  h as b,
-  j as x,
-  k as S,
-  l as ae,
-  m as C,
+  a as v,
+  b as te,
+  c as ne,
+  d as y,
+  f as re,
+  g as b,
+  h as x,
+  j as S,
+  k as C,
+  l as ie,
+  m as ae,
   n as w,
   p as oe,
   t as se,
@@ -66,7 +66,7 @@ var M = {
     batteryMode: `Batterie Modus`,
     batteryReserveSoc: `Batterie Mindest-SOC / Reserve`,
     gridMeter: `Netzzähler`,
-    gridPower: `Netzzähler wert`,
+    gridPower: `Netzleistung`,
     gridTotalPower: `Gesamtleistung Netz`,
     wallbox: `Wallbox`,
     wallboxPower: `Wallbox Leistung`,
@@ -90,6 +90,8 @@ var M = {
     batteryPowerHelp: `Aktuelle Lade- oder Entladeleistung der Batterie. Vorzeichen wie im Datenpunkt vorhanden auswählen.`,
     batteryModeHelp: `Optionaler Modus-Datenpunkt des Speichers`,
     batteryReserveSocHelp: `Optionaler schreibbarer Reserve- oder Mindest-SOC-Datenpunkt`,
+    consumptionWh: `Verbrauch`,
+    gridExportMeterWh: `Einspeisung`,
     consumptionWhHelp: `Optionaler Energiezähler für Netzbezug`,
     gridExportMeterWhHelp: `Optionaler Energiezähler für Netzeinspeisung`,
     gridPowerHelp: `Aktueller Momentanwert des Netzzählers in Watt. Erwartet wird die aktuelle Leistung am Netzanschlusspunkt, typischerweise positiv bei Netzbezug und negativ bei Einspeisung.`,
@@ -124,6 +126,7 @@ var M = {
     objectSelectionUnavailable: `Objektauswahl nicht verfügbar.`,
     selectStatePathTitle: `ioBroker State-Path auswählen`,
     autoUpdated: `Automatisch aktualisiert: %s`,
+    dashboardDataAsOf: `Datenstand: %s`,
     waitingForDashboardData: `Warte auf automatische Dashboard-Daten.`,
     noDashboardData: `Noch keine Dashboard-Daten geladen.`,
     noDatapointAssignments: `Noch keine Datenpunkt-Zuordnung vorhanden. Bitte Token speichern und Request Config ausführen.`,
@@ -157,7 +160,7 @@ var M = {
     dashboardBatteryCapacity: `Batteriekapazität`,
     dashboardConsumptionForecast: `Verbrauchsprognose`,
     dashboardPvForecast: `PV-Prognose`,
-    dashboardEnergyGapNext24h: `Versorgungslücke nächste 24h`,
+    dashboardEnergyGapNext24h: `Versorgungslücke inkl. Reserve`,
     dashboardRecommendation: `Empfehlung`,
     dashboardGridChargingPlanned: `Netzladen geplant`,
     yes: `Ja`,
@@ -237,6 +240,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -271,6 +276,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -304,7 +310,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -384,6 +390,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -418,6 +426,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -451,7 +460,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -531,6 +540,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -565,6 +576,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -598,7 +610,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -678,6 +690,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -712,6 +726,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -745,7 +760,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -825,6 +840,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -859,6 +876,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -892,154 +910,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
-    dashboardRecommendation: `Recommendation`,
-    dashboardGridChargingPlanned: `Grid charging planned`,
-    yes: `Yes`,
-    no: `No`,
-    gridOperation: `Grid operation`,
-    pvBatteryOperation: `PV/battery operation`,
-    insufficientData: `Insufficient data`,
-    chargeBattery: `Charge battery`,
-    holdBattery: `Hold battery`,
-    useBattery: `Use battery`,
-    noControl: `No control`,
-    householdLoadFromGridBatteryCharging: `Household load from grid, battery is charging`,
-    householdLoadFromGridBatteryChargedBriefly: `Household load from grid, battery is charged briefly`,
-    householdLoadFromGridPvBatteryHeld: `Household load from grid/PV, battery is held`,
-    pvBatteryCoverConsumption: `PV and battery cover consumption, grid charging is not planned`,
-    pvPreferred: `PV is preferred`,
-    avoidGridImport: `Avoid grid import`,
-    noActiveGridCharging: `No active grid charging`,
-    noReliableDecision: `No reliable decision`,
-    gridPowerEconomical: `Grid power is economical or necessary according to the calculation.`,
-    batteryReservePreserved: `Battery reserve is preserved until PV yield or a charging window is reached.`,
-    batteryPvSufficient: `Available battery energy and expected PV yield are sufficient.`,
-    pvCoversConsumptionAndBattery: `PV yield is used to cover consumption and battery.`,
-    batterySupportsHousehold: `Battery may support household consumption.`,
-    noGridChargingNeed: `No grid charging need detected.`,
-    telemetryInsufficient: `Telemetry, forecast or backend data are not sufficient for a decision.`,
-    gridCharging: `Grid charging`,
-    usePv: `Use PV`,
-    doNotCharge: `Do not charge`,
-    hold: `Hold`,
-    discharge: `Discharge`,
-    chargeFromPv: `Charge from PV`,
-    noAction: `No action`,
-  },
-  le = {
-    baseConfiguration: `Base configuration`,
-    backendUrl: `Backend URL`,
-    backendUrlHelp: `URL of your SmartEnergy backend, for example https://example.invalid`,
-    adapterToken: `Adapter token`,
-    adapterTokenHelp: `Token from the web frontend. This token is not stored in adapter code and must never be published.`,
-    requestConfig: `Request Config`,
-    requestConfigHelp: `Manually requests the current plant configuration from the server. There is no permanent auto polling for this configuration.`,
-    serverConfigLastRequest: `Last config request`,
-    serverConfigInfo: `After Request Config, the areas detected by the server become visible. Existing datapoint selections are preserved as long as the keys remain unchanged.`,
-    operationConfiguration: `Operation configuration`,
-    sendIntervalSeconds: `State payload interval in seconds`,
-    commandPollIntervalSeconds: `Control command interval in seconds`,
-    sendOnlyChanged: `Send only when values changed`,
-    minWriteIntervalSeconds: `Minimum distance between write commands in seconds`,
-    battery: `Battery storage`,
-    batterySoc: `Battery SOC`,
-    batteryPower: `Battery charge/discharge power`,
-    batteryMode: `Battery mode`,
-    batteryReserveSoc: `Battery minimum SOC / reserve`,
-    gridMeter: `Grid meter`,
-    gridPower: `Grid meter value`,
-    gridTotalPower: `Grid total power`,
-    wallbox: `Wallbox`,
-    wallboxPower: `Wallbox power`,
-    wallboxCarState: `Wallbox car state`,
-    wallboxAmpere: `Wallbox current`,
-    allowCharging: `Charging permission`,
-    wallboxUser: `Wallbox user / RFID`,
-    pvForecast: `PV forecast`,
-    pvForecastDatapoint: `PV forecast datapoint`,
-    pvPower: `Real PV power`,
-    pvDailyYield: `PV daily yield`,
-    storageSystem: `Storage system`,
-    storageSystemSoc: `Storage SOC`,
-    storageSystemBatteryPower: `Storage power`,
-    storageSystemPvPower: `PV power`,
-    storageSystemMode: `Storage operating mode`,
-    energyMeter: `Energy meter`,
-    energyMeterPower: `Meter consumption`,
-    energyMeterReading: `Meter reading`,
-    batterySocHelp: `Current battery state of charge in percent`,
-    batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
-    batteryModeHelp: `Optional storage mode datapoint`,
-    batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
-    consumptionWhHelp: `Optional energy meter for grid import`,
-    gridExportMeterWhHelp: `Optional energy meter for grid export`,
-    gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
-    gridTotalPowerHelp: `Optional total grid power datapoint`,
-    wallboxWhHelp: `Optional datapoint for charged EV energy`,
-    wallboxPowerHelp: `Current wallbox charging power`,
-    wallboxCarStateHelp: `State indicating whether a vehicle is connected or charging`,
-    wallboxAmpereHelp: `Writable wallbox charging current`,
-    allowChargingHelp: `Optional datapoint for charging permission`,
-    wallboxUserHelp: `Optional user or RFID datapoint`,
-    pvForecastHelp: `Forecast value of the PV system from the selected datapoint`,
-    pvPowerHelp: `Current real PV power`,
-    pvDailyYieldHelp: `Optional daily yield of the PV system`,
-    storageSystemSocHelp: `Current storage state of charge`,
-    storageSystemBatteryPowerHelp: `Current power direction of the storage system`,
-    storageSystemPvPowerHelp: `Current PV power from the storage system`,
-    storageSystemModeHelp: `Optional writable operating mode`,
-    energyMeterPowerHelp: `Current consumption power from the energy meter`,
-    energyMeterReadingHelp: `Meter reading or energy datapoint from the energy meter`,
-    connection: `Connection`,
-    lastConfigRequest: `Last config request`,
-    openSmartEnergyPortal: `Open SmartEnergy portal`,
-    noAccountOrToken: `No account or adapter token yet?`,
-    dashboard: `Dashboard`,
-    settings: `Settings`,
-    settingsTokenMissing: `Please first enter a valid adapter token in the Settings tab and run Request Config.`,
-    dashboardRequiredMissing: `Please assign all required fields in the Settings tab before the dashboard is shown.`,
-    configLoading: `Loading configuration ...`,
-    configLoaded: `Configuration loaded.`,
-    adapterNoResponse: `Error: no response from the adapter. Please check whether the instance is running.`,
-    adminConnectionUnavailable: `ioBroker admin connection is not available.`,
-    objectSelectionUnavailable: `Object selection is not available.`,
-    selectStatePathTitle: `Select ioBroker state path`,
-    autoUpdated: `Automatically updated: %s`,
-    waitingForDashboardData: `Waiting for automatic dashboard data.`,
-    noDashboardData: `No dashboard data loaded yet.`,
-    noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
-    acDcInfo: `AC means alternating current in the home grid, typically household power after the inverter. DC means direct current, for example PV power or battery power before the inverter.`,
-    value: `Value`,
-    type: `Type`,
-    unit: `Unit`,
-    required: `Required`,
-    selectStatePath: `Select state path`,
-    customScriptStatePathWarning: `Notice: This datapoint is located in a custom script folder (0_userdata. or javascript.). It is accepted, but may contain incorrect or faulty values because it is not an official adapter path.`,
-    showInfo: `Show info`,
-    generalValues: `General values:`,
-    plantTitle: `Plant %s:`,
-    household: `Household`,
-    plant: `Plant`,
-    sixHourPlan: `6-hour plan`,
-    noSixHourPlan: `No 6-hour plan available yet.`,
-    patternDetection: `Pattern detection`,
-    activeLoadProfile: `Active load profile`,
-    profileForecast: `Profile forecast`,
-    baseLoadProfile: `Base load profile`,
-    todayProjected: `Today projected`,
-    profile: `Profile`,
-    days: `Days`,
-    averageConsumption: `Average consumption`,
-    range: `Range`,
-    confidence: `Confidence`,
-    technicalAction: `technical: %s`,
-    errorUnknown: `Error: unknown error`,
-    errorPrefix: `Error: %s`,
-    dashboardBatteryCapacity: `Battery capacity`,
-    dashboardConsumptionForecast: `Consumption forecast`,
-    dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -1119,6 +990,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -1153,6 +1026,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -1186,154 +1060,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
-    dashboardRecommendation: `Recommendation`,
-    dashboardGridChargingPlanned: `Grid charging planned`,
-    yes: `Yes`,
-    no: `No`,
-    gridOperation: `Grid operation`,
-    pvBatteryOperation: `PV/battery operation`,
-    insufficientData: `Insufficient data`,
-    chargeBattery: `Charge battery`,
-    holdBattery: `Hold battery`,
-    useBattery: `Use battery`,
-    noControl: `No control`,
-    householdLoadFromGridBatteryCharging: `Household load from grid, battery is charging`,
-    householdLoadFromGridBatteryChargedBriefly: `Household load from grid, battery is charged briefly`,
-    householdLoadFromGridPvBatteryHeld: `Household load from grid/PV, battery is held`,
-    pvBatteryCoverConsumption: `PV and battery cover consumption, grid charging is not planned`,
-    pvPreferred: `PV is preferred`,
-    avoidGridImport: `Avoid grid import`,
-    noActiveGridCharging: `No active grid charging`,
-    noReliableDecision: `No reliable decision`,
-    gridPowerEconomical: `Grid power is economical or necessary according to the calculation.`,
-    batteryReservePreserved: `Battery reserve is preserved until PV yield or a charging window is reached.`,
-    batteryPvSufficient: `Available battery energy and expected PV yield are sufficient.`,
-    pvCoversConsumptionAndBattery: `PV yield is used to cover consumption and battery.`,
-    batterySupportsHousehold: `Battery may support household consumption.`,
-    noGridChargingNeed: `No grid charging need detected.`,
-    telemetryInsufficient: `Telemetry, forecast or backend data are not sufficient for a decision.`,
-    gridCharging: `Grid charging`,
-    usePv: `Use PV`,
-    doNotCharge: `Do not charge`,
-    hold: `Hold`,
-    discharge: `Discharge`,
-    chargeFromPv: `Charge from PV`,
-    noAction: `No action`,
-  },
-  ue = {
-    baseConfiguration: `Base configuration`,
-    backendUrl: `Backend URL`,
-    backendUrlHelp: `URL of your SmartEnergy backend, for example https://example.invalid`,
-    adapterToken: `Adapter token`,
-    adapterTokenHelp: `Token from the web frontend. This token is not stored in adapter code and must never be published.`,
-    requestConfig: `Request Config`,
-    requestConfigHelp: `Manually requests the current plant configuration from the server. There is no permanent auto polling for this configuration.`,
-    serverConfigLastRequest: `Last config request`,
-    serverConfigInfo: `After Request Config, the areas detected by the server become visible. Existing datapoint selections are preserved as long as the keys remain unchanged.`,
-    operationConfiguration: `Operation configuration`,
-    sendIntervalSeconds: `State payload interval in seconds`,
-    commandPollIntervalSeconds: `Control command interval in seconds`,
-    sendOnlyChanged: `Send only when values changed`,
-    minWriteIntervalSeconds: `Minimum distance between write commands in seconds`,
-    battery: `Battery storage`,
-    batterySoc: `Battery SOC`,
-    batteryPower: `Battery charge/discharge power`,
-    batteryMode: `Battery mode`,
-    batteryReserveSoc: `Battery minimum SOC / reserve`,
-    gridMeter: `Grid meter`,
-    gridPower: `Grid meter value`,
-    gridTotalPower: `Grid total power`,
-    wallbox: `Wallbox`,
-    wallboxPower: `Wallbox power`,
-    wallboxCarState: `Wallbox car state`,
-    wallboxAmpere: `Wallbox current`,
-    allowCharging: `Charging permission`,
-    wallboxUser: `Wallbox user / RFID`,
-    pvForecast: `PV forecast`,
-    pvForecastDatapoint: `PV forecast datapoint`,
-    pvPower: `Real PV power`,
-    pvDailyYield: `PV daily yield`,
-    storageSystem: `Storage system`,
-    storageSystemSoc: `Storage SOC`,
-    storageSystemBatteryPower: `Storage power`,
-    storageSystemPvPower: `PV power`,
-    storageSystemMode: `Storage operating mode`,
-    energyMeter: `Energy meter`,
-    energyMeterPower: `Meter consumption`,
-    energyMeterReading: `Meter reading`,
-    batterySocHelp: `Current battery state of charge in percent`,
-    batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
-    batteryModeHelp: `Optional storage mode datapoint`,
-    batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
-    consumptionWhHelp: `Optional energy meter for grid import`,
-    gridExportMeterWhHelp: `Optional energy meter for grid export`,
-    gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
-    gridTotalPowerHelp: `Optional total grid power datapoint`,
-    wallboxWhHelp: `Optional datapoint for charged EV energy`,
-    wallboxPowerHelp: `Current wallbox charging power`,
-    wallboxCarStateHelp: `State indicating whether a vehicle is connected or charging`,
-    wallboxAmpereHelp: `Writable wallbox charging current`,
-    allowChargingHelp: `Optional datapoint for charging permission`,
-    wallboxUserHelp: `Optional user or RFID datapoint`,
-    pvForecastHelp: `Forecast value of the PV system from the selected datapoint`,
-    pvPowerHelp: `Current real PV power`,
-    pvDailyYieldHelp: `Optional daily yield of the PV system`,
-    storageSystemSocHelp: `Current storage state of charge`,
-    storageSystemBatteryPowerHelp: `Current power direction of the storage system`,
-    storageSystemPvPowerHelp: `Current PV power from the storage system`,
-    storageSystemModeHelp: `Optional writable operating mode`,
-    energyMeterPowerHelp: `Current consumption power from the energy meter`,
-    energyMeterReadingHelp: `Meter reading or energy datapoint from the energy meter`,
-    connection: `Connection`,
-    lastConfigRequest: `Last config request`,
-    openSmartEnergyPortal: `Open SmartEnergy portal`,
-    noAccountOrToken: `No account or adapter token yet?`,
-    dashboard: `Dashboard`,
-    settings: `Settings`,
-    settingsTokenMissing: `Please first enter a valid adapter token in the Settings tab and run Request Config.`,
-    dashboardRequiredMissing: `Please assign all required fields in the Settings tab before the dashboard is shown.`,
-    configLoading: `Loading configuration ...`,
-    configLoaded: `Configuration loaded.`,
-    adapterNoResponse: `Error: no response from the adapter. Please check whether the instance is running.`,
-    adminConnectionUnavailable: `ioBroker admin connection is not available.`,
-    objectSelectionUnavailable: `Object selection is not available.`,
-    selectStatePathTitle: `Select ioBroker state path`,
-    autoUpdated: `Automatically updated: %s`,
-    waitingForDashboardData: `Waiting for automatic dashboard data.`,
-    noDashboardData: `No dashboard data loaded yet.`,
-    noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
-    acDcInfo: `AC means alternating current in the home grid, typically household power after the inverter. DC means direct current, for example PV power or battery power before the inverter.`,
-    value: `Value`,
-    type: `Type`,
-    unit: `Unit`,
-    required: `Required`,
-    selectStatePath: `Select state path`,
-    customScriptStatePathWarning: `Notice: This datapoint is located in a custom script folder (0_userdata. or javascript.). It is accepted, but may contain incorrect or faulty values because it is not an official adapter path.`,
-    showInfo: `Show info`,
-    generalValues: `General values:`,
-    plantTitle: `Plant %s:`,
-    household: `Household`,
-    plant: `Plant`,
-    sixHourPlan: `6-hour plan`,
-    noSixHourPlan: `No 6-hour plan available yet.`,
-    patternDetection: `Pattern detection`,
-    activeLoadProfile: `Active load profile`,
-    profileForecast: `Profile forecast`,
-    baseLoadProfile: `Base load profile`,
-    todayProjected: `Today projected`,
-    profile: `Profile`,
-    days: `Days`,
-    averageConsumption: `Average consumption`,
-    range: `Range`,
-    confidence: `Confidence`,
-    technicalAction: `technical: %s`,
-    errorUnknown: `Error: unknown error`,
-    errorPrefix: `Error: %s`,
-    dashboardBatteryCapacity: `Battery capacity`,
-    dashboardConsumptionForecast: `Consumption forecast`,
-    dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -1413,6 +1140,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -1447,6 +1176,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -1480,7 +1210,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -1515,7 +1245,7 @@ var M = {
     chargeFromPv: `Charge from PV`,
     noAction: `No action`,
   },
-  de = {
+  le = {
     baseConfiguration: `Base configuration`,
     backendUrl: `Backend URL`,
     backendUrlHelp: `URL of your SmartEnergy backend, for example https://example.invalid`,
@@ -1560,6 +1290,8 @@ var M = {
     batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
     batteryModeHelp: `Optional storage mode datapoint`,
     batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
     consumptionWhHelp: `Optional energy meter for grid import`,
     gridExportMeterWhHelp: `Optional energy meter for grid export`,
     gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
@@ -1594,6 +1326,7 @@ var M = {
     objectSelectionUnavailable: `Object selection is not available.`,
     selectStatePathTitle: `Select ioBroker state path`,
     autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
     waitingForDashboardData: `Waiting for automatic dashboard data.`,
     noDashboardData: `No dashboard data loaded yet.`,
     noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
@@ -1627,7 +1360,7 @@ var M = {
     dashboardBatteryCapacity: `Battery capacity`,
     dashboardConsumptionForecast: `Consumption forecast`,
     dashboardPvForecast: `PV forecast`,
-    dashboardEnergyGapNext24h: `Energy gap next 24h`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
     dashboardRecommendation: `Recommendation`,
     dashboardGridChargingPlanned: `Grid charging planned`,
     yes: `Yes`,
@@ -1662,14 +1395,314 @@ var M = {
     chargeFromPv: `Charge from PV`,
     noAction: `No action`,
   },
-  fe = 2e4,
-  pe = [
+  z = {
+    baseConfiguration: `Base configuration`,
+    backendUrl: `Backend URL`,
+    backendUrlHelp: `URL of your SmartEnergy backend, for example https://example.invalid`,
+    adapterToken: `Adapter token`,
+    adapterTokenHelp: `Token from the web frontend. This token is not stored in adapter code and must never be published.`,
+    requestConfig: `Request Config`,
+    requestConfigHelp: `Manually requests the current plant configuration from the server. There is no permanent auto polling for this configuration.`,
+    serverConfigLastRequest: `Last config request`,
+    serverConfigInfo: `After Request Config, the areas detected by the server become visible. Existing datapoint selections are preserved as long as the keys remain unchanged.`,
+    operationConfiguration: `Operation configuration`,
+    sendIntervalSeconds: `State payload interval in seconds`,
+    commandPollIntervalSeconds: `Control command interval in seconds`,
+    sendOnlyChanged: `Send only when values changed`,
+    minWriteIntervalSeconds: `Minimum distance between write commands in seconds`,
+    battery: `Battery storage`,
+    batterySoc: `Battery SOC`,
+    batteryPower: `Battery charge/discharge power`,
+    batteryMode: `Battery mode`,
+    batteryReserveSoc: `Battery minimum SOC / reserve`,
+    gridMeter: `Grid meter`,
+    gridPower: `Grid meter value`,
+    gridTotalPower: `Grid total power`,
+    wallbox: `Wallbox`,
+    wallboxPower: `Wallbox power`,
+    wallboxCarState: `Wallbox car state`,
+    wallboxAmpere: `Wallbox current`,
+    allowCharging: `Charging permission`,
+    wallboxUser: `Wallbox user / RFID`,
+    pvForecast: `PV forecast`,
+    pvForecastDatapoint: `PV forecast datapoint`,
+    pvPower: `Real PV power`,
+    pvDailyYield: `PV daily yield`,
+    storageSystem: `Storage system`,
+    storageSystemSoc: `Storage SOC`,
+    storageSystemBatteryPower: `Storage power`,
+    storageSystemPvPower: `PV power`,
+    storageSystemMode: `Storage operating mode`,
+    energyMeter: `Energy meter`,
+    energyMeterPower: `Meter consumption`,
+    energyMeterReading: `Meter reading`,
+    batterySocHelp: `Current battery state of charge in percent`,
+    batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
+    batteryModeHelp: `Optional storage mode datapoint`,
+    batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
+    consumptionWhHelp: `Optional energy meter for grid import`,
+    gridExportMeterWhHelp: `Optional energy meter for grid export`,
+    gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
+    gridTotalPowerHelp: `Optional total grid power datapoint`,
+    wallboxWhHelp: `Optional datapoint for charged EV energy`,
+    wallboxPowerHelp: `Current wallbox charging power`,
+    wallboxCarStateHelp: `State indicating whether a vehicle is connected or charging`,
+    wallboxAmpereHelp: `Writable wallbox charging current`,
+    allowChargingHelp: `Optional datapoint for charging permission`,
+    wallboxUserHelp: `Optional user or RFID datapoint`,
+    pvForecastHelp: `Forecast value of the PV system from the selected datapoint`,
+    pvPowerHelp: `Current real PV power`,
+    pvDailyYieldHelp: `Optional daily yield of the PV system`,
+    storageSystemSocHelp: `Current storage state of charge`,
+    storageSystemBatteryPowerHelp: `Current power direction of the storage system`,
+    storageSystemPvPowerHelp: `Current PV power from the storage system`,
+    storageSystemModeHelp: `Optional writable operating mode`,
+    energyMeterPowerHelp: `Current consumption power from the energy meter`,
+    energyMeterReadingHelp: `Meter reading or energy datapoint from the energy meter`,
+    connection: `Connection`,
+    lastConfigRequest: `Last config request`,
+    openSmartEnergyPortal: `Open SmartEnergy portal`,
+    noAccountOrToken: `No account or adapter token yet?`,
+    dashboard: `Dashboard`,
+    settings: `Settings`,
+    settingsTokenMissing: `Please first enter a valid adapter token in the Settings tab and run Request Config.`,
+    dashboardRequiredMissing: `Please assign all required fields in the Settings tab before the dashboard is shown.`,
+    configLoading: `Loading configuration ...`,
+    configLoaded: `Configuration loaded.`,
+    adapterNoResponse: `Error: no response from the adapter. Please check whether the instance is running.`,
+    adminConnectionUnavailable: `ioBroker admin connection is not available.`,
+    objectSelectionUnavailable: `Object selection is not available.`,
+    selectStatePathTitle: `Select ioBroker state path`,
+    autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
+    waitingForDashboardData: `Waiting for automatic dashboard data.`,
+    noDashboardData: `No dashboard data loaded yet.`,
+    noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
+    acDcInfo: `AC means alternating current in the home grid, typically household power after the inverter. DC means direct current, for example PV power or battery power before the inverter.`,
+    value: `Value`,
+    type: `Type`,
+    unit: `Unit`,
+    required: `Required`,
+    selectStatePath: `Select state path`,
+    customScriptStatePathWarning: `Notice: This datapoint is located in a custom script folder (0_userdata. or javascript.). It is accepted, but may contain incorrect or faulty values because it is not an official adapter path.`,
+    showInfo: `Show info`,
+    generalValues: `General values:`,
+    plantTitle: `Plant %s:`,
+    household: `Household`,
+    plant: `Plant`,
+    sixHourPlan: `6-hour plan`,
+    noSixHourPlan: `No 6-hour plan available yet.`,
+    patternDetection: `Pattern detection`,
+    activeLoadProfile: `Active load profile`,
+    profileForecast: `Profile forecast`,
+    baseLoadProfile: `Base load profile`,
+    todayProjected: `Today projected`,
+    profile: `Profile`,
+    days: `Days`,
+    averageConsumption: `Average consumption`,
+    range: `Range`,
+    confidence: `Confidence`,
+    technicalAction: `technical: %s`,
+    errorUnknown: `Error: unknown error`,
+    errorPrefix: `Error: %s`,
+    dashboardBatteryCapacity: `Battery capacity`,
+    dashboardConsumptionForecast: `Consumption forecast`,
+    dashboardPvForecast: `PV forecast`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
+    dashboardRecommendation: `Recommendation`,
+    dashboardGridChargingPlanned: `Grid charging planned`,
+    yes: `Yes`,
+    no: `No`,
+    gridOperation: `Grid operation`,
+    pvBatteryOperation: `PV/battery operation`,
+    insufficientData: `Insufficient data`,
+    chargeBattery: `Charge battery`,
+    holdBattery: `Hold battery`,
+    useBattery: `Use battery`,
+    noControl: `No control`,
+    householdLoadFromGridBatteryCharging: `Household load from grid, battery is charging`,
+    householdLoadFromGridBatteryChargedBriefly: `Household load from grid, battery is charged briefly`,
+    householdLoadFromGridPvBatteryHeld: `Household load from grid/PV, battery is held`,
+    pvBatteryCoverConsumption: `PV and battery cover consumption, grid charging is not planned`,
+    pvPreferred: `PV is preferred`,
+    avoidGridImport: `Avoid grid import`,
+    noActiveGridCharging: `No active grid charging`,
+    noReliableDecision: `No reliable decision`,
+    gridPowerEconomical: `Grid power is economical or necessary according to the calculation.`,
+    batteryReservePreserved: `Battery reserve is preserved until PV yield or a charging window is reached.`,
+    batteryPvSufficient: `Available battery energy and expected PV yield are sufficient.`,
+    pvCoversConsumptionAndBattery: `PV yield is used to cover consumption and battery.`,
+    batterySupportsHousehold: `Battery may support household consumption.`,
+    noGridChargingNeed: `No grid charging need detected.`,
+    telemetryInsufficient: `Telemetry, forecast or backend data are not sufficient for a decision.`,
+    gridCharging: `Grid charging`,
+    usePv: `Use PV`,
+    doNotCharge: `Do not charge`,
+    hold: `Hold`,
+    discharge: `Discharge`,
+    chargeFromPv: `Charge from PV`,
+    noAction: `No action`,
+  },
+  ue = {
+    baseConfiguration: `Base configuration`,
+    backendUrl: `Backend URL`,
+    backendUrlHelp: `URL of your SmartEnergy backend, for example https://example.invalid`,
+    adapterToken: `Adapter token`,
+    adapterTokenHelp: `Token from the web frontend. This token is not stored in adapter code and must never be published.`,
+    requestConfig: `Request Config`,
+    requestConfigHelp: `Manually requests the current plant configuration from the server. There is no permanent auto polling for this configuration.`,
+    serverConfigLastRequest: `Last config request`,
+    serverConfigInfo: `After Request Config, the areas detected by the server become visible. Existing datapoint selections are preserved as long as the keys remain unchanged.`,
+    operationConfiguration: `Operation configuration`,
+    sendIntervalSeconds: `State payload interval in seconds`,
+    commandPollIntervalSeconds: `Control command interval in seconds`,
+    sendOnlyChanged: `Send only when values changed`,
+    minWriteIntervalSeconds: `Minimum distance between write commands in seconds`,
+    battery: `Battery storage`,
+    batterySoc: `Battery SOC`,
+    batteryPower: `Battery charge/discharge power`,
+    batteryMode: `Battery mode`,
+    batteryReserveSoc: `Battery minimum SOC / reserve`,
+    gridMeter: `Grid meter`,
+    gridPower: `Grid meter value`,
+    gridTotalPower: `Grid total power`,
+    wallbox: `Wallbox`,
+    wallboxPower: `Wallbox power`,
+    wallboxCarState: `Wallbox car state`,
+    wallboxAmpere: `Wallbox current`,
+    allowCharging: `Charging permission`,
+    wallboxUser: `Wallbox user / RFID`,
+    pvForecast: `PV forecast`,
+    pvForecastDatapoint: `PV forecast datapoint`,
+    pvPower: `Real PV power`,
+    pvDailyYield: `PV daily yield`,
+    storageSystem: `Storage system`,
+    storageSystemSoc: `Storage SOC`,
+    storageSystemBatteryPower: `Storage power`,
+    storageSystemPvPower: `PV power`,
+    storageSystemMode: `Storage operating mode`,
+    energyMeter: `Energy meter`,
+    energyMeterPower: `Meter consumption`,
+    energyMeterReading: `Meter reading`,
+    batterySocHelp: `Current battery state of charge in percent`,
+    batteryPowerHelp: `Current battery charge or discharge power. Select the sign convention used by the source datapoint.`,
+    batteryModeHelp: `Optional storage mode datapoint`,
+    batteryReserveSocHelp: `Optional writable reserve or minimum SOC datapoint`,
+    consumptionWh: `Consumption`,
+    gridExportMeterWh: `Feed-in`,
+    consumptionWhHelp: `Optional energy meter for grid import`,
+    gridExportMeterWhHelp: `Optional energy meter for grid export`,
+    gridPowerHelp: `Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.`,
+    gridTotalPowerHelp: `Optional total grid power datapoint`,
+    wallboxWhHelp: `Optional datapoint for charged EV energy`,
+    wallboxPowerHelp: `Current wallbox charging power`,
+    wallboxCarStateHelp: `State indicating whether a vehicle is connected or charging`,
+    wallboxAmpereHelp: `Writable wallbox charging current`,
+    allowChargingHelp: `Optional datapoint for charging permission`,
+    wallboxUserHelp: `Optional user or RFID datapoint`,
+    pvForecastHelp: `Forecast value of the PV system from the selected datapoint`,
+    pvPowerHelp: `Current real PV power`,
+    pvDailyYieldHelp: `Optional daily yield of the PV system`,
+    storageSystemSocHelp: `Current storage state of charge`,
+    storageSystemBatteryPowerHelp: `Current power direction of the storage system`,
+    storageSystemPvPowerHelp: `Current PV power from the storage system`,
+    storageSystemModeHelp: `Optional writable operating mode`,
+    energyMeterPowerHelp: `Current consumption power from the energy meter`,
+    energyMeterReadingHelp: `Meter reading or energy datapoint from the energy meter`,
+    connection: `Connection`,
+    lastConfigRequest: `Last config request`,
+    openSmartEnergyPortal: `Open SmartEnergy portal`,
+    noAccountOrToken: `No account or adapter token yet?`,
+    dashboard: `Dashboard`,
+    settings: `Settings`,
+    settingsTokenMissing: `Please first enter a valid adapter token in the Settings tab and run Request Config.`,
+    dashboardRequiredMissing: `Please assign all required fields in the Settings tab before the dashboard is shown.`,
+    configLoading: `Loading configuration ...`,
+    configLoaded: `Configuration loaded.`,
+    adapterNoResponse: `Error: no response from the adapter. Please check whether the instance is running.`,
+    adminConnectionUnavailable: `ioBroker admin connection is not available.`,
+    objectSelectionUnavailable: `Object selection is not available.`,
+    selectStatePathTitle: `Select ioBroker state path`,
+    autoUpdated: `Automatically updated: %s`,
+    dashboardDataAsOf: `Data as of: %s`,
+    waitingForDashboardData: `Waiting for automatic dashboard data.`,
+    noDashboardData: `No dashboard data loaded yet.`,
+    noDatapointAssignments: `No datapoint assignment available yet. Please save the token and run Request Config.`,
+    acDcInfo: `AC means alternating current in the home grid, typically household power after the inverter. DC means direct current, for example PV power or battery power before the inverter.`,
+    value: `Value`,
+    type: `Type`,
+    unit: `Unit`,
+    required: `Required`,
+    selectStatePath: `Select state path`,
+    customScriptStatePathWarning: `Notice: This datapoint is located in a custom script folder (0_userdata. or javascript.). It is accepted, but may contain incorrect or faulty values because it is not an official adapter path.`,
+    showInfo: `Show info`,
+    generalValues: `General values:`,
+    plantTitle: `Plant %s:`,
+    household: `Household`,
+    plant: `Plant`,
+    sixHourPlan: `6-hour plan`,
+    noSixHourPlan: `No 6-hour plan available yet.`,
+    patternDetection: `Pattern detection`,
+    activeLoadProfile: `Active load profile`,
+    profileForecast: `Profile forecast`,
+    baseLoadProfile: `Base load profile`,
+    todayProjected: `Today projected`,
+    profile: `Profile`,
+    days: `Days`,
+    averageConsumption: `Average consumption`,
+    range: `Range`,
+    confidence: `Confidence`,
+    technicalAction: `technical: %s`,
+    errorUnknown: `Error: unknown error`,
+    errorPrefix: `Error: %s`,
+    dashboardBatteryCapacity: `Battery capacity`,
+    dashboardConsumptionForecast: `Consumption forecast`,
+    dashboardPvForecast: `PV forecast`,
+    dashboardEnergyGapNext24h: `Energy gap incl. reserve`,
+    dashboardRecommendation: `Recommendation`,
+    dashboardGridChargingPlanned: `Grid charging planned`,
+    yes: `Yes`,
+    no: `No`,
+    gridOperation: `Grid operation`,
+    pvBatteryOperation: `PV/battery operation`,
+    insufficientData: `Insufficient data`,
+    chargeBattery: `Charge battery`,
+    holdBattery: `Hold battery`,
+    useBattery: `Use battery`,
+    noControl: `No control`,
+    householdLoadFromGridBatteryCharging: `Household load from grid, battery is charging`,
+    householdLoadFromGridBatteryChargedBriefly: `Household load from grid, battery is charged briefly`,
+    householdLoadFromGridPvBatteryHeld: `Household load from grid/PV, battery is held`,
+    pvBatteryCoverConsumption: `PV and battery cover consumption, grid charging is not planned`,
+    pvPreferred: `PV is preferred`,
+    avoidGridImport: `Avoid grid import`,
+    noActiveGridCharging: `No active grid charging`,
+    noReliableDecision: `No reliable decision`,
+    gridPowerEconomical: `Grid power is economical or necessary according to the calculation.`,
+    batteryReservePreserved: `Battery reserve is preserved until PV yield or a charging window is reached.`,
+    batteryPvSufficient: `Available battery energy and expected PV yield are sufficient.`,
+    pvCoversConsumptionAndBattery: `PV yield is used to cover consumption and battery.`,
+    batterySupportsHousehold: `Battery may support household consumption.`,
+    noGridChargingNeed: `No grid charging need detected.`,
+    telemetryInsufficient: `Telemetry, forecast or backend data are not sufficient for a decision.`,
+    gridCharging: `Grid charging`,
+    usePv: `Use PV`,
+    doNotCharge: `Do not charge`,
+    hold: `Hold`,
+    discharge: `Discharge`,
+    chargeFromPv: `Charge from PV`,
+    noAction: `No action`,
+  },
+  de = 2e4,
+  fe = [
     [`grid_operation`, `gridOperation`],
     [`pv_battery_operation`, `pvBatteryOperation`],
     [`insufficient_data`, `insufficientData`],
   ],
-  z = 5e3,
-  me = new Set([
+  B = 5e3,
+  V = new Set([
     `de`,
     `en`,
     `es`,
@@ -1682,40 +1715,40 @@ var M = {
     `uk`,
     `zh-cn`,
   ]),
-  he = {
+  H = {
     de: M,
     en: N,
     es: ce,
     fr: P,
     it: F,
     nl: I,
-    pl: le,
-    pt: L,
-    ru: ue,
-    uk: R,
-    "zh-cn": de,
+    pl: L,
+    pt: R,
+    ru: le,
+    uk: z,
+    "zh-cn": ue,
   };
-(w.setTranslations(te),
-  ge(),
-  w.setLanguage(V(window.sysLang || window.systemLang || `en`)));
-function B(e, ...t) {
+(w.setTranslations(v),
+  pe(),
+  w.setLanguage(W(window.sysLang || window.systemLang || `en`)));
+function U(e, ...t) {
   return w.t(e, ...t);
 }
-function V(e) {
+function W(e) {
   let t = String(e || ``)
     .trim()
     .toLowerCase();
   if (!t) return `en`;
   if (t.startsWith(`zh`)) return `zh-cn`;
   let n = t.slice(0, 2);
-  return me.has(t) ? t : me.has(n) ? n : `en`;
+  return V.has(t) ? t : V.has(n) ? n : `en`;
 }
-function ge() {
-  w.extendTranslations(he);
+function pe() {
+  w.extendTranslations(H);
 }
-function _e(t, r) {
+function me(t, r) {
   let [i, a] = n(() =>
-    V(
+    W(
       r ||
         (t == null ? void 0 : t.systemLang) ||
         window.sysLang ||
@@ -1726,7 +1759,7 @@ function _e(t, r) {
   return (
     e(() => {
       let e = !0,
-        n = V(
+        n = W(
           r ||
             (t == null ? void 0 : t.systemLang) ||
             window.sysLang ||
@@ -1743,7 +1776,7 @@ function _e(t, r) {
               var i;
               e &&
                 a(
-                  V(
+                  W(
                     (r == null || (i = r.common) == null
                       ? void 0
                       : i.language) ||
@@ -1758,50 +1791,50 @@ function _e(t, r) {
         }
       );
     }, [r, t]),
-    ge(),
+    pe(),
     w.setLanguage(i),
     i
   );
 }
-var H = {
+var G = {
     adapterToken: ``,
     serverConfigLastRequest: ``,
     datapointAssignments: [],
     dashboardLite: null,
   },
-  U = { ...H },
-  W = () => {},
-  G = null,
-  K = null,
-  q = ``;
-function J(e) {
+  K = { ...G },
+  he = () => {},
+  ge = null,
+  _e = null,
+  ve = ``;
+function q(e) {
   return JSON.parse(JSON.stringify(e ?? null));
 }
-function ve() {
-  W();
-}
-function ye(e) {
-  let t = J(e) || {};
-  return (delete t.dashboardLite, delete t.dashboardLiteLastRequest, t);
+function ye() {
+  he();
 }
 function be(e) {
-  e(ye(U));
+  let t = q(e) || {};
+  return (delete t.dashboardLite, delete t.dashboardLiteLastRequest, t);
+}
+function xe(e) {
+  e(be(K));
 }
 window.aemStandaloneConfig &&
   ((window.load = (e, t) => {
-    let n = J(e) || {};
-    ((U = {
-      ...H,
+    let n = q(e) || {};
+    ((K = {
+      ...G,
       ...n,
-      dashboardLite: n.dashboardLite || K,
-      dashboardLiteLastRequest: n.dashboardLiteLastRequest || q,
+      dashboardLite: n.dashboardLite || _e,
+      dashboardLiteLastRequest: n.dashboardLiteLastRequest || ve,
     }),
-      (W = typeof t == `function` ? t : () => {}),
-      G == null || G(U),
-      W(!1));
+      (he = typeof t == `function` ? t : () => {}),
+      ge == null || ge(K),
+      he(!1));
   }),
-  (window.save = be));
-function xe({
+  (window.save = xe));
+function Se({
   adminSocket: i = null,
   adminTheme: a = null,
   adminThemeType: o = ``,
@@ -1811,30 +1844,28 @@ function xe({
   instance: p = 0,
   onConfigChange: g = null,
 } = {}) {
-  var _, te, v, y;
-  _e(i, c);
-  let b = typeof g == `function`,
-    [x, S] = n(() => ({ ...H, ...(J(f) || U) })),
-    [ae, C] = n(0),
+  var _, v, y, b;
+  me(i, c);
+  let x = typeof g == `function`,
+    [S, C] = n(() => ({ ...G, ...(q(f) || K) })),
+    [ie, ae] = n(0),
     [w, T] = n(``),
     [E, O] = n(``),
     [k, j] = n(!1),
     [M, N] = n(null),
-    ce = et(),
-    P = t(x);
-  G = (e) => {
-    b || S({ ...e });
+    ce = tt(),
+    P = t(S);
+  ge = (e) => {
+    x || C({ ...e });
   };
   let F =
       ce ||
       o ||
       (a == null || (_ = a.palette) == null ? void 0 : _.mode) ||
-      $e({ fallbackToSystem: !0 }),
+      $({ fallbackToSystem: !0 }),
     I =
-      (a == null || (te = a.palette) == null ? void 0 : te.mode) === F
-        ? a
-        : null,
-    le = r(
+      (a == null || (v = a.palette) == null ? void 0 : v.mode) === F ? a : null,
+    L = r(
       () =>
         I ||
         l({
@@ -1852,29 +1883,29 @@ function xe({
       [I, F],
     );
   (e(() => {
-    P.current = x;
-  }, [x]),
+    P.current = S;
+  }, [S]),
     e(() => {
-      if (!b) return;
+      if (!x) return;
       let e = {
-        ...H,
-        ...(J(f) || {}),
-        dashboardLite: P.current.dashboardLite || K,
-        dashboardLiteLastRequest: P.current.dashboardLiteLastRequest || q,
+        ...G,
+        ...(q(f) || {}),
+        dashboardLite: P.current.dashboardLite || _e,
+        dashboardLiteLastRequest: P.current.dashboardLiteLastRequest || ve,
       };
-      ((U = e), (P.current = e), S(e));
-    }, [f, b]));
-  function L(e, t = !0) {
-    let n = typeof e == `function` ? e(J(P.current)) : e;
-    ((U = { ...H, ...(n || {}) }),
-      (P.current = U),
-      S(U),
-      t && (b ? g(ye(U)) : ve()));
+      ((K = e), (P.current = e), C(e));
+    }, [f, x]));
+  function R(e, t = !0) {
+    let n = typeof e == `function` ? e(q(P.current)) : e;
+    ((K = { ...G, ...(n || {}) }),
+      (P.current = K),
+      C(K),
+      t && (x ? g(be(K)) : ye()));
   }
-  function ue(e, t) {
-    L((n) => ({ ...n, [e]: t }));
+  function le(e, t) {
+    R((n) => ({ ...n, [e]: t }));
   }
-  function R(e, t, n) {
+  function z(e, t, n) {
     if (i != null && i.sendTo) {
       i.sendTo(`${d}.${p}`, e, t)
         .then((e) => n(e))
@@ -1890,38 +1921,38 @@ function xe({
       window.sendTo(null, e, t, n);
       return;
     }
-    n({ ok: !1, errors: [B(`adminConnectionUnavailable`)] });
+    n({ ok: !1, errors: [U(`adminConnectionUnavailable`)] });
   }
-  function de() {
-    let e = String(x.adapterToken || ``).trim();
+  function ue() {
+    let e = String(S.adapterToken || ``).trim();
     if (!e) return;
     let t = !1,
       n = window.setTimeout(() => {
-        t || ((t = !0), j(!1), T(B(`adapterNoResponse`)));
-      }, fe);
+        t || ((t = !0), j(!1), T(U(`adapterNoResponse`)));
+      }, de);
     (j(!0),
-      T(B(`configLoading`)),
-      R(`requestConfig`, { source: `admin`, adapterToken: e }, (e) => {
+      T(U(`configLoading`)),
+      z(`requestConfig`, { source: `admin`, adapterToken: e }, (e) => {
         if (!t) {
           if (((t = !0), window.clearTimeout(n), j(!1), !e || e.ok === !1)) {
-            T(We(e));
+            T(Ge(e));
             return;
           }
-          (L((t) => ({
+          (R((t) => ({
             ...t,
             serverConfig: e.serverConfig || t.serverConfig,
             serverConfigLastRequest: e.serverConfigLastRequest || ``,
             datapointAssignments:
               e.datapointAssignments || t.datapointAssignments || [],
           })),
-            T(B(`configLoaded`)));
+            T(U(`configLoaded`)));
         }
       }));
   }
-  function pe(e) {
+  function fe(e) {
     if (!e || e.ok === !1 || !e.serverConfig) return;
     let t = String(e.serverConfigLastRequest || ``);
-    L(
+    R(
       (n) => ({
         ...n,
         serverConfig: e.serverConfig,
@@ -1936,20 +1967,20 @@ function xe({
     if (!(i != null && i.sendTo) && !window.sendTo) return;
     let e = !0;
     function t() {
-      R(`readServerConfigState`, {}, (t) => {
-        e && pe(t);
+      z(`readServerConfigState`, {}, (t) => {
+        e && fe(t);
       });
     }
     function n(t = !1) {
-      R(`readDashboardLiteState`, { refresh: t }, (t) => {
+      z(`readDashboardLiteState`, { refresh: t }, (t) => {
         if (e) {
           if (!t || t.ok === !1) {
-            O(We(t));
+            O(Ge(t));
             return;
           }
           (t.dashboardLite &&
-            ((K = t.dashboardLite), (q = t.dashboardLiteLastRequest || ``)),
-            L(
+            ((_e = t.dashboardLite), (ve = t.dashboardLiteLastRequest || ``)),
+            R(
               (e) => ({
                 ...e,
                 dashboardLite: t.dashboardLite || e.dashboardLite || null,
@@ -1962,8 +1993,8 @@ function xe({
             ),
             O(
               t.dashboardLiteLastRequest
-                ? B(`autoUpdated`, Ke(t.dashboardLiteLastRequest))
-                : B(`waitingForDashboardData`),
+                ? U(`autoUpdated`, qe(t.dashboardLiteLastRequest))
+                : U(`waitingForDashboardData`),
             ));
         }
       });
@@ -1974,8 +2005,8 @@ function xe({
       ((e = !1), window.clearInterval(r));
     };
   }, []);
-  function z(e, t) {
-    L((n) => {
+  function B(e, t) {
+    R((n) => {
       let r = Array.isArray(n.datapointAssignments)
         ? [...n.datapointAssignments]
         : [];
@@ -1985,10 +2016,10 @@ function xe({
       );
     });
   }
-  async function me(e) {
+  async function V(e) {
     var t;
     let n =
-      ((t = x.datapointAssignments) == null || (t = t[e]) == null
+      ((t = S.datapointAssignments) == null || (t = t[e]) == null
         ? void 0
         : t.stateId) || ``;
     if (i != null && i.sendTo) {
@@ -2000,19 +2031,19 @@ function xe({
       let t = await ((r = (a = window).aemSelectStatePath) == null
         ? void 0
         : r.call(a, n));
-      t && z(e, { stateId: t });
+      t && B(e, { stateId: t });
     } catch (e) {
-      T((e == null ? void 0 : e.message) || B(`objectSelectionUnavailable`));
+      T((e == null ? void 0 : e.message) || U(`objectSelectionUnavailable`));
     }
   }
-  let he = String(x.adapterToken || ``).trim().length > 0,
-    V = he && ((v = x.serverConfig) == null ? void 0 : v.valid) === !0,
-    ge = Ve(x.datapointAssignments || []);
+  let H = String(S.adapterToken || ``).trim().length > 0,
+    W = H && ((y = S.serverConfig) == null ? void 0 : y.valid) === !0,
+    pe = He(S.datapointAssignments || []);
   return A(ee, {
-    theme: le,
+    theme: L,
     children: [
       h(D, {
-        className: `aem-root${b ? ` aem-root-embedded` : ``}`,
+        className: `aem-root${x ? ` aem-root-embedded` : ``}`,
         children: h(m, {
           className: `aem-shell`,
           elevation: 0,
@@ -2034,52 +2065,52 @@ function xe({
                       variant: `body2`,
                       color: `text.secondary`,
                       children: [
-                        B(`noAccountOrToken`),
+                        U(`noAccountOrToken`),
                         ` `,
                         h(`a`, {
                           href: `https://smartenergy.mr-bond.de`,
                           target: `_blank`,
                           rel: `noreferrer`,
-                          children: B(`openSmartEnergyPortal`),
+                          children: U(`openSmartEnergyPortal`),
                         }),
                       ],
                     }),
                   ],
                 }),
               }),
-              A(ne, {
-                value: ae,
-                onChange: (e, t) => C(t),
+              A(te, {
+                value: ie,
+                onChange: (e, t) => ae(t),
                 children: [
-                  h(oe, {
-                    icon: h(ie, {}),
-                    iconPosition: `start`,
-                    label: B(`dashboard`),
-                  }),
                   h(oe, {
                     icon: h(re, {}),
                     iconPosition: `start`,
-                    label: B(`settings`),
+                    label: U(`dashboard`),
+                  }),
+                  h(oe, {
+                    icon: h(ne, {}),
+                    iconPosition: `start`,
+                    label: U(`settings`),
                   }),
                 ],
               }),
-              ae === 0
-                ? h(Se, {
+              ie === 0
+                ? h(Ce, {
                     dashboardStatus: E,
-                    hasRequiredSettings: ge,
-                    hasValidToken: V,
-                    settings: x,
+                    hasRequiredSettings: pe,
+                    hasValidToken: W,
+                    settings: S,
                   })
-                : h(Ce, {
-                    assignments: x.datapointAssignments || [],
+                : h(we, {
+                    assignments: S.datapointAssignments || [],
                     busyConfig: k,
-                    hasToken: he,
-                    requestConfig: de,
+                    hasToken: H,
+                    requestConfig: ue,
                     requestStatus: w,
-                    selectStatePath: me,
-                    settings: x,
-                    setField: ue,
-                    updateAssignment: z,
+                    selectStatePath: V,
+                    settings: S,
+                    setField: le,
+                    updateAssignment: B,
                   }),
             ],
           }),
@@ -2090,23 +2121,23 @@ function xe({
             columns: [`name`, `type`, `role`, `val`],
             onClose: () => N(null),
             onOk: (e) => {
-              (typeof e == `string` && e && z(M, { stateId: e }), N(null));
+              (typeof e == `string` && e && B(M, { stateId: e }), N(null));
             },
             selected:
-              ((y = x.datapointAssignments) == null || (y = y[M]) == null
+              ((b = S.datapointAssignments) == null || (b = b[M]) == null
                 ? void 0
-                : y.stateId) || ``,
+                : b.stateId) || ``,
             socket: i,
-            theme: le,
+            theme: L,
             themeType: F,
-            title: B(`selectStatePathTitle`),
+            title: U(`selectStatePathTitle`),
             types: `state`,
           })
         : null,
     ],
   });
 }
-function Se({
+function Ce({
   dashboardStatus: e,
   hasRequiredSettings: t,
   hasValidToken: n,
@@ -2117,14 +2148,17 @@ function Se({
       ? A(u, {
           spacing: 2,
           children: [
-            e && Ge(e) ? h(o, { severity: `error`, children: e }) : null,
-            h(we, { dashboard: r.dashboardLite }),
+            e && Ke(e) ? h(o, { severity: `error`, children: e }) : null,
+            h(Te, {
+              dashboard: r.dashboardLite,
+              lastRequest: r.dashboardLiteLastRequest,
+            }),
           ],
         })
-      : h(o, { severity: `warning`, children: B(`dashboardRequiredMissing`) })
-    : h(o, { severity: `warning`, children: B(`settingsTokenMissing`) });
+      : h(o, { severity: `warning`, children: U(`dashboardRequiredMissing`) })
+    : h(o, { severity: `warning`, children: U(`settingsTokenMissing`) });
 }
-function Ce({
+function we({
   assignments: e,
   busyConfig: t,
   hasToken: n,
@@ -2138,14 +2172,14 @@ function Ce({
   return A(u, {
     spacing: 2,
     children: [
-      A(Y, {
-        title: B(`connection`),
+      A(J, {
+        title: U(`connection`),
         children: [
           A(D, {
             className: `settings-field-grid`,
             children: [
               h(O, {
-                label: B(`adapterToken`),
+                label: U(`adapterToken`),
                 type: `password`,
                 value: s.adapterToken || ``,
                 onChange: (e) => l(`adapterToken`, e.target.value),
@@ -2153,8 +2187,8 @@ function Ce({
                 fullWidth: !0,
               }),
               h(O, {
-                label: B(`lastConfigRequest`),
-                value: Ke(s.serverConfigLastRequest),
+                label: U(`lastConfigRequest`),
+                value: qe(s.serverConfigLastRequest),
                 InputProps: { readOnly: !0 },
                 fullWidth: !0,
               }),
@@ -2172,79 +2206,93 @@ function Ce({
               children: `Request Config`,
             }),
           }),
-          i ? h(o, { severity: Ge(i) ? `error` : `info`, children: i }) : null,
+          i ? h(o, { severity: Ke(i) ? `error` : `info`, children: i }) : null,
         ],
       }),
-      h(De, { assignments: e, selectStatePath: a, updateAssignment: d }),
-      h(o, { severity: `info`, children: B(`acDcInfo`) }),
+      h(Oe, { assignments: e, selectStatePath: a, updateAssignment: d }),
+      h(o, { severity: `info`, children: U(`acDcInfo`) }),
     ],
   });
 }
-function we({ dashboard: e }) {
-  return e
-    ? A(u, {
-        spacing: 2,
+function Te({ dashboard: e, lastRequest: t }) {
+  if (!e) return h(Ae, { text: U(`noDashboardData`) });
+  let n = e.decisionTime || t || ``;
+  return A(u, {
+    spacing: 2,
+    children: [
+      A(J, {
+        title: `Dashboard`,
+        titleAction: n
+          ? h(s, {
+              variant: `caption`,
+              color: `text.secondary`,
+              children: U(`dashboardDataAsOf`, Je(n)),
+            })
+          : null,
         children: [
-          A(Y, {
-            title: `Dashboard`,
-            children: [
-              h(D, {
-                className: `card-grid`,
-                children: (e.cards || []).map((e, t) =>
-                  A(
-                    m,
-                    {
-                      className: `metric-card`,
+          h(D, {
+            className: `card-grid`,
+            children: (e.cards || []).map((e, t) =>
+              A(
+                m,
+                {
+                  className: `metric-card`,
+                  children: [
+                    A(s, {
+                      variant: `h6`,
                       children: [
-                        A(s, {
-                          variant: `h6`,
-                          children: [
-                            Fe(e),
-                            e.unit
-                              ? A(`span`, { children: [` `, e.unit] })
-                              : null,
-                          ],
-                        }),
-                        h(s, {
-                          variant: `caption`,
-                          color: `text.secondary`,
-                          children: Z(e.label || ``),
-                        }),
+                        Ie(e),
+                        e.unit ? A(`span`, { children: [` `, e.unit] }) : null,
                       ],
-                    },
-                    `${e.label || `card`}-${t}`,
-                  ),
-                ),
-              }),
-              e.reason
-                ? h(s, {
-                    variant: `body2`,
-                    color: `text.secondary`,
-                    children: Z(e.reason),
-                  })
-                : null,
-            ],
+                    }),
+                    h(s, {
+                      variant: `caption`,
+                      color: `text.secondary`,
+                      children: X(e.label || ``),
+                    }),
+                  ],
+                },
+                `${e.label || `card`}-${t}`,
+              ),
+            ),
           }),
-          h(Y, {
-            title: B(`sixHourPlan`),
-            children: h(Te, { plan: e.plan || [] }),
-          }),
-          h(Y, {
-            title: B(`patternDetection`),
-            children: h(Ee, { pattern: e.pattern || {} }),
-          }),
+          e.reason
+            ? h(s, {
+                variant: `body2`,
+                color: `text.secondary`,
+                children: X(e.reason),
+              })
+            : null,
         ],
-      })
-    : h(ke, { text: B(`noDashboardData`) });
+      }),
+      h(J, {
+        title: U(`sixHourPlan`),
+        children: h(Ee, { plan: e.plan || [] }),
+      }),
+      h(J, {
+        title: U(`patternDetection`),
+        children: h(De, { pattern: e.pattern || {} }),
+      }),
+    ],
+  });
 }
-function Y({ children: e, title: t }) {
+function J({ children: e, title: t, titleAction: n = null }) {
   return A(m, {
     className: `section`,
     elevation: 0,
-    children: [h(s, { variant: `subtitle1`, component: `h2`, children: t }), e],
+    children: [
+      A(D, {
+        className: `section-title-row`,
+        children: [
+          h(s, { variant: `subtitle1`, component: `h2`, children: t }),
+          n ? h(D, { className: `section-title-action`, children: n }) : null,
+        ],
+      }),
+      e,
+    ],
   });
 }
-function Te({ plan: e }) {
+function Ee({ plan: e }) {
   return e.length
     ? A(u, {
         spacing: 1.5,
@@ -2256,21 +2304,21 @@ function Te({ plan: e }) {
               h(
                 g,
                 {
-                  title: `${Ye(e.from, e.to)} · ${Z(e.operatingModeLabel || e.actionLabel || `-`)} · ${Z(e.batteryCommand || `-`)} · ${Z(e.gridBehavior || `-`)} · ${Q(e.plannedPowerW, 0)} W · ${Q(e.plannedEnergyKwh, 2)} kWh${e.technicalActionLabel ? ` · ${B(`technicalAction`, Z(e.technicalActionLabel))}` : ``}${e.reason ? ` · ${Z(e.reason)}` : ``}`,
+                  title: `${Ze(e.from, e.to)} · ${X(e.operatingModeLabel || e.actionLabel || `-`)} · ${X(e.batteryCommand || `-`)} · ${X(e.gridBehavior || `-`)} · ${Z(e.plannedPowerW, 0)} W · ${Z(e.plannedEnergyKwh, 2)} kWh${e.technicalActionLabel ? ` · ${U(`technicalAction`, X(e.technicalActionLabel))}` : ``}${e.reason ? ` · ${X(e.reason)}` : ``}`,
                   children: A(D, {
-                    className: `plan-slot mode-border-${Qe(e)}`,
+                    className: `plan-slot mode-border-${et(e)}`,
                     tabIndex: 0,
                     children: [
                       h(s, {
                         variant: `caption`,
                         color: `text.secondary`,
-                        children: Ye(e.from, e.to),
+                        children: Ze(e.from, e.to),
                       }),
                       h(s, {
                         variant: `body2`,
                         className: `plan-slot-action`,
                         noWrap: !0,
-                        children: Z(
+                        children: X(
                           e.operatingModeLabel || e.actionLabel || `-`,
                         ),
                       }),
@@ -2278,16 +2326,16 @@ function Te({ plan: e }) {
                         variant: `caption`,
                         className: `plan-slot-command`,
                         noWrap: !0,
-                        children: Z(e.batteryCommand || `-`),
+                        children: X(e.batteryCommand || `-`),
                       }),
                       A(s, {
                         variant: `caption`,
                         color: `text.secondary`,
                         children: [
-                          Q(e.plannedPowerW, 0),
+                          Z(e.plannedPowerW, 0),
                           ` W`,
                           ` · `,
-                          Q(e.plannedEnergyKwh, 2),
+                          Z(e.plannedEnergyKwh, 2),
                           ` kWh`,
                         ],
                       }),
@@ -2300,37 +2348,37 @@ function Te({ plan: e }) {
           }),
           h(D, {
             className: `plan-legend`,
-            children: pe.map(([e, t]) =>
+            children: fe.map(([e, t]) =>
               A(
                 `span`,
-                { children: [h(`i`, { className: `mode-${e}` }), B(t)] },
+                { children: [h(`i`, { className: `mode-${e}` }), U(t)] },
                 e,
               ),
             ),
           }),
         ],
       })
-    : h(ke, { text: B(`noSixHourPlan`) });
+    : h(Ae, { text: U(`noSixHourPlan`) });
 }
-function Ee({ pattern: e }) {
+function De({ pattern: e }) {
   return A(u, {
     spacing: 2,
     children: [
       A(D, {
         className: `card-grid pattern-grid`,
         children: [
-          h(X, {
-            label: B(`activeLoadProfile`),
-            value: Z(e.activeLabel || `-`),
+          h(Y, {
+            label: U(`activeLoadProfile`),
+            value: X(e.activeLabel || `-`),
           }),
-          h(X, {
-            label: B(`profileForecast`),
-            value: `${$(e.activeEstimateKwh, 2)} kWh`,
+          h(Y, {
+            label: U(`profileForecast`),
+            value: `${Q(e.activeEstimateKwh, 2)} kWh`,
           }),
-          h(X, { label: B(`baseLoadProfile`), value: Xe(e.baseLoadW) }),
-          h(X, {
-            label: B(`todayProjected`),
-            value: `${$(e.todayProjectedKwh, 2)} kWh`,
+          h(Y, { label: U(`baseLoadProfile`), value: Qe(e.baseLoadW) }),
+          h(Y, {
+            label: U(`todayProjected`),
+            value: `${Q(e.todayProjectedKwh, 2)} kWh`,
           }),
         ],
       }),
@@ -2338,42 +2386,42 @@ function Ee({ pattern: e }) {
         ? h(s, {
             variant: `body2`,
             color: `text.secondary`,
-            children: Z(e.reason),
+            children: X(e.reason),
           })
         : null,
       Array.isArray(e.profiles) && e.profiles.length
         ? h(_, {
-            children: A(C, {
+            children: A(ae, {
               size: `small`,
               children: [
                 h(E, {
                   children: A(k, {
                     children: [
-                      h(y, { children: B(`profile`) }),
-                      h(y, { children: B(`averageConsumption`) }),
-                      h(y, { children: B(`range`) }),
-                      h(y, { children: B(`confidence`) }),
+                      h(b, { children: U(`profile`) }),
+                      h(b, { children: U(`averageConsumption`) }),
+                      h(b, { children: U(`range`) }),
+                      h(b, { children: U(`confidence`) }),
                     ],
                   }),
                 }),
-                h(b, {
+                h(x, {
                   children: e.profiles.map((e) =>
                     A(
                       k,
                       {
                         children: [
-                          h(y, { children: Z(e.label || `-`) }),
-                          A(y, { children: [$(e.averageKwh, 2), ` kWh`] }),
-                          A(y, {
+                          h(b, { children: X(e.label || `-`) }),
+                          A(b, { children: [Q(e.averageKwh, 2), ` kWh`] }),
+                          A(b, {
                             children: [
-                              $(e.minKwh, 2),
+                              Q(e.minKwh, 2),
                               ` -`,
                               ` `,
-                              $(e.maxKwh, 2),
+                              Q(e.maxKwh, 2),
                               ` kWh`,
                             ],
                           }),
-                          h(y, { children: $(e.confidence, 2) }),
+                          h(b, { children: Q(e.confidence, 2) }),
                         ],
                       },
                       e.label || e.id,
@@ -2387,7 +2435,7 @@ function Ee({ pattern: e }) {
     ],
   });
 }
-function X({ label: e, value: t }) {
+function Y({ label: e, value: t }) {
   return A(m, {
     className: `metric-card`,
     elevation: 0,
@@ -2397,11 +2445,11 @@ function X({ label: e, value: t }) {
     ],
   });
 }
-function De({ assignments: e, selectStatePath: t, updateAssignment: n }) {
+function Oe({ assignments: e, selectStatePath: t, updateAssignment: n }) {
   return e.length
     ? h(u, {
         spacing: 2,
-        children: Ie(e).map((e) =>
+        children: Le(e).map((e) =>
           h(
             m,
             {
@@ -2424,9 +2472,9 @@ function De({ assignments: e, selectStatePath: t, updateAssignment: n }) {
                         : null,
                     ],
                   }),
-                  h(S, {}),
+                  h(C, {}),
                   h(_, {
-                    children: A(C, {
+                    children: A(ae, {
                       size: `small`,
                       className: `datapoint-table`,
                       children: [
@@ -2443,22 +2491,22 @@ function De({ assignments: e, selectStatePath: t, updateAssignment: n }) {
                         h(E, {
                           children: A(k, {
                             children: [
-                              h(y, { children: B(`value`) }),
-                              h(y, { children: B(`type`) }),
-                              h(y, { children: B(`unit`) }),
-                              h(y, { children: `AC/DC` }),
-                              h(y, { children: `ioBroker State-Path` }),
-                              h(y, { children: B(`required`) }),
+                              h(b, { children: U(`value`) }),
+                              h(b, { children: U(`type`) }),
+                              h(b, { children: U(`unit`) }),
+                              h(b, { children: `AC/DC` }),
+                              h(b, { children: `ioBroker State-Path` }),
+                              h(b, { children: U(`required`) }),
                             ],
                           }),
                         }),
-                        h(b, {
+                        h(x, {
                           children: e.rows.map(({ assignment: e, index: r }) =>
                             A(
                               k,
                               {
                                 children: [
-                                  A(y, {
+                                  A(b, {
                                     children: [
                                       A(u, {
                                         direction: `row`,
@@ -2467,25 +2515,25 @@ function De({ assignments: e, selectStatePath: t, updateAssignment: n }) {
                                         children: [
                                           h(s, {
                                             variant: `body2`,
-                                            children: Ae(e),
+                                            children: je(e),
                                           }),
-                                          h(Oe, {
+                                          h(ke, {
                                             id: `${e.mappingKey || e.key}-${r}`,
-                                            text: je(e),
+                                            text: Me(e),
                                           }),
                                         ],
                                       }),
                                       h(s, {
                                         variant: `caption`,
                                         color: `text.secondary`,
-                                        children: Ue(e.key),
+                                        children: We(e.key),
                                       }),
                                     ],
                                   }),
-                                  h(y, { children: Me(e) }),
-                                  h(y, { children: Le(e) }),
-                                  h(y, { children: Re(e, r, n) }),
-                                  A(y, {
+                                  h(b, { children: Ne(e) }),
+                                  h(b, { children: Re(e) }),
+                                  h(b, { children: ze(e, r, n) }),
+                                  A(b, {
                                     children: [
                                       h(O, {
                                         value: e.stateId || ``,
@@ -2504,33 +2552,33 @@ function De({ assignments: e, selectStatePath: t, updateAssignment: n }) {
                                         InputProps: {
                                           endAdornment: h(d, {
                                             position: `end`,
-                                            children: h(x, {
+                                            children: h(S, {
                                               edge: `end`,
                                               "aria-label":
-                                                B(`selectStatePath`),
+                                                U(`selectStatePath`),
                                               onClick: () => t(r),
-                                              children: h(ae, {}),
+                                              children: h(ie, {}),
                                             }),
                                           }),
                                         },
                                       }),
-                                      He(e.stateId)
+                                      Ue(e.stateId)
                                         ? h(o, {
                                             className: `custom-state-path-warning`,
                                             severity: `error`,
-                                            children: B(
+                                            children: U(
                                               `customScriptStatePathWarning`,
                                             ),
                                           })
                                         : null,
                                     ],
                                   }),
-                                  h(y, {
+                                  h(b, {
                                     children: e.required
                                       ? h(p, {
                                           color: `primary`,
                                           size: `small`,
-                                          label: B(`required`),
+                                          label: U(`required`),
                                         })
                                       : null,
                                   }),
@@ -2550,9 +2598,9 @@ function De({ assignments: e, selectStatePath: t, updateAssignment: n }) {
           ),
         ),
       })
-    : h(ke, { text: B(`noDatapointAssignments`) });
+    : h(Ae, { text: U(`noDatapointAssignments`) });
 }
-function Oe({ id: r, text: i }) {
+function ke({ id: r, text: i }) {
   let [a, o] = n(!1),
     s = t(null);
   if (
@@ -2567,7 +2615,7 @@ function Oe({ id: r, text: i }) {
     return null;
   function c() {
     (s.current && window.clearTimeout(s.current),
-      (s.current = window.setTimeout(() => o(!1), z)));
+      (s.current = window.setTimeout(() => o(!1), B)));
   }
   function l(e) {
     (e.preventDefault(),
@@ -2585,51 +2633,52 @@ function Oe({ id: r, text: i }) {
     open: a,
     title: i,
     slotProps: { tooltip: { className: `datapoint-tooltip` } },
-    children: h(x, {
-      "aria-label": B(`showInfo`),
+    children: h(S, {
+      "aria-label": U(`showInfo`),
       className: `datapoint-info-button`,
       onClick: l,
       onTouchEnd: l,
       size: `small`,
-      children: h(v, { className: `datapoint-info-icon` }),
+      children: h(y, { className: `datapoint-info-icon` }),
     }),
   });
 }
-function ke({ text: e }) {
+function Ae({ text: e }) {
   return h(m, {
     className: `empty-state`,
     elevation: 0,
     children: h(s, { color: `text.secondary`, children: e }),
   });
 }
-function Ae(e = {}) {
-  let t = String(e.key || ``);
-  return N[t] ? B(t) : e.label || t;
-}
 function je(e = {}) {
-  let t = `${String(e.key || ``)}Help`;
-  return N[t] ? B(t) : e.description || ``;
+  let t = String(e.key || ``);
+  return N[t] ? U(t) : e.label || t;
 }
 function Me(e = {}) {
-  let t = String(e.feature || ``);
-  return N[t] ? B(t) : e.featureLabel || t;
+  let t = `${String(e.key || ``)}Help`;
+  return N[t] ? U(t) : e.description || ``;
 }
-function Ne(e) {
+function Ne(e = {}) {
+  let t = String(e.feature || ``);
+  return N[t] ? U(t) : e.featureLabel || t;
+}
+function Pe(e) {
   let t = String(e || ``).trim();
   if (/^(\u0048\u0061\u0075\u0073\u0068\u0061\u006c\u0074|Household)$/i.test(t))
-    return B(`household`);
+    return U(`household`);
   if (/^(\u0041\u006e\u006c\u0061\u0067\u0065|Plant)(\s+\d+)?$/i.test(t)) {
     var n;
     let e = (n = t.match(/\d+/)) == null ? void 0 : n[0];
-    return e ? B(`plantTitle`, e).replace(/:$/, ``) : B(`plant`);
+    return e ? U(`plantTitle`, e).replace(/:$/, ``) : U(`plant`);
   }
   return t;
 }
-var Pe = {
+var Fe = {
   "Battery capacity": `dashboardBatteryCapacity`,
   "Consumption forecast": `dashboardConsumptionForecast`,
   "PV forecast": `dashboardPvForecast`,
   "Energy gap next 24h": `dashboardEnergyGapNext24h`,
+  "Energy gap incl. reserve": `dashboardEnergyGapNext24h`,
   Recommendation: `dashboardRecommendation`,
   "Grid charging planned": `dashboardGridChargingPlanned`,
   Yes: `yes`,
@@ -2664,16 +2713,16 @@ var Pe = {
   "Charge from PV": `chargeFromPv`,
   "No action": `noAction`,
 };
-function Z(e) {
+function X(e) {
   let t = String(e || ``);
-  return Pe[t] ? B(Pe[t]) : t;
+  return Fe[t] ? U(Fe[t]) : t;
 }
-function Fe(e = {}) {
+function Ie(e = {}) {
   return e.value === null || e.value === void 0 || e.value === ``
     ? `-`
-    : Z(e.value);
+    : X(e.value);
 }
-function Ie(e) {
+function Le(e) {
   let t = new Map(),
     n = 0;
   for (let [r, i] of e.entries()) {
@@ -2688,8 +2737,8 @@ function Ie(e) {
       (r || (n += 1),
         t.set(e, {
           key: e,
-          title: r ? B(`generalValues`) : B(`plantTitle`, a),
-          subtitle: Ne(i.scopeName || (r ? `Household` : `Plant`)),
+          title: r ? U(`generalValues`) : U(`plantTitle`, a),
+          subtitle: Pe(i.scopeName || (r ? `Household` : `Plant`)),
           order: r ? -1 : Number(i.plantIndex || 0),
           rows: [],
         }));
@@ -2698,7 +2747,7 @@ function Ie(e) {
   }
   return [...t.values()].sort((e, t) => e.order - t.order);
 }
-function Le(e) {
+function Re(e) {
   return String(e.stateId || ``).trim()
     ? e.unit === `W`
       ? h(p, { size: `small`, label: e.sourceUnit === `kW` ? `kW` : `W` })
@@ -2707,9 +2756,9 @@ function Le(e) {
         : h(p, { size: `small`, label: e.unit || `-` })
     : h(p, { size: `small`, label: `-` });
 }
-function Re(e, t, n) {
-  let r = Be(e),
-    i = r || ze(e.powerType) || `AC`;
+function ze(e, t, n) {
+  let r = Ve(e),
+    i = r || Be(e.powerType) || `AC`;
   return r
     ? h(p, { size: `small`, label: i })
     : e.unit === `W`
@@ -2726,13 +2775,13 @@ function Re(e, t, n) {
         })
       : null;
 }
-function ze(e) {
+function Be(e) {
   let t = String(e || ``)
     .trim()
     .toUpperCase();
   return t === `AC` || t === `DC` ? t : ``;
 }
-function Be(e = {}) {
+function Ve(e = {}) {
   return (
     {
       consumptionWh: `AC`,
@@ -2749,7 +2798,7 @@ function Be(e = {}) {
     }[String(e.key || ``)] || ``
   );
 }
-function Ve(e) {
+function He(e) {
   let t = Array.isArray(e) ? e : [];
   return t.length
     ? t.every(
@@ -2757,13 +2806,13 @@ function Ve(e) {
       )
     : !1;
 }
-function He(e) {
+function Ue(e) {
   let t = String(e || ``)
     .trim()
     .toLowerCase();
   return t.startsWith(`0_userdata.`) || t.startsWith(`javascript.`);
 }
-function Ue(e) {
+function We(e) {
   return (
     {
       consumptionWh: `consumption`,
@@ -2774,54 +2823,67 @@ function Ue(e) {
     ``
   );
 }
-function We(e) {
+function Ge(e) {
   var t;
   return !(e == null || (t = e.errors) == null) && t.length
-    ? B(`errorPrefix`, e.errors.join(`, `))
-    : B(`errorUnknown`);
+    ? U(`errorPrefix`, e.errors.join(`, `))
+    : U(`errorUnknown`);
 }
-function Ge(e) {
+function Ke(e) {
   return /fehler|failed|error|unauthorized|forbidden|authentication/i.test(
     String(e || ``),
   );
 }
-function Ke(e) {
+function qe(e) {
   if (!e) return `-`;
   let t = new Date(e);
-  return Number.isNaN(t.getTime()) ? String(e) : t.toLocaleString(Je());
+  return Number.isNaN(t.getTime()) ? String(e) : t.toLocaleString(Xe());
 }
-function qe(e) {
+function Je(e) {
   if (!e) return `-`;
   let t = new Date(e);
   return Number.isNaN(t.getTime())
     ? String(e)
-    : t.toLocaleTimeString(Je(), { hour: `2-digit`, minute: `2-digit` });
+    : t.toLocaleString(Xe(), {
+        year: `numeric`,
+        month: `numeric`,
+        day: `numeric`,
+        hour: `2-digit`,
+        minute: `2-digit`,
+      });
 }
-function Je() {
+function Ye(e) {
+  if (!e) return `-`;
+  let t = new Date(e);
+  return Number.isNaN(t.getTime())
+    ? String(e)
+    : t.toLocaleTimeString(Xe(), { hour: `2-digit`, minute: `2-digit` });
+}
+function Xe() {
   let e = String(window.sysLang || navigator.language || `en`).trim();
   return { "zh-cn": `zh-CN` }[e.toLowerCase()] || e;
 }
-function Ye(e, t) {
-  return `${qe(e)} - ${qe(t)}`;
+function Ze(e, t) {
+  return `${Ye(e)} - ${Ye(t)}`;
 }
-function Q(e, t) {
+function Z(e, t) {
   let n = Number(e);
   return Number.isFinite(n) ? n.toFixed(t) : `-`;
 }
-function $(e, t) {
-  return e == null ? `-` : Q(e, t);
+function Q(e, t) {
+  return e == null ? `-` : Z(e, t);
 }
-function Xe(e) {
+function Qe(e) {
   let t = Number(e);
   return Number.isFinite(t) && t > 0 ? `~${t.toFixed(0)} W` : `-/-`;
 }
-function Ze(e) {
+function $e(e) {
   return String(e || `none`).replace(/[^a-zA-Z0-9_-]/g, `_`) || `none`;
 }
-function Qe(e) {
-  return Ze(e.operatingMode || e.action);
+function et(e) {
+  return $e(e.operatingMode || e.action);
 }
-function $e({ fallbackToSystem: e = !0 } = {}) {
+function $({ fallbackToSystem: e = !0 } = {}) {
   var t, n, r, i, a, o, s, c, l, u, d, f, p, m;
   let h = String(window.location.href).match(/[?&#]react=(dark|light)\b/i);
   if (h) return h[1].toLowerCase();
@@ -2859,14 +2921,14 @@ function $e({ fallbackToSystem: e = !0 } = {}) {
       : `light`
     : ``;
 }
-function et() {
-  let [t, r] = n(() => $e({ fallbackToSystem: !1 }));
+function tt() {
+  let [t, r] = n(() => $({ fallbackToSystem: !1 }));
   return (
     e(() => {
       var e, t, n;
       let i = () => {
           r((e) => {
-            let t = $e({ fallbackToSystem: !1 });
+            let t = $({ fallbackToSystem: !1 });
             return e === t ? e : t;
           });
         },
@@ -2910,7 +2972,7 @@ function et() {
     t
   );
 }
-var tt = class extends a.Component {
+var nt = class extends a.Component {
     componentDidMount() {
       ((this.root = j(this.container)), this.renderApp());
     }
@@ -2925,7 +2987,7 @@ var tt = class extends a.Component {
       var e, t;
       (e = this.root) == null ||
         e.render(
-          h(xe, {
+          h(Se, {
             adapterName: this.props.adapterName,
             adminSocket: this.props.socket,
             adminLanguage:
@@ -2947,7 +3009,7 @@ var tt = class extends a.Component {
       });
     }
   },
-  nt = { AemConfig: tt };
+  rt = { AemConfig: nt };
 window.aemStandaloneConfig &&
-  j(document.getElementById(`root`)).render(h(xe, {}));
-export { tt as AemConfig, nt as default };
+  j(document.getElementById(`root`)).render(h(Se, {}));
+export { nt as AemConfig, rt as default };

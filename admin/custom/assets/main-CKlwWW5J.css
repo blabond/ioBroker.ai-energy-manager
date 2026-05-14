@@ -52,6 +52,18 @@
   border: 1px solid #7f7f7f38;
   padding: 14px;
 }
+.section-title-row {
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+  display: flex;
+}
+.section-title-action {
+  text-align: right;
+  white-space: nowrap;
+  flex: 0 auto;
+}
 .empty-state {
   align-items: center;
   min-height: 90px;

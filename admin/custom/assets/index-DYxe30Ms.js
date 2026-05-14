@@ -1,4 +1,4 @@
-import "./main-Drtb3urL.js";
+import "./main-CLCEJKG6.js";
 (function () {
   let e = document.createElement(`link`).relList;
   if (e && e.supports && e.supports(`modulepreload`)) return;

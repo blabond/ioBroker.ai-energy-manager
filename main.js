@@ -19,6 +19,8 @@ const { TelemetrySampler } = require("./lib/telemetrySampler");
 const TELEMETRY_CYCLE_SECONDS = 60;
 const SERVER_PULL_DELAY_SECONDS = 30;
 const MAX_POLL_OFFSET_SECONDS = 29;
+const DEFAULT_DASHBOARD_HORIZON_HOURS = 6;
+const VALID_DASHBOARD_HORIZON_HOURS = new Set([6, 10]);
 
 class AiEnergyManager extends utils.Adapter {
   constructor(options = {}) {
@@ -166,7 +168,6 @@ class AiEnergyManager extends utils.Adapter {
             result.serverConfig,
             result.serverConfigLastRequest,
           );
-          await this.activateRuntimeWork();
           this.log.debug(
             `Server configuration loaded: version ${result.version}, revision ${result.configRevision}, features: ${result.detectedFeatures.join(", ") || "-"}`,
           );
@@ -283,10 +284,9 @@ class AiEnergyManager extends utils.Adapter {
         serverConfigLastRequest,
         detectedFeatures: normalized.detectedFeatureLabels,
         unsupportedFeatures: normalized.unsupportedFeatures,
-        datapointAssignments: buildDatapointAssignments(
+        datapointAssignments: this.buildAssignmentsForToken(
           normalized,
-          this.config.datapointAssignments,
-          this.config.datapoints,
+          config.adapterToken,
         ),
         requiredDatapoints: normalized.datapoints
           .filter((item) => item.required)
@@ -441,8 +441,8 @@ class AiEnergyManager extends utils.Adapter {
     }
     const datapointAssignments = buildDatapointAssignments(
       serverConfig,
-      object.native?.datapointAssignments,
-      object.native?.datapoints,
+      this.previousAssignmentsForToken(adapterToken, object.native),
+      this.previousLegacyDatapointsForToken(adapterToken, object.native),
     );
     object.native = {
       ...(object.native || {}),
@@ -467,10 +467,12 @@ class AiEnergyManager extends utils.Adapter {
     this.config.serverConfig = serverConfig;
     this.config.serverConfigLastRequest =
       requestedAt || serverConfig.receivedAt || "";
-    this.config.datapointAssignments = buildDatapointAssignments(
+    this.config.datapointAssignments = this.buildAssignmentsForToken(
       serverConfig,
-      this.config.datapointAssignments,
-      this.config.datapoints,
+      this.config.adapterToken,
+    );
+    this.config.serverConfigTokenFingerprint = adapterTokenFingerprint(
+      this.config.adapterToken,
     );
     await this.applyServerConfigStatus(
       serverConfig,
@@ -479,6 +481,42 @@ class AiEnergyManager extends utils.Adapter {
     await this.publishRuntimeServerConfigStates();
     await this.validateDatapoints();
     await this.configureTelemetrySources();
+  }
+
+  buildAssignmentsForToken(
+    serverConfig,
+    adapterToken = this.config.adapterToken,
+  ) {
+    return buildDatapointAssignments(
+      serverConfig,
+      this.previousAssignmentsForToken(adapterToken, this.config),
+      this.previousLegacyDatapointsForToken(adapterToken, this.config),
+    );
+  }
+
+  previousAssignmentsForToken(adapterToken, nativeConfig = this.config) {
+    return this.sameStoredToken(adapterToken, nativeConfig) &&
+      Array.isArray(nativeConfig?.datapointAssignments)
+      ? nativeConfig.datapointAssignments
+      : [];
+  }
+
+  previousLegacyDatapointsForToken(adapterToken, nativeConfig = this.config) {
+    return this.sameStoredToken(adapterToken, nativeConfig) &&
+      nativeConfig?.datapoints &&
+      typeof nativeConfig.datapoints === "object"
+      ? nativeConfig.datapoints
+      : {};
+  }
+
+  sameStoredToken(adapterToken, nativeConfig = this.config) {
+    const storedFingerprint = String(
+      nativeConfig?.serverConfigTokenFingerprint || "",
+    );
+    return (
+      storedFingerprint !== "" &&
+      storedFingerprint === adapterTokenFingerprint(adapterToken)
+    );
   }
 
   async publishRuntimeServerConfigStates() {
@@ -863,7 +901,12 @@ class AiEnergyManager extends utils.Adapter {
     await setNumericState(
       this,
       "dashboard.energyGapNext24hKwh",
-      cardValue("Energy gap next 24h"),
+      cardValue("Energy gap incl. reserve", "Energy gap next 24h"),
+    );
+    await setNumericState(
+      this,
+      "dashboard.horizonHours",
+      nullableNumber(dashboardLite.horizonHours),
     );
     await this.setStateAsync(
       "dashboard.operatingMode",
@@ -891,6 +934,7 @@ class AiEnergyManager extends utils.Adapter {
     );
     await this.setStateAsync("dashboard.expectedPvNext24hKwh", 0, true);
     await this.setStateAsync("dashboard.energyGapNext24hKwh", 0, true);
+    await this.setStateAsync("dashboard.horizonHours", 0, true);
     await this.setStateAsync("dashboard.operatingMode", "", true);
     await this.setStateAsync("dashboard.batteryChargingActive", false, true);
   }
@@ -1096,7 +1140,7 @@ class AiEnergyManager extends utils.Adapter {
       "dashboard.plan": {
         type: "string",
         role: "json",
-        name: "Dashboard 6 hour plan",
+        name: "Dashboard horizon plan",
         def: "[]",
       },
       "dashboard.pattern": {
@@ -1115,22 +1159,29 @@ class AiEnergyManager extends utils.Adapter {
       "dashboard.expectedConsumptionNext24hKwh": {
         type: "number",
         role: "value.energy",
-        name: "Consumption forecast next 24h",
+        name: "Consumption forecast dashboard horizon",
         unit: "kWh",
         def: 0,
       },
       "dashboard.expectedPvNext24hKwh": {
         type: "number",
         role: "value.energy",
-        name: "PV forecast next 24h",
+        name: "PV forecast dashboard horizon",
         unit: "kWh",
         def: 0,
       },
       "dashboard.energyGapNext24hKwh": {
         type: "number",
         role: "value.energy",
-        name: "Energy gap next 24h",
+        name: "Energy gap incl. reserve dashboard horizon",
         unit: "kWh",
+        def: 0,
+      },
+      "dashboard.horizonHours": {
+        type: "number",
+        role: "value",
+        name: "Dashboard horizon basis",
+        unit: "h",
         def: 0,
       },
       "dashboard.operatingMode": {
@@ -1199,7 +1250,7 @@ function delayUntilSecond(targetSecond) {
 function adapterMappingFromAssignment(assignment = {}) {
   const stateId = String(assignment.stateId || "").trim();
   const telemetryField = telemetryFieldForAssignment(assignment);
-  if (!telemetryField) {
+  if (!telemetryField || !stateId) {
     return null;
   }
   return {
@@ -1268,11 +1319,45 @@ function dashboardLiteFromDecision(response = {}) {
       ? inputSummary.consumption.load_profile
       : {};
   const slots = Array.isArray(decision.slots) ? decision.slots : [];
+  const horizonHours = dashboardHorizonHours(
+    decision.dashboard_horizon_hours ??
+      inputSummary.decision?.dashboard_horizon_hours ??
+      inputSummary.decision?.visible_horizon_hours,
+  );
+  const visibleSlots = visibleDashboardSlots(slots, horizonHours);
+  const inputHorizonSlots = visibleDashboardSlots(
+    Array.isArray(inputSummary.decision?.horizon_slots)
+      ? inputSummary.decision.horizon_slots
+      : [],
+    horizonHours,
+  );
+  const visibleSummary = dashboardHorizonSummary(
+    decision,
+    inputSummary,
+    inputHorizonSlots,
+    horizonHours,
+  );
+  const currentSlot = visibleSlots.find((slot) => slotContainsDate(slot));
+  const currentAction = currentSlot?.action || decision.system_action;
+  const currentPlannedPowerW = Number(currentSlot?.planned_charge_power_w || 0);
+  const currentPlannedEnergyWh = Number(currentSlot?.planned_energy_wh || 0);
+  const gridChargingPlanned = visibleSlots.some(
+    (slot) => String(slot?.action || "") === "grid_charge",
+  );
+  const currentMode = decisionOperatingMode(currentAction, {
+    plannedPowerW: currentPlannedPowerW,
+    plannedEnergyWh: currentPlannedEnergyWh,
+    gridChargingPlanned:
+      String(currentAction || "") === "grid_charge" &&
+      currentPlannedEnergyWh > 0,
+  });
 
   return {
     source: response.source || "",
     decisionTime: decision.decision_time || "",
     validUntil: decision.valid_until || "",
+    horizonHours,
+    title: `Intelligent charging decision - ${horizonHours} h basis`,
     reason: decision.human_readable_reason || decision.human_reason || "",
     confidence: nullableNumber(decision.confidence_score),
     engineVersion: decision.engine_version || "",
@@ -1284,37 +1369,37 @@ function dashboardLiteFromDecision(response = {}) {
       },
       {
         label: "Consumption forecast",
-        value: formatKwhFromWh(system.expected_consumption_wh),
+        value: formatNumber(visibleSummary.consumptionKwh, 2),
         unit: "kWh",
       },
       {
         label: "PV forecast",
-        value: formatKwhFromWh(system.expected_pv_wh),
+        value: formatNumber(visibleSummary.pvKwh, 2),
         unit: "kWh",
       },
       {
-        label: "Energy gap next 24h",
-        value: formatKwhFromWh(system.expected_energy_gap_wh),
+        label: "Energy gap incl. reserve",
+        value: formatNumber(visibleSummary.energyGapKwh, 2),
         unit: "kWh",
       },
       {
         label: "Recommendation",
-        value: decisionOperatingMode(decision.system_action, {
-          gridChargingPlanned: decision.grid_charging_planned,
-        }).label,
+        value: currentMode.label,
         unit: "",
       },
       {
         label: "Grid charging planned",
-        value: decision.grid_charging_planned ? "Yes" : "No",
+        value: gridChargingPlanned ? "Yes" : "No",
         unit: "",
       },
     ],
-    plan: slots.slice(0, 24).map((slot) => {
+    plan: visibleSlots.map((slot) => {
       const plannedPowerW = Number(slot.planned_charge_power_w || 0);
+      const plannedEnergyWh = Number(slot.planned_energy_wh || 0);
       const mode = decisionOperatingMode(slot.action, {
         plannedPowerW,
-        gridChargingPlanned: decision.grid_charging_planned,
+        plannedEnergyWh,
+        gridChargingPlanned: String(slot.action || "") === "grid_charge",
       });
       return {
         from: slot.slot_start || "",
@@ -1328,7 +1413,7 @@ function dashboardLiteFromDecision(response = {}) {
         technicalActionLabel: decisionActionLabel(slot.action),
         installationName: slot.installation_name || "Household",
         plannedPowerW,
-        plannedEnergyKwh: Number(slot.planned_energy_wh || 0) / 1000,
+        plannedEnergyKwh: plannedEnergyWh / 1000,
         targetSoc: nullableNumber(slot.target_soc_percent),
         reason: slot.human_reason || mode.description,
       };
@@ -1368,9 +1453,96 @@ function dashboardLiteFromDecision(response = {}) {
   };
 }
 
-function formatKwhFromWh(value) {
-  const number = nullableNumber(value);
-  return number === null ? "-" : formatNumber(number / 1000, 2);
+function dashboardHorizonHours(value) {
+  const number = Number(value);
+  return VALID_DASHBOARD_HORIZON_HOURS.has(number)
+    ? number
+    : DEFAULT_DASHBOARD_HORIZON_HOURS;
+}
+
+function dashboardHorizonSummary(
+  decision,
+  inputSummary,
+  inputHorizonSlots,
+  horizonHours,
+) {
+  const system =
+    inputSummary.system && typeof inputSummary.system === "object"
+      ? inputSummary.system
+      : {};
+  const decisionSystem =
+    decision.system && typeof decision.system === "object"
+      ? decision.system
+      : {};
+  if (inputHorizonSlots.length > 0) {
+    const relevantSlots = inputHorizonSlots.filter(
+      (slot) => String(slot?.action || "") !== "forecast_pending",
+    );
+    const consumptionWh = relevantSlots.reduce(
+      (sum, slot) => sum + Number(slot?.expected_consumption_wh || 0),
+      0,
+    );
+    const pvWh = relevantSlots.reduce(
+      (sum, slot) => sum + Number(slot?.expected_pv_wh || 0),
+      0,
+    );
+    const usableEnergyWh = Number.isFinite(Number(system.usable_energy_wh))
+      ? Number(system.usable_energy_wh)
+      : Number(decisionSystem.available_energy_kwh || 0) * 1000;
+    const reserveBufferWh = Number(system.strategy_reserve_buffer_wh || 0);
+    return {
+      consumptionKwh: Math.max(0, consumptionWh / 1000),
+      pvKwh: Math.max(0, pvWh / 1000),
+      energyGapKwh: Math.max(
+        0,
+        (consumptionWh + reserveBufferWh - usableEnergyWh - pvWh) / 1000,
+      ),
+    };
+  }
+
+  const factor = horizonHours / 24;
+  const consumptionWh =
+    Number(decisionSystem.expected_consumption_wh || 0) * factor;
+  const pvWh = Number(decisionSystem.expected_pv_wh || 0) * factor;
+  const usableEnergyWh = Number.isFinite(Number(system.usable_energy_wh))
+    ? Number(system.usable_energy_wh)
+    : Number(decisionSystem.available_energy_kwh || 0) * 1000;
+  const reserveBufferWh = Number(system.strategy_reserve_buffer_wh || 0);
+  return {
+    consumptionKwh: Math.max(0, consumptionWh / 1000),
+    pvKwh: Math.max(0, pvWh / 1000),
+    energyGapKwh: Math.max(
+      0,
+      (consumptionWh + reserveBufferWh - usableEnergyWh - pvWh) / 1000,
+    ),
+  };
+}
+
+function visibleDashboardSlots(slots, horizonHours, now = new Date()) {
+  if (!Array.isArray(slots) || slots.length === 0) {
+    return [];
+  }
+  const windowStart = currentQuarterDate(now).getTime();
+  const windowEnd = windowStart + horizonHours * 60 * 60 * 1000;
+  return slots
+    .filter((slot) => {
+      const start = Date.parse(slot?.slot_start || slot?.from || "");
+      const end = Date.parse(slot?.slot_end || slot?.to || "");
+      return (
+        Number.isFinite(start) &&
+        Number.isFinite(end) &&
+        start < windowEnd &&
+        end > windowStart
+      );
+    })
+    .slice(0, horizonHours * 4);
+}
+
+function currentQuarterDate(now = new Date()) {
+  const date = now instanceof Date ? new Date(now.getTime()) : new Date();
+  date.setSeconds(0, 0);
+  date.setMinutes(Math.floor(date.getMinutes() / 15) * 15);
+  return date;
 }
 
 function formatNumber(value, decimals) {
@@ -1395,9 +1567,14 @@ function dashboardBatteryChargingActive(dashboardLite, now = new Date()) {
 }
 
 function slotContainsDate(slot, date) {
-  const start = Date.parse(slot?.from || "");
-  const end = Date.parse(slot?.to || "");
-  const time = date instanceof Date ? date.getTime() : Date.parse(date || "");
+  const start = Date.parse(slot?.from || slot?.slot_start || "");
+  const end = Date.parse(slot?.to || slot?.slot_end || "");
+  const time =
+    date === undefined
+      ? Date.now()
+      : date instanceof Date
+        ? date.getTime()
+        : Date.parse(date || "");
   return (
     Number.isFinite(start) &&
     Number.isFinite(end) &&
@@ -1415,7 +1592,6 @@ function slotChargesBattery(slot) {
   return (
     plannedPowerW > 0 ||
     plannedEnergyKwh > 0 ||
-    action === "grid_charge" ||
     action === "charge_from_pv" ||
     batteryCommand === "Charge battery"
   );
@@ -1431,6 +1607,8 @@ function decisionActionLabel(action) {
       return "Hold battery";
     case "insufficient_data":
       return "Insufficient data";
+    case "forecast_pending":
+      return "Forecast pending";
     case "no_charge":
       return "Do not charge";
     case "hold":
@@ -1450,10 +1628,23 @@ function decisionActionLabel(action) {
 function decisionOperatingMode(action, context = {}) {
   const normalizedAction = String(action || "");
   const plannedPowerW = nullableNumber(context.plannedPowerW) || 0;
-  const charging = plannedPowerW > 0 || context.gridChargingPlanned === true;
+  const plannedEnergyWh = nullableNumber(context.plannedEnergyWh) || 0;
+  const charging =
+    plannedPowerW > 0 ||
+    plannedEnergyWh > 0 ||
+    context.gridChargingPlanned === true;
 
   switch (normalizedAction) {
     case "grid_charge":
+      if (!charging) {
+        return {
+          id: "pv_battery_operation",
+          label: "PV/battery operation",
+          batteryCommand: "Use battery",
+          gridBehavior: "No active grid charging",
+          description: "No planned charging energy detected.",
+        };
+      }
       return {
         id: "grid_operation",
         label: "Grid operation",
@@ -1512,6 +1703,15 @@ function decisionOperatingMode(action, context = {}) {
     case "insufficient_data":
     case "":
       return insufficientDataMode();
+    case "forecast_pending":
+      return {
+        id: "forecast_pending",
+        label: "Forecast pending",
+        batteryCommand: "No planning",
+        gridBehavior: "Required forecast data is still pending",
+        description:
+          "The planning window continues once all required forecast data is available.",
+      };
     default:
       return insufficientDataMode();
   }

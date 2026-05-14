@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "ai-energy-manager",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "news": {
       "0.1.0": {
         "en": "AI Energy Manager adapter with backend configuration, telemetry upload, dashboard overview and controlled battery and wallbox commands.",
@@ -418,7 +418,7 @@
       "_id": "dashboard.plan",
       "type": "state",
       "common": {
-        "name": "Dashboard 6 hour plan",
+        "name": "Dashboard horizon plan",
         "type": "string",
         "role": "json",
         "read": true,
@@ -458,7 +458,7 @@
       "_id": "dashboard.expectedConsumptionNext24hKwh",
       "type": "state",
       "common": {
-        "name": "Consumption forecast next 24h",
+        "name": "Consumption forecast dashboard horizon",
         "type": "number",
         "role": "value.energy",
         "read": true,
@@ -472,7 +472,7 @@
       "_id": "dashboard.expectedPvNext24hKwh",
       "type": "state",
       "common": {
-        "name": "PV forecast next 24h",
+        "name": "PV forecast dashboard horizon",
         "type": "number",
         "role": "value.energy",
         "read": true,
@@ -486,12 +486,26 @@
       "_id": "dashboard.energyGapNext24hKwh",
       "type": "state",
       "common": {
-        "name": "Energy gap next 24h",
+        "name": "Energy gap incl. reserve dashboard horizon",
         "type": "number",
         "role": "value.energy",
         "read": true,
         "write": false,
         "unit": "kWh",
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "dashboard.horizonHours",
+      "type": "state",
+      "common": {
+        "name": "Dashboard horizon basis",
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "unit": "h",
         "def": 0
       },
       "native": {}

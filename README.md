@@ -167,6 +167,12 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ## Changelog
 
+### 0.1.1 (2026-05-14)
+
+- Bug fixes.
+- Localization adjustments.
+- Design adjustments.
+
 ### 0.1.0 (2026-05-12)
 
 - Initial release of the AI Energy Manager adapter.

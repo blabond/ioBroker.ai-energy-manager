@@ -580,7 +580,10 @@ function DashboardTab({
       {dashboardStatus && isErrorStatus(dashboardStatus) ? (
         <Alert severity="error">{dashboardStatus}</Alert>
       ) : null}
-      <DashboardLite dashboard={settings.dashboardLite} />
+      <DashboardLite
+        dashboard={settings.dashboardLite}
+        lastRequest={settings.dashboardLiteLastRequest}
+      />
     </Stack>
   );
 }
@@ -641,13 +644,23 @@ function SettingsTab({
   );
 }
 
-function DashboardLite({ dashboard }) {
+function DashboardLite({ dashboard, lastRequest }) {
   if (!dashboard) {
     return <EmptyState text={t("noDashboardData")} />;
   }
+  const dataTimestamp = dashboard.decisionTime || lastRequest || "";
   return (
     <Stack spacing={2}>
-      <Section title="Dashboard">
+      <Section
+        title="Dashboard"
+        titleAction={
+          dataTimestamp ? (
+            <Typography variant="caption" color="text.secondary">
+              {t("dashboardDataAsOf", formatDateTimeMinute(dataTimestamp))}
+            </Typography>
+          ) : null
+        }
+      >
         <Box className="card-grid">
           {(dashboard.cards || []).map((card, index) => (
             <Paper
@@ -680,12 +693,15 @@ function DashboardLite({ dashboard }) {
   );
 }
 
-function Section({ children, title }) {
+function Section({ children, title, titleAction = null }) {
   return (
     <Paper className="section" elevation={0}>
-      <Typography variant="subtitle1" component="h2">
-        {title}
-      </Typography>
+      <Box className="section-title-row">
+        <Typography variant="subtitle1" component="h2">
+          {title}
+        </Typography>
+        {titleAction ? <Box className="section-title-action">{titleAction}</Box> : null}
+      </Box>
       {children}
     </Paper>
   );
@@ -1068,6 +1084,7 @@ const DASHBOARD_TEXT_KEYS = {
   "Consumption forecast": "dashboardConsumptionForecast",
   "PV forecast": "dashboardPvForecast",
   "Energy gap next 24h": "dashboardEnergyGapNext24h",
+  "Energy gap incl. reserve": "dashboardEnergyGapNext24h",
   Recommendation: "dashboardRecommendation",
   "Grid charging planned": "dashboardGridChargingPlanned",
   Yes: "yes",
@@ -1266,6 +1283,22 @@ function formatDateTime(value) {
   return Number.isNaN(date.getTime())
     ? String(value)
     : date.toLocaleString(adminLocale());
+}
+
+function formatDateTimeMinute(value) {
+  if (!value) {
+    return "-";
+  }
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? String(value)
+    : date.toLocaleString(adminLocale(), {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
 }
 
 function formatTime(value) {
