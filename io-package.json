@@ -3,6 +3,19 @@
     "name": "ai-energy-manager",
     "version": "0.1.1",
     "news": {
+      "0.1.1": {
+        "en": "Bug fixes, localization adjustments and dashboard design refinements.",
+        "de": "Fehlerbehebungen, Lokalisierungsanpassungen und Dashboard-Design-Verbesserungen.",
+        "ru": "Исправления ошибок, корректировки локализации и улучшения дизайна dashboard.",
+        "pt": "Correções de erros, ajustes de localização e melhorias no design do dashboard.",
+        "nl": "Bugfixes, lokalisatie-aanpassingen en dashboard-ontwerpverbeteringen.",
+        "fr": "Corrections de bugs, ajustements de localisation et améliorations du design du dashboard.",
+        "it": "Correzioni di bug, adattamenti della localizzazione e miglioramenti al design del dashboard.",
+        "es": "Correcciones de errores, ajustes de localización y mejoras del diseño del dashboard.",
+        "pl": "Poprawki błędów, dostosowania lokalizacji i ulepszenia projektu dashboard.",
+        "uk": "Виправлення помилок, коригування локалізації та покращення дизайну dashboard.",
+        "zh-cn": "错误修复、本地化调整和仪表板设计改进。"
+      },
       "0.1.0": {
         "en": "AI Energy Manager adapter with backend configuration, telemetry upload, dashboard overview and controlled battery and wallbox commands.",
         "de": "AI Energy Manager Adapter mit Backend-Konfiguration, Telemetrieübertragung, Dashboard-Übersicht und gesteuerten Batterie- und Wallbox-Befehlen.",
