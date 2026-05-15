@@ -5,6 +5,7 @@ const assert = require("node:assert/strict");
 const {
   maskSecret,
   normalizeBackendUrl,
+  isDemoAccountToken,
   validateAdapterConfig,
 } = require("../lib/validation");
 
@@ -33,4 +34,9 @@ test("validates base config", () => {
   assert.equal(result.valid, true);
   assert.equal(result.sendIntervalSeconds, 10);
   assert.equal(result.commandPollIntervalSeconds, 3600);
+});
+
+test("detects demo account tokens", () => {
+  assert.equal(isDemoAccountToken("DEMOACCOUNT-abc123456789"), true);
+  assert.equal(isDemoAccountToken(" em-abc123456789 "), false);
 });
