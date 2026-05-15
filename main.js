@@ -10,7 +10,10 @@ const {
 const DatapointManager = require("./lib/datapointManager");
 const StateCollector = require("./lib/stateCollector");
 const ControlHandler = require("./lib/controlHandler");
-const { validateAdapterConfig } = require("./lib/validation");
+const {
+  isDemoAccountToken,
+  validateAdapterConfig,
+} = require("./lib/validation");
 const { sanitizeForLog, debug } = require("./lib/loggerUtils");
 const { buildDatapointAssignments } = require("./lib/datapointAssignments");
 const { TelemetryQueue } = require("./lib/telemetryQueue");
@@ -410,11 +413,13 @@ class AiEnergyManager extends utils.Adapter {
       const normalized = normalizeServerConfig(parsed.raw || parsed);
       this.serverConfig = normalized.valid ? normalized : null;
       this.config.serverConfig = normalized;
-      this.config.datapointAssignments = buildDatapointAssignments(
-        normalized,
-        this.config.datapointAssignments,
-        this.config.datapoints,
-      );
+      this.config.datapointAssignments = this.demoAccountMode()
+        ? buildDatapointAssignments(normalized, [], {})
+        : buildDatapointAssignments(
+            normalized,
+            this.config.datapointAssignments,
+            this.config.datapoints,
+          );
       await this.applyServerConfigStatus(
         normalized,
         this.config.serverConfigLastRequest || normalized.receivedAt || "",
@@ -441,8 +446,12 @@ class AiEnergyManager extends utils.Adapter {
     }
     const datapointAssignments = buildDatapointAssignments(
       serverConfig,
-      this.previousAssignmentsForToken(adapterToken, object.native),
-      this.previousLegacyDatapointsForToken(adapterToken, object.native),
+      isDemoAccountToken(adapterToken)
+        ? []
+        : this.previousAssignmentsForToken(adapterToken, object.native),
+      isDemoAccountToken(adapterToken)
+        ? {}
+        : this.previousLegacyDatapointsForToken(adapterToken, object.native),
     );
     object.native = {
       ...(object.native || {}),
@@ -489,8 +498,12 @@ class AiEnergyManager extends utils.Adapter {
   ) {
     return buildDatapointAssignments(
       serverConfig,
-      this.previousAssignmentsForToken(adapterToken, this.config),
-      this.previousLegacyDatapointsForToken(adapterToken, this.config),
+      isDemoAccountToken(adapterToken)
+        ? []
+        : this.previousAssignmentsForToken(adapterToken, this.config),
+      isDemoAccountToken(adapterToken)
+        ? {}
+        : this.previousLegacyDatapointsForToken(adapterToken, this.config),
     );
   }
 
@@ -601,6 +614,10 @@ class AiEnergyManager extends utils.Adapter {
     if (!this.serverConfig?.valid || !this.datapointManager) {
       return false;
     }
+    if (this.demoAccountMode()) {
+      await this.setError("");
+      return true;
+    }
     const result = await this.datapointManager.validate(this.serverConfig);
     if (!result.valid) {
       await this.setError(result.errors.join(" "));
@@ -619,7 +636,7 @@ class AiEnergyManager extends utils.Adapter {
     if (!this.telemetrySampler) {
       return;
     }
-    if (!this.serverConfig?.valid) {
+    if (!this.serverConfig?.valid || this.demoAccountMode()) {
       await this.telemetrySampler.close();
       return;
     }
@@ -656,6 +673,10 @@ class AiEnergyManager extends utils.Adapter {
       !!this.apiClient &&
       !!this.serverConfig?.valid
     );
+  }
+
+  demoAccountMode() {
+    return isDemoAccountToken(this.config?.adapterToken || "");
   }
 
   async scheduleTelemetrySend() {
@@ -731,6 +752,11 @@ class AiEnergyManager extends utils.Adapter {
     if (!this.serverConfig?.valid || !this.apiClient) {
       return;
     }
+    if (this.demoAccountMode()) {
+      await this.setStateAsync("status.backendReachable", true, true);
+      await this.setStateAsync("info.connection", true, true);
+      return;
+    }
     try {
       await this.pushAdapterMappings();
       await this.pushStatePayload();
@@ -742,6 +768,9 @@ class AiEnergyManager extends utils.Adapter {
   }
 
   async pushAdapterMappings() {
+    if (this.demoAccountMode()) {
+      return;
+    }
     const mappings = this.adapterMappingsPayload();
     if (mappings.assignments.length === 0) {
       return;
@@ -766,6 +795,9 @@ class AiEnergyManager extends utils.Adapter {
   async pushStatePayload() {
     const config = validateAdapterConfig(this.config);
     if (!this.serverConfig?.valid || !this.apiClient || !this.stateCollector) {
+      return;
+    }
+    if (this.demoAccountMode()) {
       return;
     }
     const payload = await this.stateCollector.collect(this.serverConfig);
@@ -804,6 +836,9 @@ class AiEnergyManager extends utils.Adapter {
       !this.telemetrySampler ||
       !this.telemetryQueue
     ) {
+      return;
+    }
+    if (this.demoAccountMode()) {
       return;
     }
     const collected = await this.telemetrySampler.collect(this.serverConfig);
