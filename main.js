@@ -1393,7 +1393,9 @@ function dashboardLiteFromDecision(response = {}) {
     validUntil: decision.valid_until || "",
     horizonHours,
     title: `Intelligent charging decision - ${horizonHours} h basis`,
-    reason: decision.human_readable_reason || decision.human_reason || "",
+    reason: cleanDecisionReason(
+      decision.human_readable_reason || decision.human_reason || "",
+    ),
     confidence: nullableNumber(decision.confidence_score),
     engineVersion: decision.engine_version || "",
     cards: [
@@ -1450,7 +1452,7 @@ function dashboardLiteFromDecision(response = {}) {
         plannedPowerW,
         plannedEnergyKwh: plannedEnergyWh / 1000,
         targetSoc: nullableNumber(slot.target_soc_percent),
-        reason: slot.human_reason || mode.description,
+        reason: cleanDecisionReason(slot.human_reason || mode.description),
       };
     }),
     pattern: {
@@ -1493,6 +1495,16 @@ function dashboardHorizonHours(value) {
   return VALID_DASHBOARD_HORIZON_HOURS.has(number)
     ? number
     : DEFAULT_DASHBOARD_HORIZON_HOURS;
+}
+
+function cleanDecisionReason(reason) {
+  return String(reason || "")
+    .replace(
+      /\s*Weiterer Planungshorizont ist ausstehend, da [^.]+ verfügbar ist\./gu,
+      "",
+    )
+    .replace(/\s{2,}/gu, " ")
+    .trim();
 }
 
 function dashboardHorizonSummary(
