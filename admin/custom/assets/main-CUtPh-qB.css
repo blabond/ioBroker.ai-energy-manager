@@ -146,7 +146,7 @@
   line-height: 1.45;
 }
 .plan-timeline {
-  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 8px;
   display: grid;
 }
@@ -222,6 +222,9 @@
 .mode-insufficient_data {
   background: #8b949e;
 }
+.mode-forecast_pending {
+  background: #2f9e44;
+}
 .plan-legend i.mode-grid_operation {
   background: #d32f2f;
 }
@@ -230,6 +233,9 @@
 }
 .plan-legend i.mode-insufficient_data {
   background: #8b949e;
+}
+.plan-legend i.mode-forecast_pending {
+  background: #2f9e44;
 }
 .action-border-charge,
 .action-border-load,
@@ -261,6 +267,9 @@
 }
 .mode-border-insufficient_data {
   border-left-color: #8b949e;
+}
+.mode-border-forecast_pending {
+  border-left-color: #2f9e44;
 }
 @media (max-width: 760px) {
   .aem-root {

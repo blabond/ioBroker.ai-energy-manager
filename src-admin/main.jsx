@@ -49,8 +49,10 @@ const ADMIN_REQUEST_TIMEOUT_MS = 20000;
 const PLAN_LEGEND_MODES = [
   ["grid_operation", "gridOperation"],
   ["pv_battery_operation", "pvBatteryOperation"],
+  ["forecast_pending", "forecastPending"],
   ["insufficient_data", "insufficientData"],
 ];
+const PLAN_TIMELINE_SLOT_LIMIT = 40;
 
 const TOOLTIP_CLOSE_DELAY_MS = 5000;
 const SUPPORTED_LANGUAGES = new Set([
@@ -713,10 +715,10 @@ function PlanTimeline({ plan }) {
   if (!plan.length) {
     return <EmptyState text={t("noSixHourPlan")} />;
   }
-  const slots = plan.slice(0, 6);
+  const slots = plan.slice(0, PLAN_TIMELINE_SLOT_LIMIT);
   return (
     <Stack spacing={1.5}>
-      <Box className="plan-timeline" aria-label="6-Stunden-Plan">
+      <Box className="plan-timeline" aria-label={t("sixHourPlan")}>
         {slots.map((slot, index) => (
           <Tooltip
             key={`${slot.from || index}-${slot.action || "none"}`}
@@ -1093,11 +1095,13 @@ const DASHBOARD_TEXT_KEYS = {
   No: "no",
   "Grid operation": "gridOperation",
   "PV/battery operation": "pvBatteryOperation",
+  "Forecast pending": "forecastPending",
   "Insufficient data": "insufficientData",
   "Charge battery": "chargeBattery",
   "Hold battery": "holdBattery",
   "Use battery": "useBattery",
   "No control": "noControl",
+  "No planning": "noPlanning",
   "Household load from grid, battery is charging":
     "householdLoadFromGridBatteryCharging",
   "Household load from grid, battery is charged briefly":
@@ -1109,6 +1113,9 @@ const DASHBOARD_TEXT_KEYS = {
   "PV is preferred": "pvPreferred",
   "Avoid grid import": "avoidGridImport",
   "No active grid charging": "noActiveGridCharging",
+  "Required forecast data is still pending": "requiredForecastPending",
+  "The planning window continues once all required forecast data is available.":
+    "planningWindowContinues",
   "No reliable decision": "noReliableDecision",
   "Grid power is economical or necessary according to the calculation.":
     "gridPowerEconomical",

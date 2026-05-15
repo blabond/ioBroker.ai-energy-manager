@@ -22,8 +22,7 @@ const { TelemetrySampler } = require("./lib/telemetrySampler");
 const TELEMETRY_CYCLE_SECONDS = 60;
 const SERVER_PULL_DELAY_SECONDS = 30;
 const MAX_POLL_OFFSET_SECONDS = 29;
-const DEFAULT_DASHBOARD_HORIZON_HOURS = 6;
-const VALID_DASHBOARD_HORIZON_HOURS = new Set([6, 10]);
+const DEFAULT_DASHBOARD_HORIZON_HOURS = 10;
 
 class AiEnergyManager extends utils.Adapter {
   constructor(options = {}) {
@@ -1490,11 +1489,8 @@ function dashboardLiteFromDecision(response = {}) {
   };
 }
 
-function dashboardHorizonHours(value) {
-  const number = Number(value);
-  return VALID_DASHBOARD_HORIZON_HOURS.has(number)
-    ? number
-    : DEFAULT_DASHBOARD_HORIZON_HOURS;
+function dashboardHorizonHours() {
+  return DEFAULT_DASHBOARD_HORIZON_HOURS;
 }
 
 function cleanDecisionReason(reason) {

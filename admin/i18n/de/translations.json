@@ -95,8 +95,8 @@
   "plantTitle": "Anlage %s:",
   "household": "Haushalt",
   "plant": "Anlage",
-  "sixHourPlan": "6-Stunden-Plan",
-  "noSixHourPlan": "Noch kein 6-Stunden-Plan vorhanden.",
+  "sixHourPlan": "10-Stunden-Plan",
+  "noSixHourPlan": "Noch kein 10-Stunden-Plan vorhanden.",
   "patternDetection": "Mustererkennung",
   "activeLoadProfile": "Aktives Lastprofil",
   "profileForecast": "Profil-Prognose",
@@ -146,5 +146,9 @@
   "hold": "Halten",
   "discharge": "Entladen",
   "chargeFromPv": "PV laden",
-  "noAction": "Keine Aktion"
+  "noAction": "Keine Aktion",
+  "forecastPending": "Prognose ausstehend",
+  "noPlanning": "Keine Planung",
+  "requiredForecastPending": "Benötigte Prognosedaten stehen noch aus",
+  "planningWindowContinues": "Das Planungsfenster läuft weiter, sobald alle benötigten Prognosedaten verfügbar sind."
 }

@@ -95,8 +95,8 @@
   "plantTitle": "Plant %s:",
   "household": "Household",
   "plant": "Plant",
-  "sixHourPlan": "6-hour plan",
-  "noSixHourPlan": "No 6-hour plan available yet.",
+  "sixHourPlan": "10-hour plan",
+  "noSixHourPlan": "No 10-hour plan available yet.",
   "patternDetection": "Pattern detection",
   "activeLoadProfile": "Active load profile",
   "profileForecast": "Profile forecast",
@@ -146,5 +146,9 @@
   "hold": "Hold",
   "discharge": "Discharge",
   "chargeFromPv": "Charge from PV",
-  "noAction": "No action"
+  "noAction": "No action",
+  "forecastPending": "Forecast pending",
+  "noPlanning": "No planning",
+  "requiredForecastPending": "Required forecast data is still pending",
+  "planningWindowContinues": "The planning window continues once all required forecast data is available."
 }
