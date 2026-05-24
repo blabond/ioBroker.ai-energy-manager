@@ -162,6 +162,7 @@ test("does not infer battery grid charging from interval grid import alone", asy
   assertApproximately(payload.battery_input_wh_total, 20);
   assert.equal(payload.battery_grid_charge_wh_total, undefined);
   assert.equal(payload.battery_surplus_charge_wh_total, undefined);
+  assertApproximately(payload.consumption_wh, 10010);
 });
 
 test("converts lowercase kwh energy meter units to Wh deltas", async () => {
@@ -193,6 +194,7 @@ test("converts lowercase kwh energy meter units to Wh deltas", async () => {
 
   assert.equal(collected.payloads.length, 1);
   assertApproximately(collected.payloads[0].grid_import_wh, 1);
+  assertApproximately(collected.payloads[0].consumption_wh, 10001);
 });
 
 test("converts lowercase kw power units to watts before integration", async () => {
@@ -392,6 +394,8 @@ test("uses grid power fallback until readable grid meters sent plausible telemet
   let collected = await sampler.collect(serverConfig);
 
   assert.equal(collected.payloads.length, 1);
+  assertApproximately(collected.payloads[0].consumption_wh, 100000);
+  assertApproximately(collected.payloads[0].grid_export_meter_wh, 50000);
   assertApproximately(collected.payloads[0].grid_import_wh, 0);
   assertApproximately(collected.payloads[0].grid_export_wh, 10);
 
@@ -401,6 +405,8 @@ test("uses grid power fallback until readable grid meters sent plausible telemet
   collected = await sampler.collect(serverConfig);
 
   assert.equal(collected.payloads.length, 1);
+  assertApproximately(collected.payloads[0].consumption_wh, 100001);
+  assertApproximately(collected.payloads[0].grid_export_meter_wh, 50000);
   assertApproximately(collected.payloads[0].grid_import_wh, 1);
   assertApproximately(collected.payloads[0].grid_export_wh, 0);
   assertApproximately(collected.payloads[0].grid_power_export_wh, 10);
@@ -433,7 +439,9 @@ test("rejects implausible explicit kWh meter deltas", async () => {
   now = 60000;
   const collected = await sampler.collect(serverConfig);
 
-  assert.equal(collected.payloads.length, 0);
+  assert.equal(collected.payloads.length, 1);
+  assertApproximately(collected.payloads[0].consumption_wh, 5929616);
+  assert.equal(collected.payloads[0].grid_import_wh, undefined);
 });
 
 test("rejects implausible grid power fallback values", async () => {
