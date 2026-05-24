@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ai-energy-manager",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "news": {
+      "0.2.1": {
+        "en": "Fix grid export handling.",
+        "de": "Korrektur der Einspeisung-Verarbeitung.",
+        "ru": "Fix grid export handling.",
+        "pt": "Fix grid export handling.",
+        "nl": "Fix grid export handling.",
+        "fr": "Fix grid export handling.",
+        "it": "Fix grid export handling.",
+        "es": "Fix grid export handling.",
+        "pl": "Fix grid export handling.",
+        "uk": "Fix grid export handling.",
+        "zh-cn": "Fix grid export handling."
+      },
       "0.2.0": {
         "en": "Initial release of the AI Energy Manager adapter.",
         "de": "Initial release of the AI Energy Manager adapter.",

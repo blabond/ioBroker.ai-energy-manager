@@ -157,6 +157,10 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ## Changelog
 
+### 0.2.1 (2026-05-24)
+
+- Fix grid export handling.
+
 ### 0.2.0 (2026-05-22)
 
 - Initial release of the AI Energy Manager adapter.
