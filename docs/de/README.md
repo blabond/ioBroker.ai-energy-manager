@@ -23,10 +23,7 @@ Der Adapter sendet fortlaufend normalisierte Energiedaten an das Backend, erhäl
 - ioBroker-Objektbrowser zur Auswahl der Datenpunkte
 - Dashboard Lite mit Systemkacheln, 6-Stunden-Plan und Mustererkennung
 - Kontrollierte Batteriebefehle zum Laden, Entladen und Halten einer Reserve
-- Kontrollierte Wallboxbefehle, inklusive Ladefreigabe und Strombegrenzung
 - Schreibschutz: Befehle werden nur für konfigurierte und schreibbare Datenpunkte ausgeführt
-- Maskierung des Tokens in Logs
-- Admin-Oberfläche mit Unterstützung für helle und dunkle ioBroker-Themes
 
 ## Voraussetzungen
 
@@ -38,7 +35,7 @@ Der Adapter sendet fortlaufend normalisierte Energiedaten an das Backend, erhäl
 
 ## Installation
 
-Installiere den Adapter über das ioBroker Adapter-Repository oder über npm, sobald er dort verfügbar ist. Danach wird in ioBroker eine Instanz von `ai-energy-manager` angelegt.
+Installiere den Adapter über das ioBroker Adapter-Repository oder über npm.
 
 ## Konfiguration
 
@@ -69,7 +66,7 @@ Der Adapter arbeitet mit logischen Datenpunkten statt mit fest verdrahteten ioBr
 - Netzbezugszähler
 - Netzeinspeisezähler
 - aktuelle Netzleistung
-- Wallboxenergie oder Wallboxleistung
+- Wallboxenergie
 
 Typische Anlagendatenpunkte sind:
 
@@ -78,8 +75,6 @@ Typische Anlagendatenpunkte sind:
 - Batterieleistung
 - Batteriekapazität
 - steuerbare AC-Ausgangsleistung
-- Ladefreigabe
-- Wallbox-Strombegrenzung
 
 Der Adapter normalisiert Quellwerte automatisch vor der Übertragung. Ein kWh-Datenpunkt kann beispielsweise als Wh-Telemetrie gesendet werden und ein kW-Datenpunkt als W-Telemetrie.
 
@@ -94,7 +89,6 @@ Die Telemetrie wird im Backend verwendet für:
 - PV-Ertrag
 - verfügbare Batteriekapazität
 - Lade- und Entladeentscheidungen
-- Wallbox-Ladeentscheidungen
 - Mustererkennung
 - Dashboard und 6-Stunden-Plan
 
@@ -108,9 +102,6 @@ Unterstützte Steuerlogik:
 - Batterie in günstigen Tariffenstern aus dem Netz laden
 - Netzbetrieb mit Batterie halten oder kurzfristigem Batterieladen
 - Batterie entladen, wenn der Plan Batteriestützung vorsieht
-- AC-Ausgangsleistung begrenzen
-- Wallbox-Ladung freigeben oder sperren
-- Wallbox-Stromgrenze setzen
 
 Der Adapter schreibt niemals auf beliebige State-IDs aus dem Backend. Ein Schreibvorgang erfolgt nur, wenn:
 
@@ -160,6 +151,5 @@ Wenn keine Backend-Verbindung besteht, prüfe:
 - `info.tokenValid`
 - `status.backendReachable`
 - `info.lastError`
-- das Adapterlog im ioBroker Admin
 
 Wenn ein Befehl nicht ausgeführt wird, prüfe, ob der ausgewählte ioBroker State schreibbar ist und ob der Werttyp zum State passt.
