@@ -24,10 +24,7 @@ The adapter continuously sends normalized energy telemetry to the backend, recei
 - ioBroker object browser for selecting datapoints
 - Dashboard Lite with system cards, 6-hour plan and pattern detection
 - Controlled battery commands for charging, discharging and holding reserve
-- Controlled wallbox commands, including charging enablement and current limits
 - Explicit write protection: commands are accepted only for configured writable datapoints
-- Token masking in logs
-- Theme-aware admin UI for light and dark ioBroker themes
 
 ## Requirements
 
@@ -39,7 +36,7 @@ The adapter continuously sends normalized energy telemetry to the backend, recei
 
 ## Installation
 
-Install the adapter from the ioBroker adapter repository or from npm when it is available there. After installation, create an instance of `ai-energy-manager`.
+Install the adapter from the ioBroker adapter repository or from npm.
 
 ## Configuration
 
@@ -69,8 +66,6 @@ The adapter works with logical datapoints instead of hard-coded ioBroker paths. 
 - household consumption
 - grid import meter
 - grid export meter
-- current grid power
-- wallbox energy or power
 
 Typical plant datapoints are:
 
@@ -78,7 +73,6 @@ Typical plant datapoints are:
 - battery state of charge
 - battery power
 - battery capacity
-- controllable AC output power
 - charge enablement
 - wallbox current limit
 
@@ -109,9 +103,6 @@ Supported control behavior includes:
 - charge battery from the grid during favorable tariff windows
 - hold reserve for later use
 - discharge when the plan requires battery support
-- limit AC output power
-- enable or disable wallbox charging
-- set wallbox current limits
 
 The adapter never writes to arbitrary state IDs supplied by the backend. A write is executed only when:
 
@@ -161,7 +152,6 @@ If the backend connection is not available, check:
 - `info.tokenValid`
 - `status.backendReachable`
 - `info.lastError`
-- the adapter log in ioBroker Admin
 
 If a command is not applied, verify that the selected ioBroker state is writable and that the value type matches the state type.
 
