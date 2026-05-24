@@ -53,6 +53,9 @@ class AiEnergyManager extends utils.Adapter {
   async onReady() {
     this.stopped = false;
     await this.ensureInfoStates();
+    if (this.stopped) {
+      return;
+    }
     this.datapointManager = new DatapointManager(this);
     this.stateCollector = new StateCollector(this, this.datapointManager);
     this.telemetrySampler = new TelemetrySampler(this, this.datapointManager);
@@ -88,6 +91,9 @@ class AiEnergyManager extends utils.Adapter {
     );
 
     const tokenValid = await this.validateToken();
+    if (this.stopped) {
+      return;
+    }
     if (!tokenValid) {
       this.serverConfig = null;
       await this.setStateAsync("info.configValid", false, true);
@@ -102,6 +108,9 @@ class AiEnergyManager extends utils.Adapter {
         "Server configuration is requested automatically after token change or initial setup.",
       );
       const result = await this.requestConfigFromBackend({ persist: false });
+      if (this.stopped) {
+        return;
+      }
       if (!result.ok) {
         await this.resetDashboardStates();
         this.log.info(
@@ -116,6 +125,9 @@ class AiEnergyManager extends utils.Adapter {
     }
     if (!this.serverConfig?.valid) {
       await this.loadStoredServerConfig();
+      if (this.stopped) {
+        return;
+      }
     }
     if (!this.serverConfig?.valid) {
       await this.resetDashboardStates();
@@ -125,6 +137,9 @@ class AiEnergyManager extends utils.Adapter {
       return;
     }
     await this.pullControlCommands();
+    if (this.stopped) {
+      return;
+    }
     if (!this.serverConfig?.valid) {
       await this.resetDashboardStates();
       this.log.info(
@@ -133,9 +148,21 @@ class AiEnergyManager extends utils.Adapter {
       return;
     }
     await this.validateDatapoints();
+    if (this.stopped) {
+      return;
+    }
     await this.configureTelemetrySources();
+    if (this.stopped) {
+      return;
+    }
     await this.sendInitialBackendSync();
+    if (this.stopped) {
+      return;
+    }
     await this.applyBatteryControlFromStoredDashboard();
+    if (this.stopped) {
+      return;
+    }
     this.startTimers();
     this.log.info("AI Energy Manager adapter started.");
   }
@@ -240,6 +267,9 @@ class AiEnergyManager extends utils.Adapter {
   }
 
   async requestConfigFromBackend(options = {}) {
+    if (this.stopped) {
+      return { ok: false, errors: ["Adapter is shutting down."] };
+    }
     const overrideToken =
       typeof options.adapterToken === "string"
         ? options.adapterToken.trim()
@@ -261,6 +291,9 @@ class AiEnergyManager extends utils.Adapter {
         timerHost: this,
       });
       const normalized = await requestAndNormalize(this.apiClient);
+      if (this.stopped) {
+        return { ok: false, errors: ["Adapter is shutting down."] };
+      }
       if (!normalized.valid) {
         await this.applyServerConfigStatus(normalized);
         return { ok: false, errors: normalized.errors };
@@ -682,6 +715,9 @@ class AiEnergyManager extends utils.Adapter {
   }
 
   startTimers() {
+    if (this.stopped) {
+      return;
+    }
     if (!this.runtimeWorkAllowed()) {
       return;
     }
@@ -700,6 +736,7 @@ class AiEnergyManager extends utils.Adapter {
 
   runtimeWorkAllowed() {
     return (
+      !this.stopped &&
       validateAdapterConfig(this.config).valid &&
       !!this.apiClient &&
       !!this.serverConfig?.valid
@@ -715,6 +752,9 @@ class AiEnergyManager extends utils.Adapter {
       return;
     }
     const offset = await this.pollOffsetSeconds();
+    if (this.stopped) {
+      return;
+    }
     const delayMs = delayUntilSecond(offset);
     this.statePayloadTimer = this.setTimeout(async () => {
       this.statePayloadTimer = null;
@@ -735,6 +775,9 @@ class AiEnergyManager extends utils.Adapter {
       return;
     }
     const offset = await this.pollOffsetSeconds();
+    if (this.stopped) {
+      return;
+    }
     const pullSecond =
       (offset + SERVER_PULL_DELAY_SECONDS) % TELEMETRY_CYCLE_SECONDS;
     const delayMs = delayUntilSecond(pullSecond);

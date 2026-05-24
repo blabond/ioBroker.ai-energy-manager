@@ -4,17 +4,17 @@
     "version": "0.2.1",
     "news": {
       "0.2.1": {
-        "en": "Fix grid export handling.",
-        "de": "Korrektur der Einspeisung-Verarbeitung.",
-        "ru": "Fix grid export handling.",
-        "pt": "Fix grid export handling.",
-        "nl": "Fix grid export handling.",
-        "fr": "Fix grid export handling.",
-        "it": "Fix grid export handling.",
-        "es": "Fix grid export handling.",
-        "pl": "Fix grid export handling.",
-        "uk": "Fix grid export handling.",
-        "zh-cn": "Fix grid export handling."
+        "en": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "de": "Korrektur der Einspeisung-Verarbeitung und der Timer-Planung beim Adapter-Neustart.",
+        "ru": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "pt": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "nl": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "fr": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "it": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "es": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "pl": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "uk": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
+        "zh-cn": "Fix grid export handling and shutdown timer scheduling during adapter restarts."
       },
       "0.2.0": {
         "en": "Initial release of the AI Energy Manager adapter.",

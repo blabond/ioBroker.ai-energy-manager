@@ -160,6 +160,7 @@ If a command is not applied, verify that the selected ioBroker state is writable
 ### 0.2.1 (2026-05-24)
 
 - Fix grid export handling.
+- Fix shutdown timer scheduling during adapter restarts.
 
 ### 0.2.0 (2026-05-22)
 
