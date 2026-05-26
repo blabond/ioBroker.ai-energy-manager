@@ -157,6 +157,10 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+
+- Beispieländerung für den nächsten Release.
+
 ### 0.2.1 (2026-05-24)
 
 - Fix grid export handling.
