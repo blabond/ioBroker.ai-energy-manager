@@ -164,7 +164,7 @@
             "id": "ConfigCustomAiEnergyManager:Components",
             "name": "Components",
             "assets": {
-                "js": { "async": [], "sync": ["assets/main-m6DB34FW.js"] },
+                "js": { "async": [], "sync": ["assets/main-B3Jszhh_.js"] },
                 "css": { "async": [], "sync": ["assets/main-C0rS7ABd.css"] }
             },
             "path": "./Components"

@@ -75,13 +75,7 @@
                 "email": "git@mr-bond.de"
             }
         ],
-        "keywords": [
-            "energy",
-            "battery",
-            "dynamic tariff",
-            "pv forecast",
-            "wallbox"
-        ],
+        "keywords": ["energy", "battery", "dynamic tariff", "pv forecast", "wallbox"],
         "licenseInformation": {
             "type": "free",
             "link": "https://opensource.org/license/mit",
@@ -131,12 +125,8 @@
         "datapoints": {},
         "datapointAssignments": []
     },
-    "encryptedNative": [
-        "adapterToken"
-    ],
-    "protectedNative": [
-        "adapterToken"
-    ],
+    "encryptedNative": ["adapterToken"],
+    "protectedNative": ["adapterToken"],
     "objects": [],
     "instanceObjects": [
         {

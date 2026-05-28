@@ -156,9 +156,9 @@ test('builds household first and plant assignments from server config', () => {
                 item.scopeName === 'Plant 1' &&
                 item.mappingKey === 'plant_a.batteryControlMode' &&
                 item.write === true &&
-                item.controlValues.gridCharge === '1' &&
-                item.controlValues.pv === '0' &&
-                item.controlValues.hold === '2',
+                item.controlValues['gridCharge'] === '1' &&
+                item.controlValues['pv'] === '0' &&
+                item.controlValues['hold'] === '2',
         ),
     );
 });

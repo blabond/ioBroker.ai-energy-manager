@@ -11,4 +11,4 @@ const __mfImport = src =>
     const runtime = await initHost();
     const __mfRemotePreloads = [];
     await Promise.all(__mfRemotePreloads);
-})().then(() => __mfImport('./assets/index-Cb_D0XEf.js'));
+})().then(() => __mfImport('./assets/index-0hxy2Vjw.js'));

@@ -411,10 +411,12 @@ class AiEnergyManager extends utils.Adapter {
         if (!object) {
             throw new Error(`Adapter object ${adapterObjectId} not found.`);
         }
+        // eslint-disable-next-line jsdoc/check-tag-names
+        const storedNative = /** @type {ioBroker.AdapterConfig} */ (object.native || {});
         const datapointAssignments = buildDatapointAssignments(
             serverConfig,
-            isDemoAccountToken(adapterToken) ? [] : this.previousAssignmentsForToken(adapterToken, object.native),
-            isDemoAccountToken(adapterToken) ? {} : this.previousLegacyDatapointsForToken(adapterToken, object.native),
+            isDemoAccountToken(adapterToken) ? [] : this.previousAssignmentsForToken(adapterToken, storedNative),
+            isDemoAccountToken(adapterToken) ? {} : this.previousLegacyDatapointsForToken(adapterToken, storedNative),
         );
         object.native = {
             ...(object.native || {}),
@@ -1044,6 +1046,8 @@ class AiEnergyManager extends utils.Adapter {
             });
         }
 
+        // eslint-disable-next-line jsdoc/check-tag-names
+        /** @type {Record<string, Partial<ioBroker.StateCommon>>} */
         const states = {
             'info.connection': {
                 type: 'boolean',
@@ -1252,11 +1256,12 @@ class AiEnergyManager extends utils.Adapter {
         for (const [id, common] of Object.entries(states)) {
             await this.setObjectNotExistsAsync(id, {
                 type: 'state',
-                common: {
+                // eslint-disable-next-line jsdoc/check-tag-names
+                common: /** @type {ioBroker.StateCommon} */ ({
                     ...common,
                     read: true,
                     write: false,
-                },
+                }),
                 native: {},
             });
         }
@@ -1554,8 +1559,9 @@ function dashboardLiteFromDecision(response = {}) {
     };
 }
 
-function dashboardHorizonHours() {
-    return DEFAULT_DASHBOARD_HORIZON_HOURS;
+function dashboardHorizonHours(value = DEFAULT_DASHBOARD_HORIZON_HOURS) {
+    const hours = Number(value);
+    return Number.isFinite(hours) && hours > 0 ? hours : DEFAULT_DASHBOARD_HORIZON_HOURS;
 }
 
 function cleanDecisionReason(reason) {
