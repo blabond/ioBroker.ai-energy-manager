@@ -88,3 +88,40 @@ jobs:
 
       - name: Publish package
         run: npm publish --access public
+
+      - name: Merge published release back to main
+        run: |
+          RELEASE_SHA="$(git rev-parse HEAD)"
+
+          git reset --hard "$RELEASE_SHA"
+          git clean -fd -- admin/custom
+
+          git fetch origin main
+          git checkout -B main origin/main
+          git merge --no-edit "$RELEASE_SHA"
+
+          node <<'NODE'
+          const fs = require("node:fs");
+
+          const readmePath = "README.md";
+          const readme = fs.readFileSync(readmePath, "utf8");
+
+          if (!readme.includes("### **WORK IN PROGRESS**")) {
+            const marker = "## Changelog\n\n";
+            if (!readme.includes(marker)) {
+              throw new Error("Could not find README changelog section");
+            }
+
+            fs.writeFileSync(
+              readmePath,
+              readme.replace(marker, `${marker}### **WORK IN PROGRESS**\n\n`),
+            );
+          }
+          NODE
+
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add README.md
+            git commit -m "chore: start next changelog"
+          fi
+
+          git push origin main
