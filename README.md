@@ -159,8 +159,6 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
-### 0.2.2 (2026-05-28)
-
 - RepoCheck fixes.
 
 ### 0.2.1 (2026-05-24)
