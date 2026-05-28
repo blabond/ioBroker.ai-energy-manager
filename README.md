@@ -160,7 +160,6 @@ If a command is not applied, verify that the selected ioBroker state is writable
 ### **WORK IN PROGRESS**
 
 - RepoCheck fixes.
-- Fix package-lock version handling in the npm release preparation workflow.
 
 ### 0.2.1 (2026-05-24)
 
