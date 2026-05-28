@@ -1,5 +1,5 @@
-import "./virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-8Omf8TcX.js";
-import "./virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Cx1IL7VU.js";
+import "./virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Ct62_K2n.js";
+import "./virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CrBRV5Aj.js";
 import {
   A as e,
   F as t,
@@ -7,7 +7,7 @@ import {
   N as r,
   V as i,
   v as a,
-} from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-Z9kjHTfK.js";
+} from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js";
 import {
   A as o,
   B as s,
@@ -44,8 +44,8 @@ import {
   w as A,
   x as ce,
   y as j,
-} from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DrYDIubK.js";
-import { t as M } from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-BYy67SG_.js";
+} from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js";
+import { t as M } from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-vzzsfdoZ.js";
 i();
 var le = {
     baseConfiguration: `Basis-Konfiguration`,
