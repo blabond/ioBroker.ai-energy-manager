@@ -156,6 +156,9 @@ If the backend connection is not available, check:
 If a command is not applied, verify that the selected ioBroker state is writable and that the value type matches the state type.
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
 ### 0.2.2 (2026-05-28)
 
 - RepoCheck fixes.

@@ -107,14 +107,17 @@ jobs:
           const readme = fs.readFileSync(readmePath, "utf8");
 
           if (!readme.includes("### **WORK IN PROGRESS**")) {
-            const marker = "## Changelog\n\n";
-            if (!readme.includes(marker)) {
+            const changelogHeading = /^## Changelog\n+/m;
+            if (!changelogHeading.test(readme)) {
               throw new Error("Could not find README changelog section");
             }
 
             fs.writeFileSync(
               readmePath,
-              readme.replace(marker, `${marker}### **WORK IN PROGRESS**\n\n`),
+              readme.replace(
+                changelogHeading,
+                "## Changelog\n\n### **WORK IN PROGRESS**\n\n",
+              ),
             );
           }
           NODE
