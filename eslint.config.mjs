@@ -1,4 +1,4 @@
-import ioBrokerConfig from "@iobroker/eslint-config";
+import config from "@iobroker/eslint-config";
 
 export default [
   {
@@ -12,7 +12,7 @@ export default [
       "admin/ai-energy-manager.png",
     ],
   },
-  ...ioBrokerConfig,
+  ...config,
   {
     files: ["**/*.js"],
     languageOptions: {

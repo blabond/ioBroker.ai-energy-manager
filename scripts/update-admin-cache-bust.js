@@ -24,12 +24,11 @@ const updatedJsonConfig = jsonConfig.replace(
 );
 
 if (updatedJsonConfig === jsonConfig) {
-  if (jsonConfig.includes(`custom/customComponents.js?v=${cacheKey}`)) {
-    process.exit(0);
+  if (!jsonConfig.includes(`custom/customComponents.js?v=${cacheKey}`)) {
+    throw new Error(
+      "Unable to update custom component URL in admin/jsonConfig.json5",
+    );
   }
-  throw new Error(
-    "Unable to update custom component URL in admin/jsonConfig.json5",
-  );
+} else {
+  writeFileSync(jsonConfigPath, updatedJsonConfig);
 }
-
-writeFileSync(jsonConfigPath, updatedJsonConfig);
