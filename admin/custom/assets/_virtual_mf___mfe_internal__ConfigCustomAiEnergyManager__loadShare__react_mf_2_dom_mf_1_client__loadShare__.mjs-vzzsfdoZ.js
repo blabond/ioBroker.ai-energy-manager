@@ -2,7 +2,7 @@ import { a as e, i as t, r as n, t as r } from "./rolldown-runtime-BYbx6iT9.js";
 import {
   U as i,
   W as a,
-} from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DrYDIubK.js";
+} from "./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js";
 var o = r((e) => {
     var n = (a(), t(i));
     ((e.createRoot = n.createRoot), (e.hydrateRoot = n.hydrateRoot));

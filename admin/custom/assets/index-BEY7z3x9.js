@@ -1,4 +1,4 @@
-import "./main-C6aewpIW.js";
+import "./main-B8zKNpy9.js";
 (function () {
   let e = document.createElement(`link`).relList;
   if (e && e.supports && e.supports(`modulepreload`)) return;

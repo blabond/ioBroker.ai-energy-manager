@@ -1,11 +1,11 @@
 import { t as e } from "./preload-helper-D9f-kLWf.js";
-import "./dist-BJHIkAFo.js";
+import "./virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CrBRV5Aj.js";
 var t = {
     "@emotion/react": async () =>
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-Z9kjHTfK.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js`
           ).then((e) => e.c),
         [],
         import.meta.url,
@@ -14,7 +14,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-ggB3Dp4B.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-Bjagi3Hs.js`
           ).then((e) => e.r),
         [],
         import.meta.url,
@@ -23,7 +23,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DrYDIubK.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js`
           ).then((e) => e.i),
         [],
         import.meta.url,
@@ -32,7 +32,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DrYDIubK.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js`
           ).then((e) => e.s),
         [],
         import.meta.url,
@@ -41,7 +41,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DrYDIubK.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js`
           ).then((e) => e.z),
         [],
         import.meta.url,
@@ -50,7 +50,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-Z9kjHTfK.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js`
           ).then((e) => (e.U(), e.H)),
         [],
         import.meta.url,
@@ -59,7 +59,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DrYDIubK.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js`
           ).then((e) => (e.K(), e.G)),
         [],
         import.meta.url,
@@ -68,7 +68,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-BYy67SG_.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-vzzsfdoZ.js`
           ).then((e) => e.n),
         [],
         import.meta.url,
@@ -77,7 +77,7 @@ var t = {
       await e(
         () =>
           import(
-            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DrYDIubK.js`
+            `./_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js`
           ).then((e) => e.H),
         [],
         import.meta.url,
