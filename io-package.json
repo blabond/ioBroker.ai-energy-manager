@@ -3,19 +3,6 @@
     "name": "ai-energy-manager",
     "version": "0.2.2",
     "news": {
-      "0.2.2": {
-        "en": "RepoCheck fixes.",
-        "de": "RepoCheck repariert.",
-        "ru": "RepoCheck исправляет.",
-        "pt": "RepoCheck reparações.",
-        "nl": "RepoCheck fixes.",
-        "fr": "RepoCheck corrige.",
-        "it": "RepoCheck corregge.",
-        "es": "RepoCheck arregla.",
-        "pl": "RepoCheck naprawia.",
-        "uk": "Застібки RepoCheck.",
-        "zh-cn": "重新检查修正 ."
-      },
       "0.2.1": {
         "en": "Fix grid export handling and shutdown timer scheduling during adapter restarts.",
         "de": "Korrektur der Einspeisung-Verarbeitung und der Timer-Planung beim Adapter-Neustart.",

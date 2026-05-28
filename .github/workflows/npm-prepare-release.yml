@@ -3,22 +3,9 @@ name: Prepare npm release
 on:
   workflow_dispatch:
     inputs:
-      bump:
-        description: Version bump
+      version:
+        description: Target version to prepare, for example 0.2.3
         required: true
-        type: choice
-        options:
-          - prerelease
-          - patch
-          - minor
-          - major
-          - prepatch
-          - preminor
-          - premajor
-      preid:
-        description: Prerelease identifier
-        required: false
-        default: alpha
         type: string
 
 permissions:
@@ -69,21 +56,73 @@ jobs:
       - name: Remember current version
         run: echo "OLD_VERSION=$(node -p 'require(\"./package.json\").version')" >> "$GITHUB_ENV"
 
-      - name: Prepare release commit
+      - name: Determine version bump
         env:
-          BUMP: ${{ inputs.bump }}
-          PREID: ${{ inputs.preid }}
+          TARGET_VERSION: ${{ inputs.version }}
         run: |
-          if [[ "$BUMP" == pre* ]]; then
-            printf '%s\n' "${PREID:-alpha}" | npm run release -- "$BUMP" --yes --all --noPush
-          else
-            npm run release -- "$BUMP" --yes --all --noPush
-          fi
+          BUMP="$(node <<'NODE'
+          const semver = require("semver");
+
+          const current = require("./package.json").version;
+          const target = process.env.TARGET_VERSION;
+
+          if (!semver.valid(target)) {
+            throw new Error(`Target version ${target} is not valid semver`);
+          }
+
+          if (!semver.gt(target, current)) {
+            throw new Error(`Target version ${target} must be greater than current version ${current}`);
+          }
+
+          const currentVersion = semver.parse(current);
+          const targetVersion = semver.parse(target);
+
+          let bump;
+          if (
+            targetVersion.major === currentVersion.major + 1 &&
+            targetVersion.minor === 0 &&
+            targetVersion.patch === 0 &&
+            targetVersion.prerelease.length === 0
+          ) {
+            bump = "major";
+          } else if (
+            targetVersion.major === currentVersion.major &&
+            targetVersion.minor === currentVersion.minor + 1 &&
+            targetVersion.patch === 0 &&
+            targetVersion.prerelease.length === 0
+          ) {
+            bump = "minor";
+          } else if (
+            targetVersion.major === currentVersion.major &&
+            targetVersion.minor === currentVersion.minor &&
+            targetVersion.patch === currentVersion.patch + 1 &&
+            targetVersion.prerelease.length === 0
+          ) {
+            bump = "patch";
+          } else {
+            throw new Error(
+              `Target version ${target} must be the next patch, minor, or major version after ${current}`,
+            );
+          }
+
+          console.log(bump);
+          NODE
+          )"
+          echo "TARGET_VERSION=${TARGET_VERSION}" >> "$GITHUB_ENV"
+          echo "BUMP=${BUMP}" >> "$GITHUB_ENV"
+
+      - name: Prepare release commit
+        run: npm run release -- "$BUMP" --yes --all --noPush
 
       - name: Ensure release commit is complete
         run: |
           VERSION="$(node -p 'require("./package.json").version')"
           TAG="v${VERSION}"
+
+          if [[ "$VERSION" != "$TARGET_VERSION" ]]; then
+            echo "Prepared version ${VERSION}, expected ${TARGET_VERSION}" >&2
+            exit 1
+          fi
 
           if [[ "$VERSION" == "$OLD_VERSION" ]]; then
             echo "Release version did not change from ${OLD_VERSION}" >&2
