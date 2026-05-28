@@ -3,22 +3,14 @@ name: Publish to npm
 on:
   workflow_dispatch:
     inputs:
-      bump:
-        description: Version bump
+      ref:
+        description: Release branch, commit, or tag to publish
         required: true
-        type: choice
-        options:
-          - prerelease
-          - patch
-          - minor
-          - major
-          - prepatch
-          - preminor
-          - premajor
-      preid:
-        description: Prerelease identifier
-        required: false
-        default: alpha
+        default: main
+        type: string
+      version:
+        description: Version to publish, for example 0.2.2
+        required: true
         type: string
 
 permissions:
@@ -39,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ inputs.ref }}
           fetch-depth: 0
 
       - uses: actions/setup-node@v6
@@ -55,7 +47,32 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git branch --set-upstream-to="origin/${GITHUB_REF_NAME}"
+
+      - name: Create release tag
+        env:
+          EXPECTED_VERSION: ${{ inputs.version }}
+        run: |
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          if [[ "$PACKAGE_VERSION" != "$EXPECTED_VERSION" ]]; then
+            echo "Expected package version ${EXPECTED_VERSION}, got ${PACKAGE_VERSION}" >&2
+            exit 1
+          fi
+
+          TAG="v${PACKAGE_VERSION}"
+          if git rev-parse --verify --quiet "refs/tags/${TAG}"; then
+            TAG_COMMIT="$(git rev-list -n 1 "${TAG}")"
+            HEAD_COMMIT="$(git rev-parse HEAD)"
+            if [[ "$TAG_COMMIT" != "$HEAD_COMMIT" ]]; then
+              echo "Tag ${TAG} exists but does not point at HEAD" >&2
+              exit 1
+            fi
+          else
+            git tag -a "$TAG" -m "$TAG"
+            git push origin "refs/tags/${TAG}"
+          fi
+
+      - name: Verify release tag
+        run: npm run release:verify-tag
 
       - name: Build admin UI
         run: npm run build:admin
@@ -68,20 +85,6 @@ jobs:
 
       - name: Test
         run: npm test
-
-      - name: Prepare release commit and tag
-        env:
-          BUMP: ${{ inputs.bump }}
-          PREID: ${{ inputs.preid }}
-        run: |
-          if [[ "$BUMP" == pre* ]]; then
-            printf '%s\n' "${PREID:-alpha}" | npm run release -- "$BUMP" --yes --all
-          else
-            npm run release -- "$BUMP" --yes --all
-          fi
-
-      - name: Verify release tag
-        run: npm run release:verify-tag
 
       - name: Publish package
         run: npm publish --access public

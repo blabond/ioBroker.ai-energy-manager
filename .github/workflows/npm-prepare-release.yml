@@ -1,0 +1,98 @@
+name: Prepare npm release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump
+        required: true
+        type: choice
+        options:
+          - prerelease
+          - patch
+          - minor
+          - major
+          - prepatch
+          - preminor
+          - premajor
+      preid:
+        description: Prerelease identifier
+        required: false
+        default: alpha
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: npm-prepare-release
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.x"
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git branch --set-upstream-to="origin/${GITHUB_REF_NAME}"
+
+      - name: Build admin UI
+        run: npm run build:admin
+
+      - name: Check syntax
+        run: npm run check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Prepare release commit
+        env:
+          BUMP: ${{ inputs.bump }}
+          PREID: ${{ inputs.preid }}
+        run: |
+          if [[ "$BUMP" == pre* ]]; then
+            printf '%s\n' "${PREID:-alpha}" | npm run release -- "$BUMP" --yes --all --noPush
+          else
+            npm run release -- "$BUMP" --yes --all --noPush
+          fi
+
+      - name: Push release branch
+        run: |
+          TAG="v$(node -p "require('./package.json').version")"
+          BRANCH="release/${TAG}"
+          git tag -d "$TAG"
+          git push origin "HEAD:refs/heads/${BRANCH}"
+          {
+            echo "TAG=${TAG}"
+            echo "BRANCH=${BRANCH}"
+          } >> "$GITHUB_ENV"
+
+      - name: Write summary
+        run: |
+          {
+            echo "Prepared ${TAG} on branch ${BRANCH}."
+            echo ""
+            echo "Review and adjust the release branch before running the npm publish workflow."
+            echo "Use version ${TAG#v} and ref ${BRANCH} when publishing."
+          } >> "$GITHUB_STEP_SUMMARY"
