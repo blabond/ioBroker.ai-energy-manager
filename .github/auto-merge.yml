@@ -1,13 +1,13 @@
 # Configure which dependency updates should be merged automatically.
 - match:
-    # Only merge patches for production dependencies.
-    dependency_type: production
-    update_type: "semver:patch"
+      # Only merge patches for production dependencies.
+      dependency_type: production
+      update_type: 'semver:patch'
 - match:
-    # Security updates may also include production minor versions.
-    dependency_type: production
-    update_type: "security:minor"
+      # Security updates may also include production minor versions.
+      dependency_type: production
+      update_type: 'security:minor'
 - match:
-    # Development dependencies may receive minor updates automatically.
-    dependency_type: development
-    update_type: "semver:minor"
+      # Development dependencies may receive minor updates automatically.
+      dependency_type: development
+      update_type: 'semver:minor'

@@ -1,177 +1,177 @@
 name: Prepare npm release
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: Target version to prepare, for example 0.2.3
-        required: true
-        type: string
+    workflow_dispatch:
+        inputs:
+            version:
+                description: Target version to prepare, for example 0.2.3
+                required: true
+                type: string
 
 permissions:
-  contents: write
+    contents: write
 
 concurrency:
-  group: npm-prepare-release
-  cancel-in-progress: false
+    group: npm-prepare-release
+    cancel-in-progress: false
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: ${{ github.ref_name }}
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "24.x"
-          package-manager-cache: false
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Configure Git identity
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git branch --set-upstream-to="origin/${GITHUB_REF_NAME}"
-
-      - name: Build admin UI
-        run: npm run build:admin
-
-      - name: Check syntax
-        run: npm run check
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Test
-        run: npm test
-
-      - name: Remember current version
-        run: echo "OLD_VERSION=$(node -p 'require(\"./package.json\").version')" >> "$GITHUB_ENV"
-
-      - name: Determine version bump
+    prepare:
+        runs-on: ubuntu-latest
         env:
-          TARGET_VERSION: ${{ inputs.version }}
-        run: |
-          BUMP="$(node <<'NODE'
-          const semver = require("semver");
+            FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-          const current = require("./package.json").version;
-          const target = process.env.TARGET_VERSION;
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  ref: ${{ github.ref_name }}
+                  fetch-depth: 0
 
-          if (!semver.valid(target)) {
-            throw new Error(`Target version ${target} is not valid semver`);
-          }
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: '24.x'
+                  package-manager-cache: false
 
-          if (!semver.gt(target, current)) {
-            throw new Error(`Target version ${target} must be greater than current version ${current}`);
-          }
+            - name: Install dependencies
+              run: npm ci
 
-          const currentVersion = semver.parse(current);
-          const targetVersion = semver.parse(target);
+            - name: Configure Git identity
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git branch --set-upstream-to="origin/${GITHUB_REF_NAME}"
 
-          let bump;
-          if (
-            targetVersion.major === currentVersion.major + 1 &&
-            targetVersion.minor === 0 &&
-            targetVersion.patch === 0 &&
-            targetVersion.prerelease.length === 0
-          ) {
-            bump = "major";
-          } else if (
-            targetVersion.major === currentVersion.major &&
-            targetVersion.minor === currentVersion.minor + 1 &&
-            targetVersion.patch === 0 &&
-            targetVersion.prerelease.length === 0
-          ) {
-            bump = "minor";
-          } else if (
-            targetVersion.major === currentVersion.major &&
-            targetVersion.minor === currentVersion.minor &&
-            targetVersion.patch === currentVersion.patch + 1 &&
-            targetVersion.prerelease.length === 0
-          ) {
-            bump = "patch";
-          } else {
-            throw new Error(
-              `Target version ${target} must be the next patch, minor, or major version after ${current}`,
-            );
-          }
+            - name: Build admin UI
+              run: npm run build:admin
 
-          console.log(bump);
-          NODE
-          )"
-          echo "TARGET_VERSION=${TARGET_VERSION}" >> "$GITHUB_ENV"
-          echo "BUMP=${BUMP}" >> "$GITHUB_ENV"
+            - name: Check syntax
+              run: npm run check
 
-      - name: Prepare release commit
-        run: npm run release -- "$BUMP" --yes --all --noPush
+            - name: Lint
+              run: npm run lint
 
-      - name: Ensure release commit is complete
-        run: |
-          VERSION="$(node -p 'require("./package.json").version')"
-          TAG="v${VERSION}"
+            - name: Test
+              run: npm test
 
-          if [[ "$VERSION" != "$TARGET_VERSION" ]]; then
-            echo "Prepared version ${VERSION}, expected ${TARGET_VERSION}" >&2
-            exit 1
-          fi
+            - name: Remember current version
+              run: echo "OLD_VERSION=$(node -p 'require(\"./package.json\").version')" >> "$GITHUB_ENV"
 
-          if [[ "$VERSION" == "$OLD_VERSION" ]]; then
-            echo "Release version did not change from ${OLD_VERSION}" >&2
-            exit 1
-          fi
+            - name: Determine version bump
+              env:
+                  TARGET_VERSION: ${{ inputs.version }}
+              run: |
+                  BUMP="$(node <<'NODE'
+                  const semver = require("semver");
 
-          if grep -Fq "### **WORK IN PROGRESS**" README.md; then
-            echo "README.md still contains the WORK IN PROGRESS changelog placeholder" >&2
-            exit 1
-          fi
+                  const current = require("./package.json").version;
+                  const target = process.env.TARGET_VERSION;
 
-          npm install --package-lock-only --ignore-scripts
+                  if (!semver.valid(target)) {
+                    throw new Error(`Target version ${target} is not valid semver`);
+                  }
 
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git add -A
-            git commit -m "chore: release ${TAG}"
-          fi
+                  if (!semver.gt(target, current)) {
+                    throw new Error(`Target version ${target} must be greater than current version ${current}`);
+                  }
 
-          COMMITTED_VERSION="$(git show HEAD:package.json | node -e 'let s = ""; process.stdin.on("data", d => s += d).on("end", () => console.log(JSON.parse(s).version));')"
-          if [[ "$COMMITTED_VERSION" != "$VERSION" ]]; then
-            echo "HEAD contains package version ${COMMITTED_VERSION}, but working tree contains ${VERSION}" >&2
-            exit 1
-          fi
+                  const currentVersion = semver.parse(current);
+                  const targetVersion = semver.parse(target);
 
-          COMMITTED_LOCK_VERSION="$(git show HEAD:package-lock.json | node -e 'let s = ""; process.stdin.on("data", d => s += d).on("end", () => { const lock = JSON.parse(s); console.log(`${lock.version} ${lock.packages[""].version}`); });')"
-          if [[ "$COMMITTED_LOCK_VERSION" != "$VERSION $VERSION" ]]; then
-            echo "HEAD contains package-lock versions ${COMMITTED_LOCK_VERSION}, expected ${VERSION} ${VERSION}" >&2
-            exit 1
-          fi
+                  let bump;
+                  if (
+                    targetVersion.major === currentVersion.major + 1 &&
+                    targetVersion.minor === 0 &&
+                    targetVersion.patch === 0 &&
+                    targetVersion.prerelease.length === 0
+                  ) {
+                    bump = "major";
+                  } else if (
+                    targetVersion.major === currentVersion.major &&
+                    targetVersion.minor === currentVersion.minor + 1 &&
+                    targetVersion.patch === 0 &&
+                    targetVersion.prerelease.length === 0
+                  ) {
+                    bump = "minor";
+                  } else if (
+                    targetVersion.major === currentVersion.major &&
+                    targetVersion.minor === currentVersion.minor &&
+                    targetVersion.patch === currentVersion.patch + 1 &&
+                    targetVersion.prerelease.length === 0
+                  ) {
+                    bump = "patch";
+                  } else {
+                    throw new Error(
+                      `Target version ${target} must be the next patch, minor, or major version after ${current}`,
+                    );
+                  }
 
-      - name: Push release branch
-        run: |
-          TAG="v$(node -p 'require("./package.json").version')"
-          BRANCH="release/${TAG}"
-          if git rev-parse --verify --quiet "refs/tags/${TAG}"; then
-            git tag -d "$TAG"
-          fi
-          git fetch origin "${BRANCH}" || true
-          git push --force-with-lease origin "HEAD:refs/heads/${BRANCH}"
-          {
-            echo "TAG=${TAG}"
-            echo "BRANCH=${BRANCH}"
-          } >> "$GITHUB_ENV"
+                  console.log(bump);
+                  NODE
+                  )"
+                  echo "TARGET_VERSION=${TARGET_VERSION}" >> "$GITHUB_ENV"
+                  echo "BUMP=${BUMP}" >> "$GITHUB_ENV"
 
-      - name: Write summary
-        run: |
-          {
-            echo "Prepared ${TAG} on branch ${BRANCH}."
-            echo ""
-            echo "Review and adjust the release branch before running the npm publish workflow."
-            echo "Use version ${TAG#v} and ref ${BRANCH} when publishing."
-          } >> "$GITHUB_STEP_SUMMARY"
+            - name: Prepare release commit
+              run: npm run release -- "$BUMP" --yes --all --noPush
+
+            - name: Ensure release commit is complete
+              run: |
+                  VERSION="$(node -p 'require("./package.json").version')"
+                  TAG="v${VERSION}"
+
+                  if [[ "$VERSION" != "$TARGET_VERSION" ]]; then
+                    echo "Prepared version ${VERSION}, expected ${TARGET_VERSION}" >&2
+                    exit 1
+                  fi
+
+                  if [[ "$VERSION" == "$OLD_VERSION" ]]; then
+                    echo "Release version did not change from ${OLD_VERSION}" >&2
+                    exit 1
+                  fi
+
+                  if grep -Fq "### **WORK IN PROGRESS**" README.md; then
+                    echo "README.md still contains the WORK IN PROGRESS changelog placeholder" >&2
+                    exit 1
+                  fi
+
+                  npm install --package-lock-only --ignore-scripts
+
+                  if [[ -n "$(git status --porcelain)" ]]; then
+                    git add -A
+                    git commit -m "chore: release ${TAG}"
+                  fi
+
+                  COMMITTED_VERSION="$(git show HEAD:package.json | node -e 'let s = ""; process.stdin.on("data", d => s += d).on("end", () => console.log(JSON.parse(s).version));')"
+                  if [[ "$COMMITTED_VERSION" != "$VERSION" ]]; then
+                    echo "HEAD contains package version ${COMMITTED_VERSION}, but working tree contains ${VERSION}" >&2
+                    exit 1
+                  fi
+
+                  COMMITTED_LOCK_VERSION="$(git show HEAD:package-lock.json | node -e 'let s = ""; process.stdin.on("data", d => s += d).on("end", () => { const lock = JSON.parse(s); console.log(`${lock.version} ${lock.packages[""].version}`); });')"
+                  if [[ "$COMMITTED_LOCK_VERSION" != "$VERSION $VERSION" ]]; then
+                    echo "HEAD contains package-lock versions ${COMMITTED_LOCK_VERSION}, expected ${VERSION} ${VERSION}" >&2
+                    exit 1
+                  fi
+
+            - name: Push release branch
+              run: |
+                  TAG="v$(node -p 'require("./package.json").version')"
+                  BRANCH="release/${TAG}"
+                  if git rev-parse --verify --quiet "refs/tags/${TAG}"; then
+                    git tag -d "$TAG"
+                  fi
+                  git fetch origin "${BRANCH}" || true
+                  git push --force-with-lease origin "HEAD:refs/heads/${BRANCH}"
+                  {
+                    echo "TAG=${TAG}"
+                    echo "BRANCH=${BRANCH}"
+                  } >> "$GITHUB_ENV"
+
+            - name: Write summary
+              run: |
+                  {
+                    echo "Prepared ${TAG} on branch ${BRANCH}."
+                    echo ""
+                    echo "Review and adjust the release branch before running the npm publish workflow."
+                    echo "Use version ${TAG#v} and ref ${BRANCH} when publishing."
+                  } >> "$GITHUB_STEP_SUMMARY"

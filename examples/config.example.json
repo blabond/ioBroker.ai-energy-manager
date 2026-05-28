@@ -1,14 +1,14 @@
 {
-  "backendUrl": "https://smartenergy.mr-bond.de",
-  "adapterToken": "replace-with-token-from-webfrontend",
-  "sendIntervalSeconds": 60,
-  "commandPollIntervalSeconds": 30,
-  "sendOnlyChanged": true,
-  "minWriteIntervalSeconds": 10,
-  "datapoints": {
-    "batterySoc": "modbus.0.holdingRegisters.40001_SOC",
-    "batteryPower": "modbus.0.holdingRegisters.40002_Power",
-    "gridPower": "shelly.0.grid.power",
-    "wallboxAmpere": "go-e.0.ampere"
-  }
+    "backendUrl": "https://smartenergy.mr-bond.de",
+    "adapterToken": "replace-with-token-from-webfrontend",
+    "sendIntervalSeconds": 60,
+    "commandPollIntervalSeconds": 30,
+    "sendOnlyChanged": true,
+    "minWriteIntervalSeconds": 10,
+    "datapoints": {
+        "batterySoc": "modbus.0.holdingRegisters.40001_SOC",
+        "batteryPower": "modbus.0.holdingRegisters.40002_Power",
+        "gridPower": "shelly.0.grid.power",
+        "wallboxAmpere": "go-e.0.ampere"
+    }
 }

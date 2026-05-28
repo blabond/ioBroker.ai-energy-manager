@@ -1,375 +1,314 @@
 {
-  "id": "ConfigCustomAiEnergyManager",
-  "name": "ConfigCustomAiEnergyManager",
-  "metaData": {
+    "id": "ConfigCustomAiEnergyManager",
     "name": "ConfigCustomAiEnergyManager",
-    "type": "app",
-    "buildInfo": {
-      "buildVersion": "1.0.0",
-      "buildName": "ConfigCustomAiEnergyManager"
+    "metaData": {
+        "name": "ConfigCustomAiEnergyManager",
+        "type": "app",
+        "buildInfo": { "buildVersion": "1.0.0", "buildName": "ConfigCustomAiEnergyManager" },
+        "remoteEntry": { "name": "customComponents.js", "path": "", "type": "module" },
+        "ssrRemoteEntry": { "name": "customComponents.js", "path": "", "type": "module" },
+        "types": { "path": "", "name": "" },
+        "globalName": "ConfigCustomAiEnergyManager",
+        "pluginVersion": "0.2.5",
+        "publicPath": "./"
     },
-    "remoteEntry": {
-      "name": "customComponents.js",
-      "path": "",
-      "type": "module"
-    },
-    "ssrRemoteEntry": {
-      "name": "customComponents.js",
-      "path": "",
-      "type": "module"
-    },
-    "types": { "path": "", "name": "" },
-    "globalName": "ConfigCustomAiEnergyManager",
-    "pluginVersion": "0.2.5",
-    "publicPath": "./"
-  },
-  "shared": [
-    {
-      "id": "ConfigCustomAiEnergyManager:@emotion/react",
-      "name": "@emotion/react",
-      "version": "11.14.0",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js"
-          ]
+    "shared": [
+        {
+            "id": "ConfigCustomAiEnergyManager:@emotion/react",
+            "name": "@emotion/react",
+            "version": "11.14.0",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-RwV3sVk6.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:@emotion/styled",
-      "name": "@emotion/styled",
-      "version": "11.14.1",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-Bjagi3Hs.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:@emotion/styled",
+            "name": "@emotion/styled",
+            "version": "11.14.1",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-DtfZKKzV.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:@iobroker/adapter-react-v5",
-      "name": "@iobroker/adapter-react-v5",
-      "version": "8.2.2",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:@iobroker/adapter-react-v5",
+            "name": "@iobroker/adapter-react-v5",
+            "version": "8.2.2",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:@mui/icons-material",
-      "name": "@mui/icons-material",
-      "version": "6.5.0",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:@mui/icons-material",
+            "name": "@mui/icons-material",
+            "version": "6.5.0",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:@mui/material",
-      "name": "@mui/material",
-      "version": "6.5.0",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:@mui/material",
+            "name": "@mui/material",
+            "version": "6.5.0",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:react",
-      "name": "react",
-      "version": "18.3.1",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:react",
+            "name": "react",
+            "version": "18.3.1",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-RwV3sVk6.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:react-dom",
-      "name": "react-dom",
-      "version": "18.3.1",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:react-dom",
+            "name": "react-dom",
+            "version": "18.3.1",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:react/jsx-runtime",
-      "name": "react/jsx-runtime",
-      "version": "18.3.1",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:react/jsx-runtime",
+            "name": "react/jsx-runtime",
+            "version": "18.3.1",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
         },
-        "css": { "async": [], "sync": [] }
-      }
-    },
-    {
-      "id": "ConfigCustomAiEnergyManager:react-dom/client",
-      "name": "react-dom/client",
-      "version": "18.3.1",
-      "singleton": true,
-      "requiredVersion": "*",
-      "assets": {
-        "js": {
-          "async": [],
-          "sync": [
-            "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-vzzsfdoZ.js"
-          ]
+        {
+            "id": "ConfigCustomAiEnergyManager:react-dom/client",
+            "name": "react-dom/client",
+            "version": "18.3.1",
+            "singleton": true,
+            "requiredVersion": "*",
+            "assets": {
+                "js": {
+                    "async": [],
+                    "sync": [
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-B6AucIZ5.js"
+                    ]
+                },
+                "css": { "async": [], "sync": [] }
+            }
+        }
+    ],
+    "remotes": [],
+    "exposes": [
+        {
+            "id": "ConfigCustomAiEnergyManager:Components",
+            "name": "Components",
+            "assets": {
+                "js": { "async": [], "sync": ["assets/main-m6DB34FW.js"] },
+                "css": { "async": [], "sync": ["assets/main-C0rS7ABd.css"] }
+            },
+            "path": "./Components"
+        }
+    ],
+    "buildOutput": [
+        { "fileName": "assets/hostInit-B6G0CLCR.js", "type": "chunk", "isEntry": true, "size": 1312 },
+        { "fileName": "assets/index-Cb_D0XEf.js", "type": "chunk", "isEntry": true, "size": 725 },
+        { "fileName": "assets/main-m6DB34FW.js", "type": "chunk", "isEntry": true, "size": 120313 },
+        { "fileName": "assets/virtualExposes-zx0oS2EQ.js", "type": "chunk", "isEntry": true, "size": 139 },
+        { "fileName": "customComponents.js", "type": "chunk", "isEntry": true, "size": 162 },
+        {
+            "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-DU7rEG_n.js",
+            "type": "chunk",
+            "isEntry": false,
+            "size": 5600
         },
-        "css": { "async": [], "sync": [] }
-      }
+        {
+            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-RwV3sVk6.js",
+            "type": "chunk",
+            "isEntry": false,
+            "size": 32550
+        },
+        {
+            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-DtfZKKzV.js",
+            "type": "chunk",
+            "isEntry": false,
+            "size": 7699
+        },
+        {
+            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js",
+            "type": "chunk",
+            "isEntry": false,
+            "size": 7448938
+        },
+        {
+            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-B6AucIZ5.js",
+            "type": "chunk",
+            "isEntry": false,
+            "size": 1032
+        },
+        { "fileName": "assets/preload-helper-D5Yh7_hZ.js", "type": "chunk", "isEntry": false, "size": 1240 },
+        { "fileName": "assets/rolldown-runtime-Cyuzqnbw.js", "type": "chunk", "isEntry": false, "size": 826 },
+        {
+            "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DDnhN4u9.js",
+            "type": "chunk",
+            "isEntry": false,
+            "size": 58649
+        },
+        {
+            "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CiXZDKs4.js",
+            "type": "chunk",
+            "isEntry": false,
+            "size": 917
+        },
+        { "fileName": "assets/main-C0rS7ABd.css", "type": "asset", "isEntry": false, "size": 5375 },
+        { "fileName": "index.html", "type": "asset", "isEntry": false, "size": 540 },
+        { "fileName": "mf-entry-bootstrap-0.js", "type": "asset", "isEntry": false, "size": 672 }
+    ],
+    "assetAnalysis": {
+        "./main.jsx": {
+            "js": { "sync": ["assets/main-m6DB34FW.js"], "async": [] },
+            "css": { "sync": ["assets/main-C0rS7ABd.css"], "async": [] }
+        },
+        "react": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-RwV3sVk6.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "@emotion/react": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-RwV3sVk6.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "@emotion/styled": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-DtfZKKzV.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "react-dom": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "react/jsx-runtime": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "@mui/material": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "@mui/icons-material": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "@iobroker/adapter-react-v5": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-DxTJExAm.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        },
+        "react-dom/client": {
+            "js": {
+                "sync": [
+                    "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-B6AucIZ5.js"
+                ],
+                "async": []
+            },
+            "css": { "sync": [], "async": [] }
+        }
     }
-  ],
-  "remotes": [],
-  "exposes": [
-    {
-      "id": "ConfigCustomAiEnergyManager:Components",
-      "name": "Components",
-      "assets": {
-        "js": { "async": [], "sync": ["assets/main-B8zKNpy9.js"] },
-        "css": { "async": [], "sync": ["assets/main-C0rS7ABd.css"] }
-      },
-      "path": "./Components"
-    }
-  ],
-  "buildOutput": [
-    {
-      "fileName": "assets/hostInit-CFxXjdei.js",
-      "type": "chunk",
-      "isEntry": true,
-      "size": 1312
-    },
-    {
-      "fileName": "assets/index-BEY7z3x9.js",
-      "type": "chunk",
-      "isEntry": true,
-      "size": 725
-    },
-    {
-      "fileName": "assets/main-B8zKNpy9.js",
-      "type": "chunk",
-      "isEntry": true,
-      "size": 120313
-    },
-    {
-      "fileName": "assets/virtualExposes-BU4Kt82k.js",
-      "type": "chunk",
-      "isEntry": true,
-      "size": 139
-    },
-    {
-      "fileName": "customComponents.js",
-      "type": "chunk",
-      "isEntry": true,
-      "size": 162
-    },
-    {
-      "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-D_8M5SZg.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 5600
-    },
-    {
-      "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 32550
-    },
-    {
-      "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-Bjagi3Hs.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 7699
-    },
-    {
-      "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 7448983
-    },
-    {
-      "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-vzzsfdoZ.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 1032
-    },
-    {
-      "fileName": "assets/preload-helper-D9f-kLWf.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 1240
-    },
-    {
-      "fileName": "assets/rolldown-runtime-BYbx6iT9.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 826
-    },
-    {
-      "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CrBRV5Aj.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 58749
-    },
-    {
-      "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Ct62_K2n.js",
-      "type": "chunk",
-      "isEntry": false,
-      "size": 917
-    },
-    {
-      "fileName": "assets/main-C0rS7ABd.css",
-      "type": "asset",
-      "isEntry": false,
-      "size": 5375
-    },
-    {
-      "fileName": "index.html",
-      "type": "asset",
-      "isEntry": false,
-      "size": 478
-    },
-    {
-      "fileName": "mf-entry-bootstrap-0.js",
-      "type": "asset",
-      "isEntry": false,
-      "size": 672
-    }
-  ],
-  "assetAnalysis": {
-    "./main.jsx": {
-      "js": { "sync": ["assets/main-B8zKNpy9.js"], "async": [] },
-      "css": { "sync": ["assets/main-C0rS7ABd.css"], "async": [] }
-    },
-    "react": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "@emotion/react": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-C_QoYoiQ.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "@emotion/styled": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-Bjagi3Hs.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "react-dom": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "react/jsx-runtime": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "@mui/material": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "@mui/icons-material": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "@iobroker/adapter-react-v5": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-Qmea7kmD.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    },
-    "react-dom/client": {
-      "js": {
-        "sync": [
-          "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-vzzsfdoZ.js"
-        ],
-        "async": []
-      },
-      "css": { "sync": [], "async": [] }
-    }
-  }
 }

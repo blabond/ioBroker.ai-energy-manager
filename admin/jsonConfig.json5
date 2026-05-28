@@ -1,17 +1,17 @@
 {
-  i18n: true,
-  type: "panel",
-  items: {
-    _aiEnergyManagerConfig: {
-      type: "custom",
-      bundlerType: "module",
-      url: "custom/customComponents.js?v=B8zKNpy9",
-      name: "ConfigCustomAiEnergyManager/Components/AemConfig",
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+    i18n: true,
+    type: 'panel',
+    items: {
+        _aiEnergyManagerConfig: {
+            type: 'custom',
+            bundlerType: 'module',
+            url: 'custom/customComponents.js?v=m6DB34FW',
+            name: 'ConfigCustomAiEnergyManager/Components/AemConfig',
+            xs: 12,
+            sm: 12,
+            md: 12,
+            lg: 12,
+            xl: 12,
+        },
     },
-  },
 }

@@ -159,6 +159,9 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
+- Fix ioBroker checker warnings for formatting config, license metadata, CI action pinning and dev dependency declarations.
+- Add TypeScript project checks, migrate admin i18n files to short format and loosen adapter test workflow pinning.
+
 ### 0.2.3 (2026-05-28)
 
 - RepoCheck fixes.
