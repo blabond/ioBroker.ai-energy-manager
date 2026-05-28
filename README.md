@@ -157,6 +157,10 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+
+- Fix npm publish release workflow handling for generated admin assets.
+
 ### 0.2.2 (2026-05-28)
 
 - RepoCheck fixes.

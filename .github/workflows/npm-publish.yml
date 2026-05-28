@@ -75,9 +75,9 @@ jobs:
           PREID: ${{ inputs.preid }}
         run: |
           if [[ "$BUMP" == pre* ]]; then
-            printf '%s\n' "${PREID:-alpha}" | npm run release -- "$BUMP" --yes
+            printf '%s\n' "${PREID:-alpha}" | npm run release -- "$BUMP" --yes --all
           else
-            npm run release -- "$BUMP" --yes
+            npm run release -- "$BUMP" --yes --all
           fi
 
       - name: Verify release tag
