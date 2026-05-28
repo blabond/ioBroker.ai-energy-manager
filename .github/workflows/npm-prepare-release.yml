@@ -95,6 +95,8 @@ jobs:
             exit 1
           fi
 
+          npm install --package-lock-only --ignore-scripts
+
           if [[ -n "$(git status --porcelain)" ]]; then
             git add -A
             git commit -m "chore: release ${TAG}"
@@ -103,6 +105,12 @@ jobs:
           COMMITTED_VERSION="$(git show HEAD:package.json | node -e 'let s = ""; process.stdin.on("data", d => s += d).on("end", () => console.log(JSON.parse(s).version));')"
           if [[ "$COMMITTED_VERSION" != "$VERSION" ]]; then
             echo "HEAD contains package version ${COMMITTED_VERSION}, but working tree contains ${VERSION}" >&2
+            exit 1
+          fi
+
+          COMMITTED_LOCK_VERSION="$(git show HEAD:package-lock.json | node -e 'let s = ""; process.stdin.on("data", d => s += d).on("end", () => { const lock = JSON.parse(s); console.log(`${lock.version} ${lock.packages[""].version}`); });')"
+          if [[ "$COMMITTED_LOCK_VERSION" != "$VERSION $VERSION" ]]; then
+            echo "HEAD contains package-lock versions ${COMMITTED_LOCK_VERSION}, expected ${VERSION} ${VERSION}" >&2
             exit 1
           fi
 
