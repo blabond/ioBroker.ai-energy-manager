@@ -113,7 +113,8 @@ jobs:
           if git rev-parse --verify --quiet "refs/tags/${TAG}"; then
             git tag -d "$TAG"
           fi
-          git push origin "HEAD:refs/heads/${BRANCH}"
+          git fetch origin "${BRANCH}" || true
+          git push --force-with-lease origin "HEAD:refs/heads/${BRANCH}"
           {
             echo "TAG=${TAG}"
             echo "BRANCH=${BRANCH}"
