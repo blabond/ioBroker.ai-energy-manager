@@ -81,7 +81,9 @@ jobs:
         run: |
           TAG="v$(node -p "require('./package.json').version")"
           BRANCH="release/${TAG}"
-          git tag -d "$TAG"
+          if git rev-parse --verify --quiet "refs/tags/${TAG}"; then
+            git tag -d "$TAG"
+          fi
           git push origin "HEAD:refs/heads/${BRANCH}"
           {
             echo "TAG=${TAG}"
