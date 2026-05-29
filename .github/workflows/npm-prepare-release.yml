@@ -27,6 +27,7 @@ jobs:
               with:
                   ref: ${{ github.ref_name }}
                   fetch-depth: 0
+                  token: ${{ secrets.AUTOFIX_TOKEN }}
 
             - uses: actions/setup-node@v6
               with:
@@ -217,13 +218,11 @@ jobs:
               run: |
                   started_at="$(date +%s)"
 
-                  gh workflow run test-and-release.yml --ref "${BRANCH}"
-
                   while true; do
                     run="$(gh run list \
                       --workflow test-and-release.yml \
                       --branch "${BRANCH}" \
-                      --event workflow_dispatch \
+                      --event push \
                       --json conclusion,createdAt,databaseId,headSha,status,url \
                       --limit 20 \
                       --jq ".[] | select(.headSha == \"${RELEASE_SHA}\" and (.createdAt | fromdateiso8601) >= ${started_at}) | @base64" \
