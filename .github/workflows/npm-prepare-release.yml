@@ -173,12 +173,47 @@ jobs:
 
             - name: Wait for release branch checks
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
-                  node scripts/wait-for-workflow-run.mjs \
-                    --workflow test-and-release.yml \
-                    --ref "${BRANCH}" \
-                    --sha "${RELEASE_SHA}"
+                  started_at="$(date +%s)"
+
+                  gh workflow run test-and-release.yml --ref "${BRANCH}"
+
+                  while true; do
+                    run="$(gh run list \
+                      --workflow test-and-release.yml \
+                      --branch "${BRANCH}" \
+                      --event workflow_dispatch \
+                      --json conclusion,createdAt,databaseId,headSha,status,url \
+                      --limit 20 \
+                      --jq ".[] | select(.headSha == \"${RELEASE_SHA}\" and (.createdAt | fromdateiso8601) >= ${started_at}) | @base64" \
+                      | head -n 1)"
+
+                    if [[ -n "${run}" ]]; then
+                      status="$(echo "${run}" | base64 --decode | jq -r ".status")"
+                      conclusion="$(echo "${run}" | base64 --decode | jq -r ".conclusion")"
+                      url="$(echo "${run}" | base64 --decode | jq -r ".url")"
+
+                      echo "test-and-release.yml for ${BRANCH} is ${status}: ${url}"
+
+                      if [[ "${status}" == "completed" ]]; then
+                        if [[ "${conclusion}" == "success" ]]; then
+                          exit 0
+                        fi
+                        echo "test-and-release.yml for ${BRANCH} completed with ${conclusion}: ${url}" >&2
+                        exit 1
+                      fi
+                    else
+                      echo "Waiting for test-and-release.yml for ${BRANCH} at ${RELEASE_SHA}..."
+                    fi
+
+                    if (( $(date +%s) - started_at > 900 )); then
+                      echo "Timed out waiting for test-and-release.yml for ${BRANCH}." >&2
+                      exit 1
+                    fi
+
+                    sleep 10
+                  done
 
             - name: Write summary
               run: |
