@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.2.3",
+        "version": "0.3.1",
         "news": {
+            "0.3.1": {
+                "en": "Fix ioBroker checker warnings for formatting config and dev dependency declarations.\nUpdate admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.",
+                "de": "Reparieren Sie ioBroker Checker Warnungen für die Formatierung von Config- und Dev-Abhängigkeitserklärungen.\nAktualisieren Sie Adminabhängigkeiten und halten Sie den React/MUI admin UI kompatibel mit der ioBroker Admin Laufzeit.",
+                "ru": "Исправьте предупреждения ioBroker для форматирования деклараций о зависимости от конфигураций и разработчиков.\nОбновляйте зависимости администратора и сохраняйте UI администратора React / MUI совместимым со временем выполнения ioBroker Admin.",
+                "pt": "Corrigir avisos de verificação ioBroker para formatar declarações de dependência de configuração e dev.\nAtualizar dependências administrativas e manter o React/MUI admin UI compatível com o ioBroker Admin runtime.",
+                "nl": "Fix ioBroker checker waarschuwingen voor het formatteren van config en dev afhankelijkheid verklaringen.\nUpdate admin afhankelijkheden en houd de React/MUI admin UI compatibel met de ioBroker Admin runtime.",
+                "fr": "Correction des avertissements de vérification ioBroker pour le formatage des déclarations de configuration et de dépendance.\nMettre à jour les dépendances d'administration et garder l'interface d'administration React/MUI compatible avec l'exécution ioBroker Admin.",
+                "it": "Fissare gli avvisi di checker ioBroker per la formattazione delle dichiarazioni di configurazione e di dipendenza di sviluppo.\nAggiornare le dipendenze dell'amministratore e mantenere l'interfaccia utente di amministrazione React/MUI compatibile con il runtime di iBroker Admin.",
+                "es": "Arregla las advertencias de control de ioBroker para formatear las declaraciones de config y dev dependencia.\nActualizar las dependencias de administración y mantener la interfaz de administración React/MUI compatible con el tiempo de ejecución de ioBroker Admin.",
+                "pl": "Fix joBroker checker ostrzeżenia do formatowania deklaracji zależności config i dev.\nAktualizuj zależności admin i zachowaj interfejs użytkownika React / MUI zgodny z czasem działania jOBroker Admin.",
+                "uk": "Виправлення попередження ioBroker для налаштування форматування та декларацій залежностей.\nОновити залежності адміністратора та зберігати сумісність з адміністратором ioBroker.",
+                "zh-cn": "修正 ioBroker 检查器警告,用于格式化配置和dev 依赖性声明.\n更新管理员依赖性,并保持React/MUI管理员UI与ioBroker管理员运行时间兼容."
+            },
             "0.2.3": {
                 "en": "RepoCheck fixes.",
                 "de": "RepoCheck repariert.",
