@@ -341,6 +341,7 @@ function App({
     const [dashboardStatus, setDashboardStatus] = useState('');
     const [busyConfig, setBusyConfig] = useState(false);
     const [selectStateIndex, setSelectStateIndex] = useState(null);
+    const objectSelectionSocket = getObjectSelectionSocket(adminSocket);
     const updateAvailable = useUiUpdateAvailable();
     const observedThemeType = useObservedThemeType();
     const settingsRef = useRef(settings);
@@ -541,7 +542,7 @@ function App({
 
     async function selectStatePath(index) {
         const current = settings.datapointAssignments?.[index]?.stateId || '';
-        if (adminSocket?.sendTo) {
+        if (canReadStateObjects(objectSelectionSocket)) {
             setSelectStateIndex(index);
             return;
         }
@@ -636,7 +637,7 @@ function App({
                     </Stack>
                 </Paper>
             </Box>
-            {adminSocket?.sendTo && selectStateIndex !== null ? (
+            {canReadStateObjects(objectSelectionSocket) && selectStateIndex !== null ? (
                 <StateSelectDialog
                     onClose={() => setSelectStateIndex(null)}
                     onOk={selected => {
@@ -646,7 +647,7 @@ function App({
                         setSelectStateIndex(null);
                     }}
                     selected={settings.datapointAssignments?.[selectStateIndex]?.stateId || ''}
-                    socket={adminSocket}
+                    socket={objectSelectionSocket}
                     title={t('selectStatePathTitle')}
                 />
             ) : null}
@@ -1815,6 +1816,14 @@ async function loadStateObjects(socket) {
         .sort((left, right) => left.id.localeCompare(right.id));
 
     return states;
+}
+
+function getObjectSelectionSocket(adminSocket) {
+    return [adminSocket, window.socket, window.ioBrokerSocket, window.adminSocket].find(canReadStateObjects) || null;
+}
+
+function canReadStateObjects(socket) {
+    return Boolean(socket?.getObjectView || socket?.getObjects);
 }
 
 async function readStateObjects(socket) {
