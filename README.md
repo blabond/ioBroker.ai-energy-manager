@@ -159,19 +159,12 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
-### 0.3.0 (2026-05-29)
-
-- Fix ioBroker checker warnings for formatting config, license metadata, CI action pinning and dev dependency declarations.
+- Fix ioBroker checker warnings for formatting config and dev dependency declarations.
 - Update admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.
 
 ### 0.2.3 (2026-05-28)
 
 - RepoCheck fixes.
-
-### 0.2.1 (2026-05-24)
-
-- Fix grid export handling.
-- Fix shutdown timer scheduling during adapter restarts.
 
 ### 0.2.0 (2026-05-22)
 
