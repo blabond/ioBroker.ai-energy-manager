@@ -1,18 +1,27 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { federation } from '@module-federation/vite';
-import { moduleFederationShared } from '@iobroker/adapter-react-v5/modulefederation.admin.config.js';
 import { resolve } from 'node:path';
 
 const sharedPackages = [
     '@emotion/react',
     '@emotion/styled',
-    '@iobroker/adapter-react-v5',
     '@mui/icons-material',
     '@mui/material',
     'react',
     'react-dom',
 ];
+
+const makeShared = packages =>
+    Object.fromEntries(
+        packages.map(packageName => [
+            packageName,
+            {
+                requiredVersion: '*',
+                singleton: true,
+            },
+        ]),
+    );
 
 export default defineConfig({
     base: './',
@@ -27,7 +36,7 @@ export default defineConfig({
                 './Components': './main.jsx',
             },
             remotes: {},
-            shared: moduleFederationShared(sharedPackages),
+            shared: makeShared(sharedPackages),
         }),
         react(),
     ],

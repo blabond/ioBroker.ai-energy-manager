@@ -23,7 +23,7 @@
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-RwV3sVk6.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-Czu00J3i.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -39,23 +39,7 @@
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-DtfZKKzV.js"
-                    ]
-                },
-                "css": { "async": [], "sync": [] }
-            }
-        },
-        {
-            "id": "ConfigCustomAiEnergyManager:@iobroker/adapter-react-v5",
-            "name": "@iobroker/adapter-react-v5",
-            "version": "8.2.6",
-            "singleton": true,
-            "requiredVersion": "*",
-            "assets": {
-                "js": {
-                    "async": [],
-                    "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-sYi2VwcR.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_styled__loadShare__.mjs-CFOgSXap.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -64,14 +48,14 @@
         {
             "id": "ConfigCustomAiEnergyManager:@mui/icons-material",
             "name": "@mui/icons-material",
-            "version": "6.5.0",
+            "version": "9.0.1",
             "singleton": true,
             "requiredVersion": "*",
             "assets": {
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-sYi2VwcR.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_mui_mf_1_icons_mf_2_material__loadShare__.mjs-0n5ScqrI.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -80,14 +64,14 @@
         {
             "id": "ConfigCustomAiEnergyManager:@mui/material",
             "name": "@mui/material",
-            "version": "6.5.0",
+            "version": "9.0.1",
             "singleton": true,
             "requiredVersion": "*",
             "assets": {
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-sYi2VwcR.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_mui_mf_1_material__loadShare__.mjs-Cwz4oAqG.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -96,14 +80,14 @@
         {
             "id": "ConfigCustomAiEnergyManager:react",
             "name": "react",
-            "version": "18.3.1",
+            "version": "19.2.6",
             "singleton": true,
             "requiredVersion": "*",
             "assets": {
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-RwV3sVk6.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_emotion_mf_1_react__loadShare__.mjs-Czu00J3i.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -112,14 +96,14 @@
         {
             "id": "ConfigCustomAiEnergyManager:react-dom",
             "name": "react-dom",
-            "version": "18.3.1",
+            "version": "19.2.6",
             "singleton": true,
             "requiredVersion": "*",
             "assets": {
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-sYi2VwcR.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_mui_mf_1_material__loadShare__.mjs-Cwz4oAqG.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -128,14 +112,14 @@
         {
             "id": "ConfigCustomAiEnergyManager:react/jsx-runtime",
             "name": "react/jsx-runtime",
-            "version": "18.3.1",
+            "version": "19.2.6",
             "singleton": true,
             "requiredVersion": "*",
             "assets": {
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_iobroker_mf_1_adapter_mf_2_react_mf_2_v5__loadShare__.mjs-sYi2VwcR.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_mui_mf_1_icons_mf_2_material__loadShare__.mjs-0n5ScqrI.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -144,14 +128,14 @@
         {
             "id": "ConfigCustomAiEnergyManager:react-dom/client",
             "name": "react-dom/client",
-            "version": "18.3.1",
+            "version": "19.2.6",
             "singleton": true,
             "requiredVersion": "*",
             "assets": {
                 "js": {
                     "async": [],
                     "sync": [
-                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-4lh7bkKB.js"
+                        "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom_mf_1_client__loadShare__.mjs-B_JY9QdQ.js"
                     ]
                 },
                 "css": { "async": [], "sync": [] }
@@ -164,8 +148,8 @@
             "id": "ConfigCustomAiEnergyManager:Components",
             "name": "Components",
             "assets": {
-                "js": { "async": [], "sync": ["assets/main-BVJM4WD0.js"] },
-                "css": { "async": [], "sync": ["assets/main-C0rS7ABd.css"] }
+                "js": { "async": [], "sync": ["assets/main-D6DvoK1k.js"] },
+                "css": { "async": [], "sync": ["assets/main-C7rLhy_G.css"] }
             },
             "path": "./Components"
         }

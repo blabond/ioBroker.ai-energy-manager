@@ -427,6 +427,31 @@
     border-left-color: #2f9e44;
 }
 
+.state-select-dialog-content {
+    display: flex;
+    min-height: 60vh;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.state-select-table-container {
+    min-height: 0;
+    flex: 1 1 auto;
+}
+
+.state-select-table {
+    table-layout: fixed;
+}
+
+.state-select-table td {
+    overflow-wrap: anywhere;
+    vertical-align: top;
+}
+
+.state-select-row {
+    cursor: pointer;
+}
+
 @media (max-width: 760px) {
     .aem-root {
         padding: 8px;

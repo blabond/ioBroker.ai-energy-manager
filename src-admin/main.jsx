@@ -6,6 +6,10 @@ import {
     Button,
     Chip,
     Collapse,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
     Divider,
     IconButton,
     InputAdornment,
@@ -28,12 +32,10 @@ import {
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutlineOutlined';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { DialogSelectID, I18n } from '@iobroker/adapter-react-v5';
-import { dictionary } from '@iobroker/adapter-react-v5/build/dictionary';
 import translationsDe from '../admin/i18n/de.json';
 import translationsEn from '../admin/i18n/en.json';
 import translationsEs from '../admin/i18n/es.json';
@@ -73,12 +75,95 @@ const ADAPTER_TRANSLATIONS = {
     'zh-cn': translationsZhCn,
 };
 
-I18n.setTranslations(dictionary);
-applyAdapterTranslations();
-I18n.setLanguage(resolveLanguage(window.sysLang || window.systemLang || 'en'));
+const ADMIN_TRANSLATIONS = {
+    en: {
+        ra_Cancel: 'Cancel',
+        ra_Ok: 'Ok',
+        ra_PleaseSelectObjectId: 'Please select object ID ...',
+        ra_Selected: 'Selected',
+    },
+    de: {
+        ra_Cancel: 'Abbrechen',
+        ra_Ok: 'OK',
+        ra_PleaseSelectObjectId: 'Bitte Objekt-ID auswählen ...',
+        ra_Selected: 'Ausgewählt',
+    },
+    ru: {
+        ra_Cancel: 'Отмена',
+        ra_Ok: 'Ok',
+        ra_PleaseSelectObjectId: 'Пожалуйста, выберите идентификатор объекта ...',
+        ra_Selected: 'выбранный',
+    },
+    pt: {
+        ra_Cancel: 'Cancelar',
+        ra_Ok: 'Está bem',
+        ra_PleaseSelectObjectId: 'Selecione o ID do objeto ...',
+        ra_Selected: 'Selecionado',
+    },
+    nl: {
+        ra_Cancel: 'Annuleer',
+        ra_Ok: 'OK',
+        ra_PleaseSelectObjectId: 'Selecteer object-ID ...',
+        ra_Selected: 'Geselecteerd',
+    },
+    fr: {
+        ra_Cancel: 'Annuler',
+        ra_Ok: "D'accord",
+        ra_PleaseSelectObjectId: "Veuillez sélectionner l'ID d'objet ...",
+        ra_Selected: 'Choisi',
+    },
+    it: {
+        ra_Cancel: 'Annulla',
+        ra_Ok: 'Ok',
+        ra_PleaseSelectObjectId: "Seleziona l'ID oggetto ...",
+        ra_Selected: 'Selezionato',
+    },
+    es: {
+        ra_Cancel: 'Cancelar',
+        ra_Ok: 'Okay',
+        ra_PleaseSelectObjectId: 'Por favor seleccione ID de objeto ...',
+        ra_Selected: 'Seleccionado',
+    },
+    pl: {
+        ra_Cancel: 'Anuluj',
+        ra_Ok: 'Dobrze',
+        ra_PleaseSelectObjectId: 'Wybierz identyfikator obiektu ...',
+        ra_Selected: 'Wybrany',
+    },
+    uk: {
+        ra_Cancel: 'Скасувати',
+        ra_Ok: 'В порядку',
+        ra_PleaseSelectObjectId: "Виберіть ідентифікатор об'єкта ...",
+        ra_Selected: 'Вибране',
+    },
+    'zh-cn': {
+        ra_Cancel: '取消',
+        ra_Ok: '好',
+        ra_PleaseSelectObjectId: '请选择对象ID ...',
+        ra_Selected: '已选',
+    },
+};
+
+const i18n = {
+    language: resolveLanguage(window.sysLang || window.systemLang || 'en'),
+    translations: mergeTranslations(ADMIN_TRANSLATIONS, ADAPTER_TRANSLATIONS),
+    setLanguage(language) {
+        this.language = resolveLanguage(language);
+    },
+    getLanguage() {
+        return this.language;
+    },
+    t(key, ...args) {
+        let text = this.translations[this.language]?.[key] || this.translations.en?.[key] || key;
+        for (const arg of args) {
+            text = text.replace('%s', arg);
+        }
+        return text;
+    },
+};
 
 function t(key, ...args) {
-    return I18n.t(key, ...args);
+    return i18n.t(key, ...args);
 }
 
 function resolveLanguage(language) {
@@ -99,21 +184,30 @@ function resolveLanguage(language) {
           : 'en';
 }
 
-function applyAdapterTranslations() {
-    I18n.extendTranslations(ADAPTER_TRANSLATIONS);
+function mergeTranslations(...translationSets) {
+    const merged = {};
+    for (const translations of translationSets) {
+        for (const [language, words] of Object.entries(translations)) {
+            merged[language] = {
+                ...(merged[language] || {}),
+                ...words,
+            };
+        }
+    }
+    return merged;
 }
 
 function useAdminLanguage(adminSocket, adminLanguage) {
     const [activeLanguage, setActiveLanguage] = useState(() =>
         resolveLanguage(
-            adminLanguage || adminSocket?.systemLang || window.sysLang || window.systemLang || I18n.getLanguage(),
+            adminLanguage || adminSocket?.systemLang || window.sysLang || window.systemLang || i18n.getLanguage(),
         ),
     );
 
     useEffect(() => {
         let active = true;
         const immediateLanguage = resolveLanguage(
-            adminLanguage || adminSocket?.systemLang || window.sysLang || window.systemLang || I18n.getLanguage(),
+            adminLanguage || adminSocket?.systemLang || window.sysLang || window.systemLang || i18n.getLanguage(),
         );
         setActiveLanguage(immediateLanguage);
 
@@ -136,8 +230,7 @@ function useAdminLanguage(adminSocket, adminLanguage) {
         };
     }, [adminLanguage, adminSocket]);
 
-    applyAdapterTranslations();
-    I18n.setLanguage(activeLanguage);
+    i18n.setLanguage(activeLanguage);
     return activeLanguage;
 }
 
@@ -518,8 +611,7 @@ function App({
                 </Paper>
             </Box>
             {adminSocket?.sendTo && selectStateIndex !== null ? (
-                <DialogSelectID
-                    columns={['name', 'type', 'role', 'val']}
+                <StateSelectDialog
                     onClose={() => setSelectStateIndex(null)}
                     onOk={selected => {
                         if (typeof selected === 'string' && selected) {
@@ -529,13 +621,150 @@ function App({
                     }}
                     selected={settings.datapointAssignments?.[selectStateIndex]?.stateId || ''}
                     socket={adminSocket}
-                    theme={theme}
-                    themeType={themeType}
                     title={t('selectStatePathTitle')}
-                    types="state"
                 />
             ) : null}
         </ThemeProvider>
+    );
+}
+
+function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
+    const [filter, setFilter] = useState('');
+    const [states, setStates] = useState([]);
+    const [activeState, setActiveState] = useState(selected || '');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        let active = true;
+        loadStateObjects(socket)
+            .then(objects => {
+                if (!active) {
+                    return;
+                }
+                setStates(objects);
+                setLoading(false);
+            })
+            .catch(loadError => {
+                if (!active) {
+                    return;
+                }
+                setError(loadError?.message || t('objectSelectionUnavailable'));
+                setLoading(false);
+            });
+        return () => {
+            active = false;
+        };
+    }, [socket]);
+
+    const filteredStates = useMemo(() => {
+        const words = filter.toLowerCase().split(/\s+/u).filter(Boolean);
+        if (!words.length) {
+            return states.slice(0, 250);
+        }
+        return states
+            .filter(state => {
+                const haystack =
+                    `${state.id} ${state.name} ${state.role} ${state.type} ${state.value ?? ''}`.toLowerCase();
+                return words.every(word => haystack.includes(word));
+            })
+            .slice(0, 250);
+    }, [filter, states]);
+
+    const selectedState = states.find(state => state.id === activeState);
+    const dialogTitle =
+        selectedState || activeState ? (
+            <span>
+                {t('ra_Selected')} <strong>{selectedState?.name || activeState}</strong>
+                {selectedState?.name && selectedState.id !== selectedState.name ? ` [${selectedState.id}]` : ''}
+            </span>
+        ) : (
+            title || t('ra_PleaseSelectObjectId')
+        );
+
+    return (
+        <Dialog
+            fullWidth
+            maxWidth="lg"
+            open
+            onClose={onClose}
+        >
+            <DialogTitle>{dialogTitle}</DialogTitle>
+            <DialogContent className="state-select-dialog-content">
+                <TextField
+                    autoFocus
+                    fullWidth
+                    label={t('selectStatePath')}
+                    margin="dense"
+                    value={filter}
+                    onChange={event => setFilter(event.target.value)}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+                {error ? <Alert severity="error">{error}</Alert> : null}
+                {loading ? <Alert severity="info">{t('configLoading')}</Alert> : null}
+                {!loading && !error ? (
+                    <TableContainer className="state-select-table-container">
+                        <Table
+                            size="small"
+                            stickyHeader
+                            className="state-select-table"
+                        >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>State ID</TableCell>
+                                    <TableCell>{t('value')}</TableCell>
+                                    <TableCell>{t('type')}</TableCell>
+                                    <TableCell>Role</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {filteredStates.map(state => (
+                                    <TableRow
+                                        hover
+                                        key={state.id}
+                                        selected={state.id === activeState}
+                                        className="state-select-row"
+                                        onClick={() => setActiveState(state.id)}
+                                        onDoubleClick={() => onOk(state.id)}
+                                    >
+                                        <TableCell>
+                                            <Typography variant="body2">{state.name || state.id}</Typography>
+                                            {state.name && state.name !== state.id ? (
+                                                <Typography
+                                                    variant="caption"
+                                                    color="text.secondary"
+                                                >
+                                                    {state.id}
+                                                </Typography>
+                                            ) : null}
+                                        </TableCell>
+                                        <TableCell>{formatStateValue(state.value)}</TableCell>
+                                        <TableCell>{state.type || '-'}</TableCell>
+                                        <TableCell>{state.role || '-'}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                ) : null}
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={onClose}>{t('ra_Cancel')}</Button>
+                <Button
+                    variant="contained"
+                    disabled={!activeState}
+                    onClick={() => onOk(activeState)}
+                >
+                    {t('ra_Ok')}
+                </Button>
+            </DialogActions>
+        </Dialog>
     );
 }
 
@@ -1474,6 +1703,58 @@ function displayDatapointKey(key) {
 
 function formatErrors(result) {
     return result?.errors?.length ? t('errorPrefix', result.errors.join(', ')) : t('errorUnknown');
+}
+
+async function loadStateObjects(socket) {
+    const objects = await readStateObjects(socket);
+    const states = Object.entries(objects || {})
+        .filter(([, object]) => object?.type === 'state')
+        .map(([id, object]) => ({
+            id,
+            name: localizedObjectName(object.common?.name) || id,
+            role: object.common?.role || '',
+            type: object.common?.type || '',
+            value: object.common?.def,
+        }))
+        .sort((left, right) => left.id.localeCompare(right.id));
+
+    return states;
+}
+
+async function readStateObjects(socket) {
+    if (socket?.getObjectView) {
+        const result = await socket.getObjectView('system', 'state', {
+            startkey: '',
+            endkey: '\u9999',
+        });
+        if (Array.isArray(result?.rows)) {
+            return Object.fromEntries(result.rows.map(row => [row.id, row.value]));
+        }
+        if (result && typeof result === 'object') {
+            return result;
+        }
+    }
+    if (socket?.getObjects) {
+        return socket.getObjects(false);
+    }
+    throw new Error(t('objectSelectionUnavailable'));
+}
+
+function localizedObjectName(name) {
+    if (!name || typeof name !== 'object') {
+        return String(name || '');
+    }
+    return name[i18n.getLanguage()] || name.en || name.de || Object.values(name).find(Boolean) || '';
+}
+
+function formatStateValue(value) {
+    if (value === null || value === undefined || value === '') {
+        return '-';
+    }
+    if (typeof value === 'object') {
+        return JSON.stringify(value);
+    }
+    return String(value);
 }
 
 function isErrorStatus(value) {
