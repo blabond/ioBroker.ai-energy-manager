@@ -157,6 +157,8 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+
 ### 0.3.1 (2026-05-29)
 
 - Fix ioBroker checker warnings for formatting config and dev dependency declarations.
