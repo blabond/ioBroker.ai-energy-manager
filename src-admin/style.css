@@ -434,22 +434,87 @@
     gap: 10px;
 }
 
-.state-select-table-container {
-    min-height: 0;
+.state-select-tree {
     flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    border: 1px solid rgba(127, 127, 127, 0.22);
+    border-radius: 6px;
+    background: rgba(127, 127, 127, 0.035);
+    padding: 6px;
 }
 
-.state-select-table {
-    table-layout: fixed;
-}
-
-.state-select-table td {
-    overflow-wrap: anywhere;
-    vertical-align: top;
-}
-
-.state-select-row {
+.state-tree-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
     cursor: pointer;
+    border-radius: 4px;
+    padding: 3px 8px 3px 4px;
+}
+
+.state-tree-row:hover {
+    background: rgba(127, 127, 127, 0.12);
+}
+
+.state-tree-row-selected {
+    background: rgba(25, 118, 210, 0.16);
+}
+
+.state-tree-toggle {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    transition: transform 160ms ease;
+}
+
+.state-tree-toggle-open {
+    transform: rotate(180deg);
+}
+
+.state-tree-icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.state-tree-icon-folder {
+    border: 1px solid rgba(127, 127, 127, 0.3);
+    background: rgba(127, 127, 127, 0.14);
+}
+
+.state-tree-icon-state {
+    background: rgba(46, 125, 50, 0.16);
+    color: #2e7d32;
+}
+
+.state-tree-labels {
+    min-width: 0;
+}
+
+.state-tree-labels p {
+    overflow-wrap: anywhere;
+}
+
+.state-select-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid rgba(127, 127, 127, 0.18);
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.state-select-details-id {
+    overflow-wrap: anywhere;
+    font-weight: 600;
 }
 
 @media (max-width: 760px) {

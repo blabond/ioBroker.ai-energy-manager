@@ -60,8 +60,8 @@
             "id": "ConfigCustomAiEnergyManager:Components",
             "name": "Components",
             "assets": {
-                "js": { "async": [], "sync": ["assets/main-Cpvl--Ao.js"] },
-                "css": { "async": [], "sync": ["assets/main-C7rLhy_G.css"] }
+                "js": { "async": [], "sync": ["assets/main-BsDDbeMX.js"] },
+                "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },
             "path": "./Components"
         }

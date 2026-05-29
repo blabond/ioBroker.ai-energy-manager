@@ -5,25 +5,25 @@
     "src": "../virtual:mf-REMOTE_ENTRY_ID:__mfe_internal__ConfigCustomAiEnergyManager__customComponents_js",
     "isEntry": true,
     "imports": [
-      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CVZ358cI.js"
+      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CStEubjY.js"
     ]
   },
   "../virtual:mf-exposes:__mfe_internal__ConfigCustomAiEnergyManager__customComponents_js": {
-    "file": "assets/virtualExposes-BGWuS58U.js",
+    "file": "assets/virtualExposes-D9pg09pk.js",
     "name": "virtualExposes",
     "src": "../virtual:mf-exposes:__mfe_internal__ConfigCustomAiEnergyManager__customComponents_js",
     "isEntry": true,
     "imports": [
-      "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Eyjwtykx.js"
+      "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DJV66KHV.js"
     ]
   },
   "../virtual:mf-localSharedImportMap:__mfe_internal__ConfigCustomAiEnergyManager": {
-    "file": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-RrjT7z7h.js",
+    "file": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-ya4cw2nQ.js",
     "name": "_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager",
     "src": "../virtual:mf-localSharedImportMap:__mfe_internal__ConfigCustomAiEnergyManager",
     "isDynamicEntry": true,
     "imports": [
-      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CVZ358cI.js"
+      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CStEubjY.js"
     ]
   },
   "../virtual:mf:__mfe_internal__ConfigCustomAiEnergyManager__H_A_I__hostAutoInit__H_A_I__.js": {
@@ -35,7 +35,7 @@
       "_preload-helper-D5Yh7_hZ.js"
     ],
     "dynamicImports": [
-      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CVZ358cI.js"
+      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CStEubjY.js"
     ]
   },
   "__virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_mui_mf_1_material__loadShare__.mjs-CCrpV9wy.js": {
@@ -54,19 +54,19 @@
     "file": "assets/preload-helper-D5Yh7_hZ.js",
     "name": "preload-helper"
   },
-  "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CVZ358cI.js": {
-    "file": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CVZ358cI.js",
+  "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CStEubjY.js": {
+    "file": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CStEubjY.js",
     "name": "virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js",
     "imports": [
       "_preload-helper-D5Yh7_hZ.js"
     ],
     "dynamicImports": [
       "../virtual:mf-localSharedImportMap:__mfe_internal__ConfigCustomAiEnergyManager",
-      "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Eyjwtykx.js"
+      "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DJV66KHV.js"
     ]
   },
-  "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Eyjwtykx.js": {
-    "file": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Eyjwtykx.js",
+  "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DJV66KHV.js": {
+    "file": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DJV66KHV.js",
     "name": "virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js",
     "imports": [
       "_preload-helper-D5Yh7_hZ.js"
@@ -76,7 +76,7 @@
     ]
   },
   "index.html": {
-    "file": "assets/index-Cymvw90z.js",
+    "file": "assets/index-1Hk1QpZt.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -86,7 +86,7 @@
     ]
   },
   "main.jsx": {
-    "file": "assets/main-Cpvl--Ao.js",
+    "file": "assets/main-BsDDbeMX.js",
     "name": "main",
     "src": "main.jsx",
     "isEntry": true,
@@ -94,11 +94,11 @@
       "__virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_mui_mf_1_material__loadShare__.mjs-CCrpV9wy.js",
       "__virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react__loadShare__.mjs-D0EAXFzW.js",
       "__virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom__loadShare__.mjs-suqaMhlY.js",
-      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CVZ358cI.js",
-      "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Eyjwtykx.js"
+      "_virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CStEubjY.js",
+      "_virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DJV66KHV.js"
     ],
     "css": [
-      "assets/main-C7rLhy_G.css"
+      "assets/main-Dgno3P3r.css"
     ]
   }
 }

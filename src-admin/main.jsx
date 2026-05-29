@@ -659,6 +659,7 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
     const [filter, setFilter] = useState('');
     const [states, setStates] = useState([]);
     const [activeState, setActiveState] = useState(selected || '');
+    const [expandedNodes, setExpandedNodes] = useState(() => new Set(getStateAncestorIds(selected)));
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -684,21 +685,10 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
         };
     }, [socket]);
 
-    const filteredStates = useMemo(() => {
-        const words = filter.toLowerCase().split(/\s+/u).filter(Boolean);
-        if (!words.length) {
-            return states.slice(0, 250);
-        }
-        return states
-            .filter(state => {
-                const haystack =
-                    `${state.id} ${state.name} ${state.role} ${state.type} ${state.value ?? ''}`.toLowerCase();
-                return words.every(word => haystack.includes(word));
-            })
-            .slice(0, 250);
-    }, [filter, states]);
+    const tree = useMemo(() => buildStateTree(states, filter), [filter, states]);
 
     const selectedState = states.find(state => state.id === activeState);
+    const activeStateInfo = tree.stateById.get(activeState);
     const dialogTitle =
         selectedState || activeState ? (
             <span>
@@ -708,6 +698,38 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
         ) : (
             title || t('ra_PleaseSelectObjectId')
         );
+
+    useEffect(() => {
+        if (!activeState) {
+            return;
+        }
+        setExpandedNodes(previous => {
+            const next = new Set(previous);
+            for (const id of getStateAncestorIds(activeState)) {
+                next.add(id);
+            }
+            return next;
+        });
+    }, [activeState]);
+
+    useEffect(() => {
+        if (!filter.trim()) {
+            return;
+        }
+        setExpandedNodes(previous => new Set([...previous, ...tree.matchAncestorIds]));
+    }, [filter, tree.matchAncestorIds]);
+
+    function toggleExpanded(nodeId) {
+        setExpandedNodes(previous => {
+            const next = new Set(previous);
+            if (next.has(nodeId)) {
+                next.delete(nodeId);
+            } else {
+                next.add(nodeId);
+            }
+            return next;
+        });
+    }
 
     return (
         <Dialog
@@ -736,49 +758,54 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
                 {error ? <Alert severity="error">{error}</Alert> : null}
                 {loading ? <Alert severity="info">{t('configLoading')}</Alert> : null}
                 {!loading && !error ? (
-                    <TableContainer className="state-select-table-container">
-                        <Table
-                            size="small"
-                            stickyHeader
-                            className="state-select-table"
+                    <Box className="state-select-tree">
+                        {tree.nodes.length ? (
+                            tree.nodes.map(node => (
+                                <StateTreeNode
+                                    activeState={activeState}
+                                    expandedNodes={expandedNodes}
+                                    key={node.id}
+                                    level={0}
+                                    node={node}
+                                    onOk={onOk}
+                                    onSelect={setActiveState}
+                                    onToggle={toggleExpanded}
+                                />
+                            ))
+                        ) : (
+                            <Typography color="text.secondary">{t('noDatapointAssignments')}</Typography>
+                        )}
+                    </Box>
+                ) : null}
+                {activeStateInfo ? (
+                    <Box className="state-select-details">
+                        <Typography
+                            variant="body2"
+                            className="state-select-details-id"
                         >
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>State ID</TableCell>
-                                    <TableCell>{t('value')}</TableCell>
-                                    <TableCell>{t('type')}</TableCell>
-                                    <TableCell>Role</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {filteredStates.map(state => (
-                                    <TableRow
-                                        hover
-                                        key={state.id}
-                                        selected={state.id === activeState}
-                                        className="state-select-row"
-                                        onClick={() => setActiveState(state.id)}
-                                        onDoubleClick={() => onOk(state.id)}
-                                    >
-                                        <TableCell>
-                                            <Typography variant="body2">{state.name || state.id}</Typography>
-                                            {state.name && state.name !== state.id ? (
-                                                <Typography
-                                                    variant="caption"
-                                                    color="text.secondary"
-                                                >
-                                                    {state.id}
-                                                </Typography>
-                                            ) : null}
-                                        </TableCell>
-                                        <TableCell>{formatStateValue(state.value)}</TableCell>
-                                        <TableCell>{state.type || '-'}</TableCell>
-                                        <TableCell>{state.role || '-'}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                            {activeStateInfo.id}
+                        </Typography>
+                        <Stack
+                            direction="row"
+                            gap={1}
+                            flexWrap="wrap"
+                        >
+                            <Chip
+                                size="small"
+                                label={activeStateInfo.type || '-'}
+                            />
+                            {activeStateInfo.role ? (
+                                <Chip
+                                    size="small"
+                                    label={activeStateInfo.role}
+                                />
+                            ) : null}
+                            <Chip
+                                size="small"
+                                label={formatStateValue(activeStateInfo.value)}
+                            />
+                        </Stack>
+                    </Box>
                 ) : null}
             </DialogContent>
             <DialogActions>
@@ -792,6 +819,78 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
                 </Button>
             </DialogActions>
         </Dialog>
+    );
+}
+
+function StateTreeNode({ activeState, expandedNodes, level, node, onOk, onSelect, onToggle }) {
+    const hasChildren = node.children.length > 0;
+    const expanded = expandedNodes.has(node.id);
+    const selected = node.state?.id === activeState;
+    return (
+        <Box>
+            <Box
+                className={`state-tree-row${selected ? ' state-tree-row-selected' : ''}`}
+                style={{ paddingLeft: `${level * 18 + 4}px` }}
+                onClick={() => {
+                    if (node.state) {
+                        onSelect(node.state.id);
+                    } else if (hasChildren) {
+                        onToggle(node.id);
+                    }
+                }}
+                onDoubleClick={() => {
+                    if (node.state) {
+                        onOk(node.state.id);
+                    }
+                }}
+            >
+                <IconButton
+                    className={`state-tree-toggle${expanded ? ' state-tree-toggle-open' : ''}`}
+                    disabled={!hasChildren}
+                    size="small"
+                    onClick={event => {
+                        event.stopPropagation();
+                        onToggle(node.id);
+                    }}
+                >
+                    {hasChildren ? <ExpandMoreIcon /> : null}
+                </IconButton>
+                <Box className={`state-tree-icon state-tree-icon-${node.state ? 'state' : 'folder'}`}>
+                    {node.state ? 'S' : ''}
+                </Box>
+                <Box className="state-tree-labels">
+                    <Typography variant="body2">{node.label}</Typography>
+                    {node.state ? (
+                        <Typography
+                            variant="caption"
+                            color="text.secondary"
+                        >
+                            {node.state.id}
+                        </Typography>
+                    ) : null}
+                </Box>
+            </Box>
+            {hasChildren ? (
+                <Collapse
+                    in={expanded}
+                    timeout="auto"
+                    unmountOnExit
+                >
+                    {node.children.map(child => (
+                        <StateTreeNode
+                            activeState={activeState}
+                            expandedNodes={expandedNodes}
+                            key={child.id}
+                            level={level + 1}
+                            node={child}
+                            onOk={onOk}
+                            onSelect={onSelect}
+                            onToggle={onToggle}
+                        />
+                    ))}
+                </Collapse>
+            ) : null}
+        </Box>
     );
 }
 
@@ -1818,6 +1917,82 @@ async function loadStateObjects(socket) {
     return states;
 }
 
+function buildStateTree(states, filter) {
+    const normalizedFilter = String(filter || '')
+        .trim()
+        .toLowerCase();
+    const words = normalizedFilter.split(/\s+/u).filter(Boolean);
+    const root = createTreeNode('', '');
+    const stateById = new Map();
+    const matchAncestorIds = new Set();
+
+    for (const state of states) {
+        const haystack = `${state.id} ${state.name} ${state.role} ${state.type} ${state.value ?? ''}`.toLowerCase();
+        if (words.length && !words.every(word => haystack.includes(word))) {
+            continue;
+        }
+
+        const parts = state.id.split('.').filter(Boolean);
+        let current = root;
+        let path = '';
+        for (const [index, part] of parts.entries()) {
+            path = path ? `${path}.${part}` : part;
+            let child = current.childrenById.get(path);
+            if (!child) {
+                child = createTreeNode(path, part);
+                current.childrenById.set(path, child);
+                current.children.push(child);
+            }
+            if (index === parts.length - 1) {
+                child.state = state;
+                child.label = state.name && state.name !== state.id ? state.name : part;
+                stateById.set(state.id, state);
+                for (const ancestorId of getStateAncestorIds(state.id)) {
+                    matchAncestorIds.add(ancestorId);
+                }
+            }
+            current = child;
+        }
+    }
+
+    sortTreeNodes(root.children);
+    return {
+        matchAncestorIds,
+        nodes: root.children,
+        stateById,
+    };
+}
+
+function createTreeNode(id, label) {
+    return {
+        children: [],
+        childrenById: new Map(),
+        id,
+        label,
+        state: null,
+    };
+}
+
+function sortTreeNodes(nodes) {
+    nodes.sort((left, right) => {
+        if (Boolean(left.state) !== Boolean(right.state)) {
+            return left.state ? 1 : -1;
+        }
+        return left.label.localeCompare(right.label, undefined, { numeric: true, sensitivity: 'base' });
+    });
+    for (const node of nodes) {
+        sortTreeNodes(node.children);
+        delete node.childrenById;
+    }
+}
+
+function getStateAncestorIds(stateId) {
+    const parts = String(stateId || '')
+        .split('.')
+        .filter(Boolean);
+    return parts.slice(0, -1).map((_, index) => parts.slice(0, index + 1).join('.'));
+}
+
 function getObjectSelectionSocket(adminSocket) {
     return [adminSocket, window.socket, window.ioBrokerSocket, window.adminSocket].find(canReadStateObjects) || null;
 }
@@ -1827,20 +2002,20 @@ function canReadStateObjects(socket) {
 }
 
 async function readStateObjects(socket) {
+    if (socket?.getObjects) {
+        const objects = await socket.getObjects(false);
+        if (objects && typeof objects === 'object') {
+            return objects;
+        }
+    }
     if (socket?.getObjectView) {
-        const result = await socket.getObjectView('system', 'state', {
-            startkey: '',
-            endkey: '\u9999',
-        });
+        const result = await socket.getObjectView('system', 'state', { startkey: '', endkey: '\u9999' });
         if (Array.isArray(result?.rows)) {
             return Object.fromEntries(result.rows.map(row => [row.id, row.value]));
         }
         if (result && typeof result === 'object') {
             return result;
         }
-    }
-    if (socket?.getObjects) {
-        return socket.getObjects(false);
     }
     throw new Error(t('objectSelectionUnavailable'));
 }

@@ -60,20 +60,20 @@
             "id": "ConfigCustomAiEnergyManager:Components",
             "name": "Components",
             "assets": {
-                "js": { "async": [], "sync": ["assets/main-Cpvl--Ao.js"] },
-                "css": { "async": [], "sync": ["assets/main-C7rLhy_G.css"] }
+                "js": { "async": [], "sync": ["assets/main-BsDDbeMX.js"] },
+                "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },
             "path": "./Components"
         }
     ],
     "buildOutput": [
         { "fileName": "assets/hostInit-BzEeeCt7.js", "type": "chunk", "isEntry": true, "size": 1244 },
-        { "fileName": "assets/index-Cymvw90z.js", "type": "chunk", "isEntry": true, "size": 725 },
-        { "fileName": "assets/main-Cpvl--Ao.js", "type": "chunk", "isEntry": true, "size": 136140 },
-        { "fileName": "assets/virtualExposes-BGWuS58U.js", "type": "chunk", "isEntry": true, "size": 139 },
+        { "fileName": "assets/index-1Hk1QpZt.js", "type": "chunk", "isEntry": true, "size": 725 },
+        { "fileName": "assets/main-BsDDbeMX.js", "type": "chunk", "isEntry": true, "size": 138201 },
+        { "fileName": "assets/virtualExposes-D9pg09pk.js", "type": "chunk", "isEntry": true, "size": 139 },
         { "fileName": "customComponents.js", "type": "chunk", "isEntry": true, "size": 162 },
         {
-            "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-RrjT7z7h.js",
+            "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-ya4cw2nQ.js",
             "type": "chunk",
             "isEntry": false,
             "size": 1646
@@ -98,25 +98,25 @@
         },
         { "fileName": "assets/preload-helper-D5Yh7_hZ.js", "type": "chunk", "isEntry": false, "size": 1240 },
         {
-            "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CVZ358cI.js",
+            "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CStEubjY.js",
             "type": "chunk",
             "isEntry": false,
             "size": 54583
         },
         {
-            "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-Eyjwtykx.js",
+            "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DJV66KHV.js",
             "type": "chunk",
             "isEntry": false,
             "size": 917
         },
-        { "fileName": "assets/main-C7rLhy_G.css", "type": "asset", "isEntry": false, "size": 5654 },
+        { "fileName": "assets/main-Dgno3P3r.css", "type": "asset", "isEntry": false, "size": 6489 },
         { "fileName": "index.html", "type": "asset", "isEntry": false, "size": 540 },
         { "fileName": "mf-entry-bootstrap-0.js", "type": "asset", "isEntry": false, "size": 672 }
     ],
     "assetAnalysis": {
         "./main.jsx": {
-            "js": { "sync": ["assets/main-Cpvl--Ao.js"], "async": [] },
-            "css": { "sync": ["assets/main-C7rLhy_G.css"], "async": [] }
+            "js": { "sync": ["assets/main-BsDDbeMX.js"], "async": [] },
+            "css": { "sync": ["assets/main-Dgno3P3r.css"], "async": [] }
         }
     }
 }
