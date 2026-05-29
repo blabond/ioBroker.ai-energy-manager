@@ -7,8 +7,8 @@ const __mfModuleCache = globalThis[__mfCacheGlobalKey];
 const __mfImport = src =>
     globalThis.System && typeof globalThis.System.import === 'function' ? globalThis.System.import(src) : import(src);
 (async () => {
-    const { initHost } = await __mfImport('./assets/hostInit-D26hra78.js');
+    const { initHost } = await __mfImport('./assets/hostInit-BzEeeCt7.js');
     const runtime = await initHost();
     const __mfRemotePreloads = [];
     await Promise.all(__mfRemotePreloads);
-})().then(() => __mfImport('./assets/index-BsucMuWa.js'));
+})().then(() => __mfImport('./assets/index-CXlRQcWZ.js'));

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import {
     Alert,
     Box,
@@ -28,14 +28,9 @@ import {
     ThemeProvider,
     Tooltip,
     Typography,
+    SvgIcon,
     createTheme,
 } from '@mui/material';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutlineOutlined';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import SearchIcon from '@mui/icons-material/Search';
-import SettingsIcon from '@mui/icons-material/Settings';
 import translationsDe from '../admin/i18n/de.json';
 import translationsEn from '../admin/i18n/en.json';
 import translationsEs from '../admin/i18n/es.json';
@@ -57,7 +52,8 @@ const PLAN_LEGEND_MODES = [
     ['forecast_pending', 'forecastPending'],
     ['insufficient_data', 'insufficientData'],
 ];
-const PLAN_TIMELINE_SLOT_LIMIT = 40;
+const PLAN_TIMELINE_HOURS = 6;
+const PLAN_TIMELINE_FALLBACK_SLOT_LIMIT = PLAN_TIMELINE_HOURS * 4;
 
 const TOOLTIP_CLOSE_DELAY_MS = 5000;
 const SUPPORTED_LANGUAGES = new Set(['de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt', 'ru', 'uk', 'zh-cn']);
@@ -74,6 +70,35 @@ const ADAPTER_TRANSLATIONS = {
     uk: translationsUk,
     'zh-cn': translationsZhCn,
 };
+
+function createLocalIcon(path, displayName) {
+    const Icon = props => (
+        <SvgIcon {...props}>
+            <path d={path} />
+        </SvgIcon>
+    );
+    Icon.displayName = displayName;
+    return Icon;
+}
+
+const DashboardIcon = createLocalIcon('M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z', 'DashboardIcon');
+const ExpandMoreIcon = createLocalIcon('M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z', 'ExpandMoreIcon');
+const HelpOutlineIcon = createLocalIcon(
+    'M11 18h2v-2h-2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4',
+    'HelpOutlineIcon',
+);
+const RefreshIcon = createLocalIcon(
+    'M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4z',
+    'RefreshIcon',
+);
+const SearchIcon = createLocalIcon(
+    'M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14',
+    'SearchIcon',
+);
+const SettingsIcon = createLocalIcon(
+    'M19.43 12.98c.04-.32.07-.65.07-.98s-.02-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.37-.31-.6-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98L14.5 2.42C14.47 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42L9.12 5.07c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.48 0-.6.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.08.65-.08.98s.03.66.08.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.37.31.6.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .47-.18.5-.42l.38-2.65c.61-.25 1.18-.58 1.69-.98l2.49 1c.23.08.48 0 .6-.22l2-3.46c.12-.22.07-.49-.12-.64zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5',
+    'SettingsIcon',
+);
 
 const ADMIN_TRANSLATIONS = {
     en: {
@@ -532,7 +557,8 @@ function App({
 
     const hasToken = String(settings.adapterToken || '').trim().length > 0;
     const hasValidToken = hasToken && settings.serverConfig?.valid === true;
-    const hasRequiredSettings = requiredSettingsComplete(settings.datapointAssignments || []);
+    const hasRequiredSettings =
+        isDemoAccountToken(settings.adapterToken) || requiredSettingsComplete(settings.datapointAssignments || []);
 
     return (
         <ThemeProvider theme={theme}>
@@ -936,12 +962,12 @@ function DashboardLite({ dashboard, lastRequest }) {
                         </Paper>
                     ))}
                 </Box>
-                {dashboard.reason ? (
+                {dashboard.reasonText || dashboard.reason ? (
                     <Typography
                         variant="body2"
                         color="text.secondary"
                     >
-                        {translateDashboardText(dashboard.reason)}
+                        {translateDashboardText(dashboard.reasonText || dashboard.reason)}
                     </Typography>
                 ) : null}
             </Section>
@@ -1006,7 +1032,7 @@ function PlanTimeline({ plan }) {
     if (!plan.length) {
         return <EmptyState text={t('noSixHourPlan')} />;
     }
-    const slots = plan.slice(0, PLAN_TIMELINE_SLOT_LIMIT);
+    const slots = visiblePlanTimelineSlots(plan);
     const groups = groupPlanSlotsByHour(slots);
     return (
         <Stack spacing={1.5}>
@@ -1033,9 +1059,15 @@ function PlanTimeline({ plan }) {
                                 <Tooltip
                                     key={`${slot.from || index}-${slot.action || 'none'}`}
                                     title={`${formatTimeRange(slot.from, slot.to)} · ${translateDashboardText(
-                                        slot.operatingModeLabel || slot.actionLabel || '-',
-                                    )} · ${translateDashboardText(slot.batteryCommand || '-')} · ${translateDashboardText(
-                                        slot.gridBehavior || '-',
+                                        slot.operatingModeLabelText ||
+                                            slot.actionLabelText ||
+                                            slot.operatingModeLabel ||
+                                            slot.actionLabel ||
+                                            '-',
+                                    )} · ${translateDashboardText(
+                                        slot.batteryCommandText || slot.batteryCommand || '-',
+                                    )} · ${translateDashboardText(
+                                        slot.gridBehaviorText || slot.gridBehavior || '-',
                                     )} · ${formatNumber(slot.plannedPowerW, 0)} W · ${formatNumber(
                                         slot.plannedEnergyKwh,
                                         2,
@@ -1046,7 +1078,11 @@ function PlanTimeline({ plan }) {
                                                   translateDashboardText(slot.technicalActionLabel),
                                               )}`
                                             : ''
-                                    }${slot.reason ? ` · ${translateDashboardText(slot.reason)}` : ''}`}
+                                    }${
+                                        slot.reasonText || slot.reason
+                                            ? ` · ${translateDashboardText(slot.reasonText || slot.reason)}`
+                                            : ''
+                                    }`}
                                 >
                                     <Box
                                         className={`plan-slot mode-border-${modeClass(slot)}`}
@@ -1063,14 +1099,22 @@ function PlanTimeline({ plan }) {
                                             className="plan-slot-action"
                                             noWrap
                                         >
-                                            {translateDashboardText(slot.operatingModeLabel || slot.actionLabel || '-')}
+                                            {translateDashboardText(
+                                                slot.operatingModeLabelText ||
+                                                    slot.actionLabelText ||
+                                                    slot.operatingModeLabel ||
+                                                    slot.actionLabel ||
+                                                    '-',
+                                            )}
                                         </Typography>
                                         <Typography
                                             variant="caption"
                                             className="plan-slot-command"
                                             noWrap
                                         >
-                                            {translateDashboardText(slot.batteryCommand || '-')}
+                                            {translateDashboardText(
+                                                slot.batteryCommandText || slot.batteryCommand || '-',
+                                            )}
                                         </Typography>
                                         <Typography
                                             variant="caption"
@@ -1098,20 +1142,43 @@ function PlanTimeline({ plan }) {
     );
 }
 
+function visiblePlanTimelineSlots(plan) {
+    const slots = Array.isArray(plan) ? plan : [];
+    const firstSlotStart = slots
+        .map(slot => Date.parse(slot?.from || slot?.slot_start || ''))
+        .find(time => Number.isFinite(time));
+
+    if (!Number.isFinite(firstSlotStart)) {
+        return slots.slice(0, PLAN_TIMELINE_FALLBACK_SLOT_LIMIT);
+    }
+
+    const windowEnd = firstSlotStart + PLAN_TIMELINE_HOURS * 60 * 60 * 1000;
+    return slots.filter(slot => {
+        const start = Date.parse(slot?.from || slot?.slot_start || '');
+        return Number.isFinite(start) && start < windowEnd;
+    });
+}
+
 function groupPlanSlotsByHour(slots) {
     const groups = [];
     const byKey = new Map();
+    const firstSlotStart = slots
+        .map(slot => Date.parse(slot?.from || slot?.slot_start || ''))
+        .find(time => Number.isFinite(time));
+
     for (const slot of slots) {
-        const date = new Date(slot.from || slot.slot_start || '');
-        const key = Number.isNaN(date.getTime())
-            ? `unknown-${groups.length}`
-            : new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()).toISOString();
+        const start = Date.parse(slot.from || slot.slot_start || '');
+        const end = Date.parse(slot.to || slot.slot_end || '');
+        const key =
+            Number.isFinite(firstSlotStart) && Number.isFinite(start)
+                ? `hour-${Math.floor((start - firstSlotStart) / (60 * 60 * 1000))}`
+                : `unknown-${groups.length}`;
         if (!byKey.has(key)) {
             const group = {
                 key,
-                label: Number.isNaN(date.getTime())
-                    ? '-'
-                    : `${formatTime(date)} - ${formatTime(new Date(date.getTime() + 60 * 60 * 1000))}`,
+                start,
+                end,
+                label: '-',
                 plannedEnergyKwh: 0,
                 slots: [],
             };
@@ -1119,6 +1186,16 @@ function groupPlanSlotsByHour(slots) {
             byKey.set(key, group);
         }
         const group = byKey.get(key);
+        if (Number.isFinite(start)) {
+            group.start = Number.isFinite(group.start) ? Math.min(group.start, start) : start;
+        }
+        if (Number.isFinite(end)) {
+            group.end = Number.isFinite(group.end) ? Math.max(group.end, end) : end;
+        }
+        group.label =
+            Number.isFinite(group.start) && Number.isFinite(group.end)
+                ? `${formatTime(new Date(group.start))} - ${formatTime(new Date(group.end))}`
+                : '-';
         group.plannedEnergyKwh += Number(slot.plannedEnergyKwh || 0);
         group.slots.push(slot);
     }
@@ -1492,8 +1569,20 @@ const DASHBOARD_TEXT_KEYS = {
 };
 
 function translateDashboardText(value) {
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+        const lang = normalizedDashboardLanguage();
+        return String(value[lang] || value.en || value.de || Object.values(value).find(Boolean) || '');
+    }
     const text = String(value || '');
     return DASHBOARD_TEXT_KEYS[text] ? t(DASHBOARD_TEXT_KEYS[text]) : text;
+}
+
+function normalizedDashboardLanguage() {
+    const lang = String(i18n.getLanguage?.() || window.sysLang || navigator.language || 'en')
+        .trim()
+        .toLowerCase()
+        .split('-')[0];
+    return lang === 'de' ? 'de' : 'en';
 }
 
 function formatDashboardCardValue(card = {}) {
@@ -1683,6 +1772,13 @@ function requiredSettingsComplete(assignments) {
         return false;
     }
     return items.every(item => item.required !== true || String(item.stateId || '').trim().length > 0);
+}
+
+function isDemoAccountToken(value) {
+    const token = String(value || '')
+        .trim()
+        .toUpperCase();
+    return ['DEMOACCOUNT', 'DEMOACC'].some(prefix => token === prefix || token.startsWith(`${prefix}-`));
 }
 
 function customScriptStatePathWarning(stateId) {
@@ -1971,7 +2067,7 @@ function useObservedThemeType() {
 
 export class AemConfig extends React.Component {
     componentDidMount() {
-        this.root = createRoot(this.container);
+        this.root = createReactMount(this.container);
         this.renderApp();
     }
 
@@ -2013,5 +2109,16 @@ export class AemConfig extends React.Component {
 export default { AemConfig };
 
 if (window.aemStandaloneConfig) {
-    createRoot(document.getElementById('root')).render(<App />);
+    createReactMount(document.getElementById('root')).render(<App />);
+}
+
+function createReactMount(container) {
+    return {
+        render(element) {
+            ReactDOM.render(element, container);
+        },
+        unmount() {
+            ReactDOM.unmountComponentAtNode?.(container);
+        },
+    };
 }

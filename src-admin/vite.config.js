@@ -3,21 +3,21 @@ import react from '@vitejs/plugin-react';
 import { federation } from '@module-federation/vite';
 import { resolve } from 'node:path';
 
-const sharedPackages = [
-    '@emotion/react',
-    '@emotion/styled',
-    '@mui/icons-material',
-    '@mui/material',
-    'react',
-    'react-dom',
-];
+const sharedPackages = {
+    '@emotion/react': '^11.14.0',
+    '@emotion/styled': '^11.14.1',
+    '@mui/material': '^6.5.0',
+    react: '^18.3.1',
+    'react-dom': '^18.3.1',
+};
 
-const makeShared = packages =>
+const makeShared = packageVersions =>
     Object.fromEntries(
-        packages.map(packageName => [
+        Object.entries(packageVersions).map(([packageName, requiredVersion]) => [
             packageName,
             {
-                requiredVersion: '*',
+                import: false,
+                requiredVersion,
                 singleton: true,
             },
         ]),
@@ -38,7 +38,7 @@ export default defineConfig({
             remotes: {},
             shared: makeShared(sharedPackages),
         }),
-        react(),
+        react({ jsxRuntime: 'classic' }),
     ],
     build: {
         target: 'chrome89',

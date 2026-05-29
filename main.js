@@ -7,7 +7,7 @@ const { requestAndNormalize, normalizeServerConfig } = require('./lib/serverConf
 const DatapointManager = require('./lib/datapointManager');
 const StateCollector = require('./lib/stateCollector');
 const ControlHandler = require('./lib/controlHandler');
-const { isDemoAccountToken, validateAdapterConfig } = require('./lib/validation');
+const { isAuthenticationError, isDemoAccountToken, validateAdapterConfig } = require('./lib/validation');
 const { sanitizeForLog, debug } = require('./lib/loggerUtils');
 const { buildDatapointAssignments } = require('./lib/datapointAssignments');
 const { TelemetryQueue } = require('./lib/telemetryQueue');
@@ -1277,6 +1277,10 @@ class AiEnergyManager extends utils.Adapter {
         if (text) {
             this.log.warn(text);
         }
+        if (isAuthenticationError(text)) {
+            await this.setStateAsync('info.tokenValid', false, true);
+            await this.setStateAsync('info.connection', false, true);
+        }
         await this.setStateAsync('info.lastError', text, true);
     }
 }
@@ -1468,6 +1472,10 @@ function dashboardLiteFromDecision(response = {}) {
         horizonHours,
         title: `Intelligent charging decision - ${horizonHours} h basis`,
         reason: cleanDecisionReason(decision.human_readable_reason || decision.human_reason || ''),
+        reasonText: localizedTextValue(
+            decision.human_readable_reason_i18n || decision.human_reason_i18n,
+            decision.human_readable_reason || decision.human_reason || '',
+        ),
         confidence: nullableNumber(decision.confidence_score),
         engineVersion: decision.engine_version || '',
         cards: [
@@ -1520,16 +1528,30 @@ function dashboardLiteFromDecision(response = {}) {
                 to: slot.slot_end || '',
                 action: slot.action || '',
                 actionLabel: mode.label,
+                actionLabelText: localizedTextValue(
+                    slot.operating_mode_label_i18n,
+                    slot.operating_mode_label || mode.label,
+                ),
                 operatingMode: mode.id,
                 operatingModeLabel: mode.label,
+                operatingModeLabelText: localizedTextValue(
+                    slot.operating_mode_label_i18n,
+                    slot.operating_mode_label || mode.label,
+                ),
                 batteryCommand: mode.batteryCommand,
+                batteryCommandText: localizedTextValue(
+                    slot.battery_command_i18n,
+                    slot.battery_command || mode.batteryCommand,
+                ),
                 gridBehavior: mode.gridBehavior,
+                gridBehaviorText: localizedTextValue(slot.grid_behavior_i18n, slot.grid_behavior || mode.gridBehavior),
                 technicalActionLabel: decisionActionLabel(slot.action),
                 installationName: slot.installation_name || 'Household',
                 plannedPowerW,
                 plannedEnergyKwh: plannedEnergyWh / 1000,
                 targetSoc: nullableNumber(slot.target_soc_percent),
                 reason: cleanDecisionReason(slot.human_reason || mode.description),
+                reasonText: localizedTextValue(slot.human_reason_i18n, slot.human_reason || mode.description),
             };
         }),
         pattern: {
@@ -1569,6 +1591,25 @@ function cleanDecisionReason(reason) {
         .replace(/\s*Weiterer Planungshorizont ist ausstehend, da [^.]+ verfügbar ist\./gu, '')
         .replace(/\s{2,}/gu, ' ')
         .trim();
+}
+
+function localizedTextValue(value, fallback = '') {
+    const fallbackText = cleanDecisionReason(fallback);
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+        const de = cleanDecisionReason(value.de || fallbackText);
+        const en = cleanDecisionReason(value.en || fallbackText || de);
+        return {
+            de: de || en,
+            en: en || de,
+        };
+    }
+    const text = cleanDecisionReason(value || fallbackText);
+    return text
+        ? {
+              de: text,
+              en: text,
+          }
+        : null;
 }
 
 function dashboardHorizonSummary(decision, inputSummary, inputHorizonSlots, horizonHours) {

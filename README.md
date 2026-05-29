@@ -161,6 +161,10 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 - Fix ioBroker checker warnings for formatting config, license metadata, CI action pinning and dev dependency declarations.
 - Add TypeScript project checks, migrate admin i18n files to short format and loosen adapter test workflow pinning.
+- Update admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.
+- Improve DemoACC handling: demo tokens load backend configuration and dashboard data while adapter telemetry and mapping writes are skipped.
+- Restore the compact settings datapoint layout, German labels and the 6-hour dashboard plan; English UI now uses "System" instead of "Plant".
+- Add dashboard text localization support for backend-provided German/English decision texts with English fallback for unsupported languages.
 
 ### 0.2.3 (2026-05-28)
 
