@@ -136,6 +136,7 @@ jobs:
                   fi
 
                   npm install --package-lock-only --ignore-scripts
+                  npm run format
 
                   if [[ -n "$(git status --porcelain)" ]]; then
                     git add -A
