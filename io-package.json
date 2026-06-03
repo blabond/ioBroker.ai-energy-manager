@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.3.1",
+        "version": "0.3.2",
         "news": {
+            "0.3.2": {
+                "en": "Fix ApiClient timer fallback",
+                "de": "Fix ApiClient Timer Fallback",
+                "ru": "Обновление таймера ApiClient",
+                "pt": "Corrigir o retorno do temporizador do ApiClient",
+                "nl": "Fix ApiClient timer terugval",
+                "fr": "Correction du retour du minuteur ApiClient",
+                "it": "Fix ApiClient timer fallback",
+                "es": "Fijar ApiClient timer fallback",
+                "pl": "Fix ApiClient timer fallback",
+                "uk": "Виправлення ApiClient таймера",
+                "zh-cn": "修正 Apiclient 计时器倒置"
+            },
             "0.3.1": {
                 "en": "Fix ioBroker checker warnings for formatting config and dev dependency declarations.\nUpdate admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.",
                 "de": "Reparieren Sie ioBroker Checker Warnungen für die Formatierung von Config- und Dev-Abhängigkeitserklärungen.\nAktualisieren Sie Adminabhängigkeiten und halten Sie den React/MUI admin UI kompatibel mit der ioBroker Admin Laufzeit.",
