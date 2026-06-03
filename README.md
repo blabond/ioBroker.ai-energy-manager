@@ -159,6 +159,8 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
+- Fix ApiClient timer fallback
+
 ### 0.3.1 (2026-05-29)
 
 - Fix ioBroker checker warnings for formatting config and dev dependency declarations.
