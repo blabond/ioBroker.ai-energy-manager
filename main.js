@@ -12,6 +12,7 @@ const { sanitizeForLog, debug } = require('./lib/loggerUtils');
 const { buildDatapointAssignments } = require('./lib/datapointAssignments');
 const { TelemetryQueue } = require('./lib/telemetryQueue');
 const { TelemetrySampler } = require('./lib/telemetrySampler');
+const { isBackendRequestTimeout, shouldLogBackendError } = require('./lib/errorLogPolicy');
 
 const TELEMETRY_CYCLE_SECONDS = 60;
 const SERVER_PULL_DELAY_SECONDS = 30;
@@ -36,6 +37,7 @@ class AiEnergyManager extends utils.Adapter {
         this.statePayloadTimer = null;
         this.commandTimer = null;
         this.lastPayloadSignature = '';
+        this.consecutiveBackendTimeouts = 0;
         this.stopped = false;
 
         this.on('ready', this.onReady.bind(this));
@@ -213,6 +215,7 @@ class AiEnergyManager extends utils.Adapter {
     async validateToken() {
         try {
             const response = await this.apiClient.validateToken();
+            this.resetBackendTimeoutWarnings();
             const valid = response.valid !== false && response.success !== false;
             await this.setStateAsync('info.tokenValid', valid, true);
             await this.setStateAsync('status.backendReachable', true, true);
@@ -250,6 +253,7 @@ class AiEnergyManager extends utils.Adapter {
                 timerHost: this,
             });
             const normalized = await requestAndNormalize(this.apiClient);
+            this.resetBackendTimeoutWarnings();
             if (this.stopped) {
                 return { ok: false, errors: ['Adapter is shutting down.'] };
             }
@@ -303,6 +307,7 @@ class AiEnergyManager extends utils.Adapter {
             });
             const installationId = String(options.installationId || this.config.serverConfig?.plantId || '').trim();
             const decision = await client.requestDashboardDecision(installationId);
+            this.resetBackendTimeoutWarnings();
             return {
                 ok: true,
                 dashboardLite: dashboardLiteFromDecision(decision),
@@ -693,8 +698,10 @@ class AiEnergyManager extends utils.Adapter {
             await this.pushStatePayload();
             await this.sendTelemetryCycle();
         } catch (error) {
-            await this.setError(error.message);
-            this.log.warn(`Initial backend sync failed: ${error.message}`);
+            const errorLogged = await this.setError(error.message);
+            if (errorLogged && !isBackendRequestTimeout(error.message)) {
+                this.log.warn(`Initial backend sync failed: ${error.message}`);
+            }
         }
     }
 
@@ -747,6 +754,7 @@ class AiEnergyManager extends utils.Adapter {
         }
         debug(this, 'Sending payload', payload);
         await this.apiClient.sendStatePayload(payload);
+        this.resetBackendTimeoutWarnings();
         this.lastPayloadSignature = signature;
         await this.setStateAsync('info.lastSync', payload.timestamp, true);
         await this.setStateAsync(
@@ -774,6 +782,7 @@ class AiEnergyManager extends utils.Adapter {
             await this.telemetryQueue.enqueue(collected.payloads);
         }
         const result = await this.telemetryQueue.flush();
+        this.resetBackendTimeoutWarnings();
         await this.setStateAsync(
             'status.lastTelemetryBatch',
             JSON.stringify({
@@ -805,6 +814,7 @@ class AiEnergyManager extends utils.Adapter {
             return;
         }
         const decision = await this.apiClient.requestDashboardDecision(this.serverConfig?.plantId || '');
+        this.resetBackendTimeoutWarnings();
         const dashboardLite = dashboardLiteFromDecision(decision);
         const updatedAt = new Date().toISOString();
         await this.writeDashboardLiteStates(dashboardLite, updatedAt);
@@ -999,6 +1009,7 @@ class AiEnergyManager extends utils.Adapter {
         }
         const localConfigRevision = Number(this.serverConfig.configRevision || 0);
         const commands = await this.apiClient.requestControlCommands(localConfigRevision);
+        this.resetBackendTimeoutWarnings();
         debug(this, 'Control commands received', sanitizeForLog(commands, config.adapterToken));
         if (this.shouldReloadServerConfig(commands, localConfigRevision)) {
             const result = await this.requestConfigFromBackend({ persist: false });
@@ -1274,7 +1285,13 @@ class AiEnergyManager extends utils.Adapter {
 
     async setError(message) {
         const text = String(message || '');
-        if (text) {
+        if (isBackendRequestTimeout(text)) {
+            this.consecutiveBackendTimeouts += 1;
+        } else {
+            this.resetBackendTimeoutWarnings();
+        }
+        const shouldLog = shouldLogBackendError(text, this.consecutiveBackendTimeouts);
+        if (shouldLog) {
             this.log.warn(text);
         }
         if (isAuthenticationError(text)) {
@@ -1282,6 +1299,11 @@ class AiEnergyManager extends utils.Adapter {
             await this.setStateAsync('info.connection', false, true);
         }
         await this.setStateAsync('info.lastError', text, true);
+        return shouldLog;
+    }
+
+    resetBackendTimeoutWarnings() {
+        this.consecutiveBackendTimeouts = 0;
     }
 }
 
