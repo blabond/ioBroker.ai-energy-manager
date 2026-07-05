@@ -26,7 +26,7 @@ test('integrates battery power from subscribed state changes', async () => {
 
     await sampler.configure(serverConfig);
     now = 30000;
-    sampler.handleStateChange('battery.0.power', { val: -50, ts: now });
+    sampler.handleStateChange('battery.0.power', { val: -50, ts: now, ack: true });
     now = 60000;
     const collected = await sampler.collect(serverConfig);
 
@@ -37,6 +37,37 @@ test('integrates battery power from subscribed state changes', async () => {
     assertApproximately(payload.battery_output_wh_total, 0.833333);
     assertApproximately(payload.battery_household_energy_wh_total, 0.791667);
     assertApproximately(payload.battery_input_wh_total, 0.416667);
+});
+
+test('ignores unacknowledged subscribed state changes', async () => {
+    let now = 0;
+    const states = new Map([['battery.0.power', { val: 100, ts: 0 }]]);
+    const adapter = fakeAdapter({
+        states,
+        datapointAssignments: [
+            powerAssignment({
+                scopeId: 'plant_a',
+                mappingKey: 'plant_a.batteryPower',
+                key: 'batteryPower',
+                stateId: 'battery.0.power',
+            }),
+        ],
+    });
+    const sampler = new TelemetrySampler(adapter, null, {
+        now: () => now,
+        sendIntervalMs: 60000,
+    });
+    const serverConfig = validServerConfig();
+
+    await sampler.configure(serverConfig);
+    now = 30000;
+    sampler.handleStateChange('battery.0.power', { val: -50, ts: now, ack: false });
+    now = 60000;
+    const collected = await sampler.collect(serverConfig);
+
+    assert.equal(collected.payloads.length, 1);
+    assert.equal(collected.payloads[0].battery_power_w, 100);
+    assertApproximately(collected.payloads[0].battery_output_wh_total, 1.666667);
 });
 
 test('includes local grid charging permission in telemetry payload', async () => {
@@ -250,7 +281,7 @@ test('uses subscribed grid power as import and export fallback', async () => {
 
     await sampler.configure(serverConfig);
     now = 30000;
-    sampler.handleStateChange('smartmeter.0.power', { val: -300, ts: now });
+    sampler.handleStateChange('smartmeter.0.power', { val: -300, ts: now, ack: true });
     now = 60000;
     const collected = await sampler.collect(serverConfig);
 

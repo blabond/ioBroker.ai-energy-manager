@@ -6,7 +6,7 @@
         "type": "app",
         "buildInfo": { "buildVersion": "1.0.0", "buildName": "ConfigCustomAiEnergyManager" },
         "remoteEntry": { "name": "customComponents.js", "path": "", "type": "module" },
-        "ssrRemoteEntry": { "name": "customComponents.js", "path": "", "type": "module" },
+        "ssrRemoteEntry": { "name": "customComponents.ssr.js", "path": "", "type": "module" },
         "types": { "path": "", "name": "" },
         "globalName": "ConfigCustomAiEnergyManager",
         "pluginVersion": "0.2.5",
@@ -32,7 +32,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:@mui/material",
             "name": "@mui/material",
-            "version": "6.5.0",
+            "version": "9.0.1",
             "singleton": true,
             "requiredVersion": "^6.5.0",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -40,7 +40,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:react",
             "name": "react",
-            "version": "18.3.1",
+            "version": "19.2.7",
             "singleton": true,
             "requiredVersion": "^18.3.1",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -48,7 +48,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:react-dom",
             "name": "react-dom",
-            "version": "18.3.1",
+            "version": "19.2.7",
             "singleton": true,
             "requiredVersion": "^18.3.1",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -60,7 +60,14 @@
             "id": "ConfigCustomAiEnergyManager:Components",
             "name": "Components",
             "assets": {
-                "js": { "async": [], "sync": ["assets/main-BsDDbeMX.js"] },
+                "js": {
+                    "async": [
+                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-kKkMpGvE.js",
+                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-OsFj4j-H.js",
+                        "assets/main-Cimxo9fz.js"
+                    ],
+                    "sync": ["assets/main-Cimxo9fz.js"]
+                },
                 "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },
             "path": "./Components"

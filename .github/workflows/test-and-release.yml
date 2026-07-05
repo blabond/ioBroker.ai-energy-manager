@@ -34,7 +34,7 @@ jobs:
         outputs:
             changed: ${{ steps.commit.outputs.changed }}
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
               with:
                   ref: ${{ github.ref_name }}
                   token: ${{ secrets.AUTOFIX_TOKEN }}
@@ -76,12 +76,11 @@ jobs:
             (needs.autofix.result == 'skipped' || needs.autofix.outputs.changed == 'false')
         runs-on: ubuntu-latest
         steps:
-            - uses: ioBroker/testing-action-check@v1
+            - uses: ioBroker/testing-action-check@v2
               with:
                   node-version: '24.x'
-                  type-checking: 'true'
-                  lint: 'true'
-                  test-command: npm test
+                  type-checking: true
+                  lint: true
 
             - name: Check formatting
               run: npm run format:check
@@ -102,6 +101,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   os: ${{ matrix.os }}
+                  build: true
 
     deploy:
         needs: [check-and-lint, adapter-tests]

@@ -9,12 +9,13 @@
         "lint:fix": "eslint -c eslint.config.mjs . --fix",
         "format": "prettier . --write \"!admin/custom/.vite/**\" \"!admin/custom/assets/**\"",
         "format:check": "prettier . --check \"!admin/custom/.vite/**\" \"!admin/custom/assets/**\"",
+        "build": "npm run build:admin",
         "build:admin": "vite build --config src-admin/vite.config.js && node scripts/update-admin-cache-bust.js && prettier admin/custom/*.html admin/custom/*.js admin/custom/*.json admin/jsonConfig.json5 --write",
         "release": "release-script",
         "release:verify-tag": "node ./scripts/ensure-release-tag.mjs",
-        "test": "node --test",
-        "test:integration": "npm test",
-        "test:package": "npm test",
+        "test": "node --test \"test/*.test.js\" && npm run test:package",
+        "test:integration": "mocha test/integration --exit",
+        "test:package": "mocha test/package --exit",
         "prepublishOnly": "npm run release:verify-tag && npm run build:admin && npm run check && npm run lint && npm test",
         "translate": "translate-adapter"
     },
@@ -43,7 +44,7 @@
         "LICENSE"
     ],
     "dependencies": {
-        "@iobroker/adapter-core": "^3.3.2"
+        "@iobroker/adapter-core": "^3.4.1"
     },
     "overrides": {
         "diff": "^8.0.3",
@@ -60,14 +61,14 @@
         "@iobroker/adapter-dev": "^1.5.0",
         "@iobroker/eslint-config": "^2.3.4",
         "@iobroker/testing": "^5.2.2",
-        "@module-federation/vite": "^1.16.8",
+        "@module-federation/vite": "^1.16.12",
         "@mui/icons-material": "^9.0.1",
         "@mui/material": "^9.0.1",
         "@tsconfig/node22": "^22.0.5",
         "@types/node": "^22.19.21",
-        "@vitejs/plugin-react": "^6.0.2",
-        "react": "^19.2.6",
-        "react-dom": "^19.2.6",
+        "@vitejs/plugin-react": "^6.0.3",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
         "typescript": "^6.0.3",
         "vite": "^8.0.16"
     },
