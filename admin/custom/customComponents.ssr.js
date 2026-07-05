@@ -1,4 +1,4 @@
-import { t as e } from './assets/vite-preload-helper-D5Yh7_hZ.js';
+import { t as e } from './assets/vite-preload-helper-DuG8C5Si.js';
 import { init as t } from '@module-federation/runtime';
 var n;
 async function r() {
@@ -6,7 +6,7 @@ async function r() {
         (n ??= e(
             () =>
                 import(
-                    `./assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-SGG8BeSv.js`
+                    `./assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DGXwztwM.js`
                 ).then(e => e.default ?? e),
             [],
             import.meta.url,

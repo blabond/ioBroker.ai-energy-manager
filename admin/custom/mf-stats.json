@@ -62,11 +62,11 @@
             "assets": {
                 "js": {
                     "async": [
-                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-kKkMpGvE.js",
-                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-OsFj4j-H.js",
-                        "assets/main-Cimxo9fz.js"
+                        "assets/main-BdbIa8YR.js",
+                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-CHhTDdeW.js",
+                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DjcvbMVU.js"
                     ],
-                    "sync": ["assets/main-Cimxo9fz.js"]
+                    "sync": ["assets/main-BdbIa8YR.js"]
                 },
                 "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },
@@ -74,14 +74,14 @@
         }
     ],
     "buildOutput": [
-        { "fileName": "assets/hostInit-CB0eo2QI.js", "type": "chunk", "isEntry": false, "size": 2208 },
-        { "fileName": "assets/index-Ta88KVNw.js", "type": "chunk", "isEntry": true, "size": 725 },
-        { "fileName": "assets/main-Cimxo9fz.js", "type": "chunk", "isEntry": true, "size": 138198 },
-        { "fileName": "assets/virtualExposes-BKlfNc1v.js", "type": "chunk", "isEntry": false, "size": 139 },
+        { "fileName": "assets/hostInit-ClVyaWky.js", "type": "chunk", "isEntry": false, "size": 2208 },
+        { "fileName": "assets/index-DDq9Focj.js", "type": "chunk", "isEntry": true, "size": 725 },
+        { "fileName": "assets/main-BdbIa8YR.js", "type": "chunk", "isEntry": true, "size": 138198 },
+        { "fileName": "assets/virtualExposes-Clxrb5-v.js", "type": "chunk", "isEntry": false, "size": 139 },
         { "fileName": "customComponents.js", "type": "chunk", "isEntry": false, "size": 162 },
         { "fileName": "customComponents.ssr.js", "type": "chunk", "isEntry": false, "size": 885 },
         {
-            "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-kKkMpGvE.js",
+            "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-CHhTDdeW.js",
             "type": "chunk",
             "isEntry": false,
             "size": 1651
@@ -105,36 +105,36 @@
             "size": 1329
         },
         {
-            "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DE9ofXxC.js",
+            "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-D1XiZdY6.js",
             "type": "chunk",
             "isEntry": false,
             "size": 66995
         },
         {
-            "fileName": "assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-SGG8BeSv.js",
+            "fileName": "assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DGXwztwM.js",
             "type": "chunk",
             "isEntry": false,
             "size": 286
         },
         {
-            "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-OsFj4j-H.js",
+            "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DjcvbMVU.js",
             "type": "chunk",
             "isEntry": false,
             "size": 922
         },
-        { "fileName": "assets/vite-preload-helper-D5Yh7_hZ.js", "type": "chunk", "isEntry": false, "size": 1240 },
+        { "fileName": "assets/vite-preload-helper-DuG8C5Si.js", "type": "chunk", "isEntry": false, "size": 1303 },
         { "fileName": "assets/main-Dgno3P3r.css", "type": "asset", "isEntry": false, "size": 6489 },
         { "fileName": "index.html", "type": "asset", "isEntry": false, "size": 1408 },
-        { "fileName": "assets/mf-entry-bootstrap-0-137a2f3f.js", "type": "asset", "isEntry": false, "size": 1246 }
+        { "fileName": "assets/mf-entry-bootstrap-0-e433f695.js", "type": "asset", "isEntry": false, "size": 1246 }
     ],
     "assetAnalysis": {
         "./main.jsx": {
             "js": {
-                "sync": ["assets/main-Cimxo9fz.js"],
+                "sync": ["assets/main-BdbIa8YR.js"],
                 "async": [
-                    "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-kKkMpGvE.js",
-                    "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-OsFj4j-H.js",
-                    "assets/main-Cimxo9fz.js"
+                    "assets/main-BdbIa8YR.js",
+                    "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-CHhTDdeW.js",
+                    "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DjcvbMVU.js"
                 ]
             },
             "css": { "sync": ["assets/main-Dgno3P3r.css"], "async": [] }
