@@ -1,0 +1,991 @@
+{
+    "ai-energy-manager.0.dashboard": {
+        "_id": "ai-energy-manager.0.dashboard",
+        "type": "channel",
+        "common": {
+            "name": "Dashboard"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266480431,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        }
+    },
+    "ai-energy-manager.0.dashboard.batteryCapacityKwh": {
+        "type": "state",
+        "common": {
+            "type": "number",
+            "role": "value.battery",
+            "name": "Battery capacity",
+            "unit": "kWh",
+            "def": 0,
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266525120,
+        "_id": "ai-energy-manager.0.dashboard.batteryCapacityKwh",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 3.32,
+        "ack": true,
+        "q": 0,
+        "lc": 1783265685106
+    },
+    "ai-energy-manager.0.dashboard.batteryChargingActive": {
+        "_id": "ai-energy-manager.0.dashboard.batteryChargingActive",
+        "type": "state",
+        "common": {
+            "name": "Battery charging active",
+            "type": "boolean",
+            "role": "indicator",
+            "read": true,
+            "write": false,
+            "def": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266525125,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": false,
+        "ack": true,
+        "q": 0,
+        "lc": 1783040445131
+    },
+    "ai-energy-manager.0.dashboard.energyGapNext24hKwh": {
+        "type": "state",
+        "common": {
+            "type": "number",
+            "role": "value.energy",
+            "name": "Energy gap next 24h",
+            "unit": "kWh",
+            "def": 0,
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266525123,
+        "_id": "ai-energy-manager.0.dashboard.energyGapNext24hKwh",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 0,
+        "ack": true,
+        "q": 0,
+        "lc": 1783197045148
+    },
+    "ai-energy-manager.0.dashboard.expectedConsumptionNext24hKwh": {
+        "type": "state",
+        "common": {
+            "type": "number",
+            "role": "value.energy",
+            "name": "Consumption forecast next 24h",
+            "unit": "kWh",
+            "def": 0,
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266525121,
+        "_id": "ai-energy-manager.0.dashboard.expectedConsumptionNext24hKwh",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 2.9,
+        "ack": true,
+        "q": 0,
+        "lc": 1783266345148
+    },
+    "ai-energy-manager.0.dashboard.expectedPvNext24hKwh": {
+        "type": "state",
+        "common": {
+            "type": "number",
+            "role": "value.energy",
+            "name": "PV forecast next 24h",
+            "unit": "kWh",
+            "def": 0,
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266525122,
+        "_id": "ai-energy-manager.0.dashboard.expectedPvNext24hKwh",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 7.71,
+        "ack": true,
+        "q": 0,
+        "lc": 1783266345148
+    },
+    "ai-energy-manager.0.dashboard.horizonHours": {
+        "_id": "ai-energy-manager.0.dashboard.horizonHours",
+        "type": "state",
+        "common": {
+            "name": "Dashboard horizon basis",
+            "type": "number",
+            "role": "value",
+            "read": true,
+            "write": false,
+            "unit": "h",
+            "def": 0
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266525124,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 10,
+        "ack": true,
+        "q": 0,
+        "lc": 1781015205250
+    },
+    "ai-energy-manager.0.dashboard.lastUpdate": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "date",
+            "name": "Dashboard last update",
+            "def": "",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266585114,
+        "_id": "ai-energy-manager.0.dashboard.lastUpdate",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "2026-07-05T15:49:45.109Z",
+        "ack": true,
+        "q": 0,
+        "lc": 1783266585114
+    },
+    "ai-energy-manager.0.dashboard.lite": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "json",
+            "name": "Dashboard",
+            "def": "{}",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266585112,
+        "_id": "ai-energy-manager.0.dashboard.lite",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "{\"source\":\"stored\",\"decisionTime\":\"2026-07-05 15:49:00.281114+00\",\"validUntil\":\"2026-07-05T16:04:00+00:00\",\"horizonHours\":10,\"title\":\"Intelligent charging decision - 10 h basis\",\"reason\":\"Kein Netzladen geplant, da erwarteter PV-Ertrag und vorhandene Speicherenergie ausreichend sind. PV-only/BKW-Anlagen werden als Haushaltsbeitrag berücksichtigt.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant, da erwarteter PV-Ertrag und vorhandene Speicherenergie ausreichend sind. PV-only/BKW-Anlagen werden als Haushaltsbeitrag berücksichtigt.\",\"en\":\"No grid charging planned because expected PV yield and existing storage energy are sufficient. PV-only/balcony solar systems are counted as household contribution.\"},\"confidence\":0.72,\"engineVersion\":\"household-decision-0.2.6\",\"cards\":[{\"label\":\"Battery capacity\",\"value\":\"3.26\",\"unit\":\"kWh\"},{\"label\":\"Consumption forecast\",\"value\":\"2.90\",\"unit\":\"kWh\"},{\"label\":\"PV forecast\",\"value\":\"7.71\",\"unit\":\"kWh\"},{\"label\":\"Energy gap incl. reserve\",\"value\":\"0.00\",\"unit\":\"kWh\"},{\"label\":\"Recommendation\",\"value\":\"PV/battery operation\",\"unit\":\"\"},{\"label\":\"Grid charging planned\",\"value\":\"No\",\"unit\":\"\"},{\"label\":\"Base load\",\"value\":\"548\",\"unit\":\"W\"}],\"plan\":[{\"from\":\"2026-07-05 15:45:00+00\",\"to\":\"2026-07-05 16:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 410.2 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 410.2 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 410.2 Wh.\"}},{\"from\":\"2026-07-05 16:00:00+00\",\"to\":\"2026-07-05 16:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 16:15:00+00\",\"to\":\"2026-07-05 16:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 16:30:00+00\",\"to\":\"2026-07-05 16:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 16:45:00+00\",\"to\":\"2026-07-05 17:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 17:00:00+00\",\"to\":\"2026-07-05 17:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 17:15:00+00\",\"to\":\"2026-07-05 17:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 17:30:00+00\",\"to\":\"2026-07-05 17:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 17:45:00+00\",\"to\":\"2026-07-05 18:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 18:00:00+00\",\"to\":\"2026-07-05 18:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 18:15:00+00\",\"to\":\"2026-07-05 18:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 18:30:00+00\",\"to\":\"2026-07-05 18:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 18:45:00+00\",\"to\":\"2026-07-05 19:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 19:00:00+00\",\"to\":\"2026-07-05 19:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 19:15:00+00\",\"to\":\"2026-07-05 19:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 19:30:00+00\",\"to\":\"2026-07-05 19:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 19:45:00+00\",\"to\":\"2026-07-05 20:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 20:00:00+00\",\"to\":\"2026-07-05 20:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 20:15:00+00\",\"to\":\"2026-07-05 20:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 20:30:00+00\",\"to\":\"2026-07-05 20:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 20:45:00+00\",\"to\":\"2026-07-05 21:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 21:00:00+00\",\"to\":\"2026-07-05 21:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.45 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.45 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (13.45 ct/kWh).\"}},{\"from\":\"2026-07-05 21:15:00+00\",\"to\":\"2026-07-05 21:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.46 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.46 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.46 ct/kWh).\"}},{\"from\":\"2026-07-05 21:30:00+00\",\"to\":\"2026-07-05 21:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.91 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.91 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.91 ct/kWh).\"}},{\"from\":\"2026-07-05 21:45:00+00\",\"to\":\"2026-07-05 22:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.34 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.34 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.34 ct/kWh).\"}},{\"from\":\"2026-07-05 22:00:00+00\",\"to\":\"2026-07-05 22:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.96 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.96 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (14.96 ct/kWh).\"}},{\"from\":\"2026-07-05 22:15:00+00\",\"to\":\"2026-07-05 22:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.50 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.50 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (14.50 ct/kWh).\"}},{\"from\":\"2026-07-05 22:30:00+00\",\"to\":\"2026-07-05 22:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.60 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.60 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (13.60 ct/kWh).\"}},{\"from\":\"2026-07-05 22:45:00+00\",\"to\":\"2026-07-05 23:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.37 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.37 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.37 ct/kWh).\"}},{\"from\":\"2026-07-05 23:00:00+00\",\"to\":\"2026-07-05 23:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.06 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.06 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (13.06 ct/kWh).\"}},{\"from\":\"2026-07-05 23:15:00+00\",\"to\":\"2026-07-05 23:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.47 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.47 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.47 ct/kWh).\"}},{\"from\":\"2026-07-05 23:30:00+00\",\"to\":\"2026-07-05 23:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.28 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.28 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.28 ct/kWh).\"}},{\"from\":\"2026-07-05 23:45:00+00\",\"to\":\"2026-07-06 00:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.00 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.00 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.00 ct/kWh).\"}},{\"from\":\"2026-07-06 00:00:00+00\",\"to\":\"2026-07-06 00:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.49 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.49 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.49 ct/kWh).\"}},{\"from\":\"2026-07-06 00:15:00+00\",\"to\":\"2026-07-06 00:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.96 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.96 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.96 ct/kWh).\"}},{\"from\":\"2026-07-06 00:30:00+00\",\"to\":\"2026-07-06 00:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.82 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.82 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.82 ct/kWh).\"}},{\"from\":\"2026-07-06 00:45:00+00\",\"to\":\"2026-07-06 01:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.64 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.64 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.64 ct/kWh).\"}},{\"from\":\"2026-07-06 01:00:00+00\",\"to\":\"2026-07-06 01:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.54 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.54 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.54 ct/kWh).\"}},{\"from\":\"2026-07-06 01:15:00+00\",\"to\":\"2026-07-06 01:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.47 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.47 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.47 ct/kWh).\"}},{\"from\":\"2026-07-06 01:30:00+00\",\"to\":\"2026-07-06 01:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.60 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.60 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.60 ct/kWh).\"}}],\"pattern\":{\"activeLabel\":\"Niedrige Aktivität\",\"reason\":\"Der aktuelle Verbrauch liegt nahe an der Grundlast.\",\"activeEstimateKwh\":0.448232,\"baseLoadW\":547.9,\"todayProjectedKwh\":0.000878,\"profiles\":[{\"label\":\"Niedrige Aktivität\",\"days\":51,\"averageKwh\":0.448232,\"minKwh\":0,\"maxKwh\":4.4435389999999995,\"confidence\":null}]}}",
+        "ack": true,
+        "q": 0,
+        "lc": 1783266585112
+    },
+    "ai-energy-manager.0.dashboard.operatingMode": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "text",
+            "name": "Operating mode",
+            "def": "",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266585123,
+        "_id": "ai-energy-manager.0.dashboard.operatingMode",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "PV/battery operation",
+        "ack": true,
+        "q": 0,
+        "lc": 1783040445131
+    },
+    "ai-energy-manager.0.dashboard.pattern": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "json",
+            "name": "Dashboard pattern detection",
+            "def": "{}",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266585118,
+        "_id": "ai-energy-manager.0.dashboard.pattern",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "{\"activeLabel\":\"Niedrige Aktivität\",\"reason\":\"Der aktuelle Verbrauch liegt nahe an der Grundlast.\",\"activeEstimateKwh\":0.448232,\"baseLoadW\":547.9,\"todayProjectedKwh\":0.000878,\"profiles\":[{\"label\":\"Niedrige Aktivität\",\"days\":51,\"averageKwh\":0.448232,\"minKwh\":0,\"maxKwh\":4.4435389999999995,\"confidence\":null}]}",
+        "ack": true,
+        "q": 0,
+        "lc": 1783266585118
+    },
+    "ai-energy-manager.0.dashboard.plan": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "json",
+            "name": "Dashboard 6 hour plan",
+            "def": "[]",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266585117,
+        "_id": "ai-energy-manager.0.dashboard.plan",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "[{\"from\":\"2026-07-05 15:45:00+00\",\"to\":\"2026-07-05 16:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 410.2 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 410.2 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 410.2 Wh.\"}},{\"from\":\"2026-07-05 16:00:00+00\",\"to\":\"2026-07-05 16:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 16:15:00+00\",\"to\":\"2026-07-05 16:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 16:30:00+00\",\"to\":\"2026-07-05 16:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 16:45:00+00\",\"to\":\"2026-07-05 17:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 564.6 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 564.6 Wh.\"}},{\"from\":\"2026-07-05 17:00:00+00\",\"to\":\"2026-07-05 17:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 17:15:00+00\",\"to\":\"2026-07-05 17:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 17:30:00+00\",\"to\":\"2026-07-05 17:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 17:45:00+00\",\"to\":\"2026-07-05 18:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 433.3 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 433.3 Wh.\"}},{\"from\":\"2026-07-05 18:00:00+00\",\"to\":\"2026-07-05 18:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 18:15:00+00\",\"to\":\"2026-07-05 18:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 18:30:00+00\",\"to\":\"2026-07-05 18:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 18:45:00+00\",\"to\":\"2026-07-05 19:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 594.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 594.1 Wh.\"}},{\"from\":\"2026-07-05 19:00:00+00\",\"to\":\"2026-07-05 19:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 19:15:00+00\",\"to\":\"2026-07-05 19:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 19:30:00+00\",\"to\":\"2026-07-05 19:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 19:45:00+00\",\"to\":\"2026-07-05 20:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 210.1 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 210.1 Wh.\"}},{\"from\":\"2026-07-05 20:00:00+00\",\"to\":\"2026-07-05 20:15:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 20:15:00+00\",\"to\":\"2026-07-05 20:30:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 20:30:00+00\",\"to\":\"2026-07-05 20:45:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 20:45:00+00\",\"to\":\"2026-07-05 21:00:00+00\",\"action\":\"wait_for_pv\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"PV and battery cover consumption, grid charging is not planned\",\"gridBehaviorText\":{\"de\":\"PV und Batterie decken den Verbrauch, Netzladung ist nicht geplant\",\"en\":\"PV and battery cover consumption, grid charging is not planned\"},\"technicalActionLabel\":\"Use PV\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"reasonText\":{\"de\":\"Kein Netzladen geplant; modellierter PV-Ertrag in diesem Slot: 23.0 Wh.\",\"en\":\"No grid charging planned; modeled PV yield in this slot: 23.0 Wh.\"}},{\"from\":\"2026-07-05 21:00:00+00\",\"to\":\"2026-07-05 21:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.45 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.45 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (13.45 ct/kWh).\"}},{\"from\":\"2026-07-05 21:15:00+00\",\"to\":\"2026-07-05 21:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.46 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.46 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.46 ct/kWh).\"}},{\"from\":\"2026-07-05 21:30:00+00\",\"to\":\"2026-07-05 21:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.91 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.91 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.91 ct/kWh).\"}},{\"from\":\"2026-07-05 21:45:00+00\",\"to\":\"2026-07-05 22:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.34 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.34 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.34 ct/kWh).\"}},{\"from\":\"2026-07-05 22:00:00+00\",\"to\":\"2026-07-05 22:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.96 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.96 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (14.96 ct/kWh).\"}},{\"from\":\"2026-07-05 22:15:00+00\",\"to\":\"2026-07-05 22:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.50 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (14.50 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (14.50 ct/kWh).\"}},{\"from\":\"2026-07-05 22:30:00+00\",\"to\":\"2026-07-05 22:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.60 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.60 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (13.60 ct/kWh).\"}},{\"from\":\"2026-07-05 22:45:00+00\",\"to\":\"2026-07-05 23:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.37 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.37 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.37 ct/kWh).\"}},{\"from\":\"2026-07-05 23:00:00+00\",\"to\":\"2026-07-05 23:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.06 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (13.06 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (13.06 ct/kWh).\"}},{\"from\":\"2026-07-05 23:15:00+00\",\"to\":\"2026-07-05 23:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.47 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.47 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.47 ct/kWh).\"}},{\"from\":\"2026-07-05 23:30:00+00\",\"to\":\"2026-07-05 23:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.28 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.28 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.28 ct/kWh).\"}},{\"from\":\"2026-07-05 23:45:00+00\",\"to\":\"2026-07-06 00:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.00 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.00 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.00 ct/kWh).\"}},{\"from\":\"2026-07-06 00:00:00+00\",\"to\":\"2026-07-06 00:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.49 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (12.49 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (12.49 ct/kWh).\"}},{\"from\":\"2026-07-06 00:15:00+00\",\"to\":\"2026-07-06 00:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.96 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.96 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.96 ct/kWh).\"}},{\"from\":\"2026-07-06 00:30:00+00\",\"to\":\"2026-07-06 00:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.82 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.82 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.82 ct/kWh).\"}},{\"from\":\"2026-07-06 00:45:00+00\",\"to\":\"2026-07-06 01:00:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.64 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.64 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.64 ct/kWh).\"}},{\"from\":\"2026-07-06 01:00:00+00\",\"to\":\"2026-07-06 01:15:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.54 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.54 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.54 ct/kWh).\"}},{\"from\":\"2026-07-06 01:15:00+00\",\"to\":\"2026-07-06 01:30:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.47 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.47 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.47 ct/kWh).\"}},{\"from\":\"2026-07-06 01:30:00+00\",\"to\":\"2026-07-06 01:45:00+00\",\"action\":\"no_charge\",\"actionLabel\":\"PV/battery operation\",\"actionLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"operatingMode\":\"pv_battery_operation\",\"operatingModeLabel\":\"PV/battery operation\",\"operatingModeLabelText\":{\"de\":\"PV-/Batteriebetrieb\",\"en\":\"PV/battery operation\"},\"batteryCommand\":\"Use battery\",\"batteryCommandText\":{\"de\":\"Batterie nutzen\",\"en\":\"Use battery\"},\"gridBehavior\":\"No active grid charging\",\"gridBehaviorText\":{\"de\":\"Keine aktive Netzladung\",\"en\":\"No active grid charging\"},\"technicalActionLabel\":\"Do not charge\",\"installationName\":\"Household\",\"plannedPowerW\":0,\"plannedEnergyKwh\":0,\"targetSoc\":0,\"reason\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.60 ct/kWh).\",\"reasonText\":{\"de\":\"Kein Netzladen geplant in diesem 15-Minuten-Slot (11.60 ct/kWh).\",\"en\":\"No grid charging planned in this 15-minute slot (11.60 ct/kWh).\"}}]",
+        "ack": true,
+        "q": 0,
+        "lc": 1783266345145
+    },
+    "ai-energy-manager.0.dashboard.reason": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "text",
+            "name": "Dashboard decision reason",
+            "def": "",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266585115,
+        "_id": "ai-energy-manager.0.dashboard.reason",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "Kein Netzladen geplant, da erwarteter PV-Ertrag und vorhandene Speicherenergie ausreichend sind. PV-only/BKW-Anlagen werden als Haushaltsbeitrag berücksichtigt.",
+        "ack": true,
+        "q": 0,
+        "lc": 1783217985103
+    },
+    "ai-energy-manager.0.info": {
+        "_id": "ai-energy-manager.0.info",
+        "type": "channel",
+        "common": {
+            "name": "Adapter information"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266480429,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        }
+    },
+    "ai-energy-manager.0.info.configValid": {
+        "_id": "ai-energy-manager.0.info.configValid",
+        "type": "state",
+        "common": {
+            "name": "Server configuration valid",
+            "type": "boolean",
+            "role": "indicator",
+            "read": true,
+            "write": false,
+            "def": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480660,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": true,
+        "ack": true,
+        "q": 0,
+        "lc": 1780047439175
+    },
+    "ai-energy-manager.0.info.connection": {
+        "_id": "ai-energy-manager.0.info.connection",
+        "type": "state",
+        "common": {
+            "name": "Backend connection",
+            "type": "boolean",
+            "role": "indicator.connected",
+            "read": true,
+            "write": false,
+            "def": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480710,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": true,
+        "ack": true,
+        "q": 0,
+        "lc": 1783266480604
+    },
+    "ai-energy-manager.0.info.datapointAssignmentsJson": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "json",
+            "name": "Current runtime datapoint assignments",
+            "def": "[]",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266480668,
+        "_id": "ai-energy-manager.0.info.datapointAssignmentsJson",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "[{\"scope\":\"household\",\"scopeId\":\"household\",\"scopeName\":\"Household\",\"plantIndex\":-1,\"key\":\"gridPower\",\"mappingKey\":\"gridPower\",\"label\":\"Grid meter value\",\"description\":\"Current instantaneous grid meter value. Use the current power at th\",\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"unit\":\"W\",\"fixedPowerType\":true,\"required\":true,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"W\",\"powerType\":\"AC\",\"stateId\":\"demo.energy.house.grid.power\"},{\"scope\":\"household\",\"scopeId\":\"household\",\"scopeName\":\"Household\",\"plantIndex\":-1,\"key\":\"consumptionWh\",\"mappingKey\":\"consumptionWh\",\"label\":\"Consumption\",\"description\":\"Optional energy meter for grid import\",\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"unit\":\"Wh\",\"fixedPowerType\":true,\"required\":false,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"Wh\",\"powerType\":\"AC\",\"stateId\":\"demo.energy.house.consumption.wh\"},{\"scope\":\"household\",\"scopeId\":\"household\",\"scopeName\":\"Household\",\"plantIndex\":-1,\"key\":\"gridExportMeterWh\",\"mappingKey\":\"gridExportMeterWh\",\"label\":\"Feed-in\",\"description\":\"Optional energy meter for grid export\",\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"unit\":\"Wh\",\"fixedPowerType\":true,\"required\":false,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"Wh\",\"powerType\":\"AC\",\"stateId\":\"demo.energy.house.grid_export.wh\"},{\"scope\":\"household\",\"scopeId\":\"household\",\"scopeName\":\"Household\",\"plantIndex\":-1,\"key\":\"wallboxWh\",\"mappingKey\":\"wallboxWh\",\"label\":\"Wallbox\",\"description\":\"Optional datapoint for charged EV energy\",\"feature\":\"wallbox\",\"featureLabel\":\"Haushalt\",\"unit\":\"Wh\",\"fixedPowerType\":true,\"required\":false,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"Wh\",\"powerType\":\"AC\",\"stateId\":\"demo.energy.wallbox.charge.wh\"},{\"scope\":\"plant\",\"scopeId\":\"00000000-0000-0000-0000-00000000d101\",\"scopeName\":\"PV Dachanlage Frankfurt\",\"plantIndex\":0,\"key\":\"batterySoc\",\"mappingKey\":\"00000000-0000-0000-0000-00000000d101.batterySoc\",\"label\":\"IST wert Batterie-SOC\",\"description\":\"Aktueller Ladezustand der Batterie dieser Anlage in Prozent\",\"feature\":\"battery\",\"featureLabel\":\"Batteriespeicher\",\"unit\":\"%\",\"fixedPowerType\":false,\"required\":true,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"\",\"powerType\":\"\",\"stateId\":\"demo.energy.pv_roof.battery.soc\"},{\"scope\":\"plant\",\"scopeId\":\"00000000-0000-0000-0000-00000000d101\",\"scopeName\":\"PV Dachanlage Frankfurt\",\"plantIndex\":0,\"key\":\"batteryPower\",\"mappingKey\":\"00000000-0000-0000-0000-00000000d101.batteryPower\",\"label\":\"CCU aktive Ausgangsleistung\",\"description\":\"Aktuelle Ausgangsleistung dieser Anlage\",\"feature\":\"battery\",\"featureLabel\":\"Batteriespeicher\",\"unit\":\"W\",\"fixedPowerType\":false,\"required\":true,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"W\",\"powerType\":\"DC\",\"stateId\":\"demo.energy.pv_roof.battery.power\"},{\"scope\":\"plant\",\"scopeId\":\"00000000-0000-0000-0000-00000000d101\",\"scopeName\":\"PV Dachanlage Frankfurt\",\"plantIndex\":0,\"key\":\"pvPower\",\"mappingKey\":\"00000000-0000-0000-0000-00000000d101.pvPower\",\"label\":\"PV Leistung\",\"description\":\"Aktuelle PV-Leistung dieser Anlage\",\"feature\":\"pvForecast\",\"featureLabel\":\"PV-Prognose\",\"unit\":\"W\",\"fixedPowerType\":false,\"required\":false,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"W\",\"powerType\":\"AC\",\"stateId\":\"demo.energy.pv_roof.pv.power\"},{\"scope\":\"plant\",\"scopeId\":\"00000000-0000-0000-0000-00000000d101\",\"scopeName\":\"PV Dachanlage Frankfurt\",\"plantIndex\":0,\"key\":\"batteryControlMode\",\"mappingKey\":\"00000000-0000-0000-0000-00000000d101.batteryControlMode\",\"label\":\"Battery control mode\",\"description\":\"Writable datapoint used by the local 6-hour plan to switch the battery between grid charging, PV operation and hold\",\"feature\":\"battery\",\"featureLabel\":\"\",\"unit\":\"\",\"fixedPowerType\":false,\"required\":false,\"read\":true,\"write\":true,\"gridChargingAllowed\":true,\"sourceUnit\":\"\",\"powerType\":\"\",\"controlValues\":{\"gridCharge\":\"1\",\"pv\":\"0\",\"hold\":\"2\"},\"stateId\":\"\"},{\"scope\":\"plant\",\"scopeId\":\"00000000-0000-0000-0000-00000000d102\",\"scopeName\":\"Carport PV\",\"plantIndex\":1,\"key\":\"batteryPower\",\"mappingKey\":\"00000000-0000-0000-0000-00000000d102.batteryPower\",\"label\":\"CCU aktive Ausgangsleistung\",\"description\":\"Aktuelle Ausgangsleistung dieser Anlage\",\"feature\":\"pvForecast\",\"featureLabel\":\"PV/BKW\",\"unit\":\"W\",\"fixedPowerType\":false,\"required\":true,\"read\":true,\"write\":false,\"gridChargingAllowed\":true,\"sourceUnit\":\"W\",\"powerType\":\"DC\",\"stateId\":\"demo.energy.carport.pv.power\"}]",
+        "ack": true,
+        "q": 0,
+        "lc": 1780047439185
+    },
+    "ai-energy-manager.0.info.detectedFeatures": {
+        "_id": "ai-energy-manager.0.info.detectedFeatures",
+        "type": "state",
+        "common": {
+            "name": "Detected server features",
+            "type": "string",
+            "role": "json",
+            "read": true,
+            "write": false,
+            "def": "[]"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480662,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "[\"Grid meter\",\"Battery storage\",\"PV forecast\",\"Storage system\"]",
+        "ack": true,
+        "q": 0,
+        "lc": 1780047439178
+    },
+    "ai-energy-manager.0.info.lastError": {
+        "_id": "ai-energy-manager.0.info.lastError",
+        "type": "state",
+        "common": {
+            "name": "Last error",
+            "type": "string",
+            "role": "text",
+            "read": true,
+            "write": false,
+            "def": ""
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480708,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "",
+        "ack": true,
+        "q": 0,
+        "lc": 1782667845235
+    },
+    "ai-energy-manager.0.info.lastSync": {
+        "_id": "ai-energy-manager.0.info.lastSync",
+        "type": "state",
+        "common": {
+            "name": "Last payload sync",
+            "type": "string",
+            "role": "date",
+            "read": true,
+            "write": false,
+            "def": ""
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1780042395013,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "2026-05-29T08:13:15.001Z",
+        "ack": true,
+        "q": 0,
+        "lc": 1780042395013
+    },
+    "ai-energy-manager.0.info.serverConfigJson": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "json",
+            "name": "Current runtime server config",
+            "def": "null",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266480667,
+        "_id": "ai-energy-manager.0.info.serverConfigJson",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "{\"valid\":true,\"version\":1,\"plantId\":\"00000000-0000-0000-0000-00000000d101\",\"configRevision\":1783266300,\"updatedAt\":\"2026-07-05T15:48:00+00:00\",\"receivedAt\":\"2026-07-05T15:48:00.655Z\",\"features\":{\"gridMeter\":true,\"battery\":true,\"pvForecast\":true,\"storageSystem\":true},\"enabledFeatures\":[\"gridMeter\",\"battery\",\"pvForecast\",\"storageSystem\"],\"detectedFeatureLabels\":[\"Grid meter\",\"Battery storage\",\"PV forecast\",\"Storage system\"],\"unsupportedFeatures\":[],\"datapoints\":[{\"key\":\"gridPower\",\"label\":\"Grid meter value\",\"description\":\"Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.\",\"role\":\"value.power\",\"unit\":\"W\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":true,\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"W\",\"stateId\":\"demo.energy.house.grid.power\"},{\"key\":\"batterySoc\",\"label\":\"Battery SOC\",\"description\":\"Current battery state of charge in percent\",\"role\":\"value.battery\",\"unit\":\"%\",\"read\":true,\"write\":false,\"required\":true,\"stateId\":\"demo.energy.pv_roof.battery.soc\",\"feature\":\"battery\",\"featureLabel\":\"Battery storage\"},{\"key\":\"batteryPower\",\"label\":\"Battery charge/discharge power\",\"description\":\"Current battery charge or discharge power. Select the sign convention used by the source datapoint.\",\"role\":\"value.power\",\"unit\":\"W\",\"powerType\":\"DC\",\"read\":true,\"write\":false,\"required\":true,\"sourceUnit\":\"W\",\"stateId\":\"demo.energy.pv_roof.battery.power\",\"feature\":\"battery\",\"featureLabel\":\"Battery storage\"},{\"key\":\"pvPower\",\"label\":\"Real PV power\",\"description\":\"Current real PV power\",\"role\":\"value.power\",\"unit\":\"W\",\"powerType\":\"AC\",\"read\":true,\"write\":false,\"required\":false,\"sourceUnit\":\"W\",\"stateId\":\"demo.energy.pv_roof.pv.power\",\"feature\":\"pvForecast\",\"featureLabel\":\"PV forecast\"},{\"key\":\"consumptionWh\",\"label\":\"Consumption\",\"description\":\"Optional energy meter for grid import\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":false,\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"Wh\",\"stateId\":\"demo.energy.house.consumption.wh\"},{\"key\":\"gridExportMeterWh\",\"label\":\"Feed-in\",\"description\":\"Optional energy meter for grid export\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":false,\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"Wh\",\"stateId\":\"demo.energy.house.grid_export.wh\"},{\"key\":\"wallboxWh\",\"label\":\"Wallbox\",\"description\":\"Optional datapoint for charged EV energy\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":false,\"feature\":\"wallbox\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"Wh\",\"stateId\":\"demo.energy.wallbox.charge.wh\"}],\"requiredDatapoints\":{\"gridPower\":{\"key\":\"gridPower\",\"label\":\"Grid meter value\",\"description\":\"Current instantaneous grid meter value in watts. Use the current power at the grid connection point, typically positive for grid import and negative for grid export.\",\"role\":\"value.power\",\"unit\":\"W\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":true,\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"W\",\"stateId\":\"demo.energy.house.grid.power\"},\"batterySoc\":{\"key\":\"batterySoc\",\"label\":\"Battery SOC\",\"description\":\"Current battery state of charge in percent\",\"role\":\"value.battery\",\"unit\":\"%\",\"read\":true,\"write\":false,\"required\":true,\"stateId\":\"demo.energy.pv_roof.battery.soc\",\"feature\":\"battery\",\"featureLabel\":\"Battery storage\"},\"batteryPower\":{\"key\":\"batteryPower\",\"label\":\"Battery charge/discharge power\",\"description\":\"Current battery charge or discharge power. Select the sign convention used by the source datapoint.\",\"role\":\"value.power\",\"unit\":\"W\",\"powerType\":\"DC\",\"read\":true,\"write\":false,\"required\":true,\"sourceUnit\":\"W\",\"stateId\":\"demo.energy.pv_roof.battery.power\",\"feature\":\"battery\",\"featureLabel\":\"Battery storage\"},\"pvPower\":{\"key\":\"pvPower\",\"label\":\"Real PV power\",\"description\":\"Current real PV power\",\"role\":\"value.power\",\"unit\":\"W\",\"powerType\":\"AC\",\"read\":true,\"write\":false,\"required\":false,\"sourceUnit\":\"W\",\"stateId\":\"demo.energy.pv_roof.pv.power\",\"feature\":\"pvForecast\",\"featureLabel\":\"PV forecast\"},\"consumptionWh\":{\"key\":\"consumptionWh\",\"label\":\"Consumption\",\"description\":\"Optional energy meter for grid import\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":false,\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"Wh\",\"stateId\":\"demo.energy.house.consumption.wh\"},\"gridExportMeterWh\":{\"key\":\"gridExportMeterWh\",\"label\":\"Feed-in\",\"description\":\"Optional energy meter for grid export\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":false,\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"Wh\",\"stateId\":\"demo.energy.house.grid_export.wh\"},\"wallboxWh\":{\"key\":\"wallboxWh\",\"label\":\"Wallbox\",\"description\":\"Optional datapoint for charged EV energy\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"powerType\":\"AC\",\"fixedPowerType\":true,\"read\":true,\"write\":false,\"required\":false,\"feature\":\"wallbox\",\"featureLabel\":\"Haushalt\",\"sourceUnit\":\"Wh\",\"stateId\":\"demo.energy.wallbox.charge.wh\"}},\"controlModes\":{\"wallboxControl\":false,\"batteryReserveControl\":false,\"forecastBasedCharging\":true},\"raw\":{\"success\":true,\"version\":1,\"plantId\":\"00000000-0000-0000-0000-00000000d101\",\"plantIds\":[\"00000000-0000-0000-0000-00000000d101\",\"00000000-0000-0000-0000-00000000d102\"],\"plants\":[{\"id\":\"00000000-0000-0000-0000-00000000d101\",\"name\":\"PV Dachanlage Frankfurt\",\"battery_capacity_kwh\":5,\"grid_charging_allowed\":true,\"features\":{\"battery\":true,\"pvForecast\":true,\"storageSystem\":true},\"datapoints\":[{\"key\":\"batterySoc\",\"required\":true,\"label\":\"IST wert Batterie-SOC\",\"description\":\"Aktueller Ladezustand der Batterie dieser Anlage in Prozent.\",\"feature\":\"battery\",\"featureLabel\":\"Batteriespeicher\",\"role\":\"value.battery\",\"unit\":\"%\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.pv_roof.battery.soc\"},{\"key\":\"batteryPower\",\"required\":true,\"label\":\"CCU aktive Ausgangsleistung\",\"description\":\"Aktuelle Ausgangsleistung dieser Anlage.\",\"feature\":\"battery\",\"featureLabel\":\"Batteriespeicher\",\"role\":\"value.power\",\"unit\":\"W\",\"sourceUnit\":\"W\",\"powerType\":\"DC\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.pv_roof.battery.power\"},{\"key\":\"pvPower\",\"required\":false,\"label\":\"PV Leistung\",\"description\":\"Aktuelle PV-Leistung dieser Anlage.\",\"feature\":\"pvForecast\",\"featureLabel\":\"PV-Prognose\",\"role\":\"value.power\",\"unit\":\"W\",\"sourceUnit\":\"W\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.pv_roof.pv.power\"}]},{\"id\":\"00000000-0000-0000-0000-00000000d102\",\"name\":\"Carport PV\",\"battery_capacity_kwh\":0,\"grid_charging_allowed\":false,\"features\":{\"battery\":false,\"pvForecast\":true,\"storageSystem\":false},\"datapoints\":[{\"key\":\"batteryPower\",\"required\":true,\"label\":\"CCU aktive Ausgangsleistung\",\"description\":\"Aktuelle Ausgangsleistung dieser Anlage.\",\"feature\":\"pvForecast\",\"featureLabel\":\"PV/BKW\",\"role\":\"value.power\",\"unit\":\"W\",\"sourceUnit\":\"W\",\"powerType\":\"DC\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.carport.pv.power\"}]}],\"configRevision\":1783266300,\"updatedAt\":\"2026-07-05T15:48:00+00:00\",\"features\":{\"gridMeter\":true,\"battery\":true,\"pvForecast\":true,\"wallbox\":false,\"storageSystem\":true,\"energyMeter\":false},\"requiredDatapoints\":{\"consumptionWh\":{\"required\":false,\"label\":\"Verbrauch\",\"description\":\"Optionaler Energiezähler für Netzbezug. Wenn leer, wird der Minutenwert aus der Netzleistung abgeleitet.\",\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"sourceUnit\":\"Wh\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.house.consumption.wh\"},\"gridExportMeterWh\":{\"required\":false,\"label\":\"Einspeisung\",\"description\":\"Optionaler Energiezähler für Netzeinspeisung. Wenn leer, wird der Minutenwert aus der Netzleistung abgeleitet.\",\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"sourceUnit\":\"Wh\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.house.grid_export.wh\"},\"gridPower\":{\"required\":true,\"label\":\"Netzbezug / Einspeisung\",\"description\":\"Saldierende Leistung am Netzanschlusspunkt. Positiv ist Netzbezug, negativ ist Einspeisung.\",\"feature\":\"gridMeter\",\"featureLabel\":\"Haushalt\",\"role\":\"value.power\",\"unit\":\"W\",\"sourceUnit\":\"W\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.house.grid.power\"},\"wallboxWh\":{\"required\":false,\"label\":\"Wallbox\",\"description\":\"Optionaler Datenpunkt für die geladene E-Auto-Energie.\",\"feature\":\"wallbox\",\"featureLabel\":\"Haushalt\",\"role\":\"value.energy\",\"unit\":\"Wh\",\"sourceUnit\":\"Wh\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.wallbox.charge.wh\"},\"batterySoc\":{\"required\":true,\"label\":\"Batterie SOC\",\"description\":\"Aktueller Ladezustand der Batterie in Prozent.\",\"role\":\"value.battery\",\"unit\":\"%\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.pv_roof.battery.soc\"},\"batteryPower\":{\"required\":true,\"label\":\"Batterie Lade-/Entladeleistung\",\"description\":\"Positive oder negative Batterieleistung.\",\"role\":\"value.power\",\"unit\":\"W\",\"sourceUnit\":\"W\",\"powerType\":\"DC\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.pv_roof.battery.power\"},\"pvPower\":{\"required\":false,\"label\":\"PV-Leistung real\",\"description\":\"Aktuelle reale PV-Leistung.\",\"role\":\"value.power\",\"unit\":\"W\",\"sourceUnit\":\"W\",\"read\":true,\"write\":false,\"stateId\":\"demo.energy.pv_roof.pv.power\"}},\"controlModes\":{\"wallboxControl\":false,\"batteryReserveControl\":false,\"forecastBasedCharging\":true},\"legacyScriptCompatible\":true,\"message\":\"Diese Adapter-Konfiguration nutzt dieselben Anlagenstammdaten wie das bestehende ioBroker-Script. Beide Systeme können parallel betrieben werden.\"},\"errors\":[]}",
+        "ack": true,
+        "q": 0,
+        "lc": 1783266480664
+    },
+    "ai-energy-manager.0.info.serverConfigLastRequest": {
+        "_id": "ai-energy-manager.0.info.serverConfigLastRequest",
+        "type": "state",
+        "common": {
+            "name": "Last server config request",
+            "type": "string",
+            "role": "date",
+            "read": true,
+            "write": false,
+            "def": ""
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480663,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "2026-07-05T15:48:00.656Z",
+        "ack": true,
+        "q": 0,
+        "lc": 1783266480663
+    },
+    "ai-energy-manager.0.info.serverConfigRevision": {
+        "_id": "ai-energy-manager.0.info.serverConfigRevision",
+        "type": "state",
+        "common": {
+            "name": "Server config revision",
+            "type": "number",
+            "role": "value",
+            "read": true,
+            "write": false,
+            "def": 0
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480661,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 1783266300,
+        "ack": true,
+        "q": 0,
+        "lc": 1783266345075
+    },
+    "ai-energy-manager.0.info.serverConfigVersion": {
+        "_id": "ai-energy-manager.0.info.serverConfigVersion",
+        "type": "state",
+        "common": {
+            "name": "Server config version",
+            "type": "number",
+            "role": "value",
+            "read": true,
+            "write": false,
+            "def": 0
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480661,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 1,
+        "ack": true,
+        "q": 0,
+        "lc": 1778339473615
+    },
+    "ai-energy-manager.0.info.tokenValid": {
+        "_id": "ai-energy-manager.0.info.tokenValid",
+        "type": "state",
+        "common": {
+            "name": "Adapter token valid",
+            "type": "boolean",
+            "role": "indicator",
+            "read": true,
+            "write": false,
+            "def": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480602,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": true,
+        "ack": true,
+        "q": 0,
+        "lc": 1780047439023
+    },
+    "ai-energy-manager.0.status": {
+        "_id": "ai-energy-manager.0.status",
+        "type": "channel",
+        "common": {
+            "name": "Runtime status"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266480430,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        }
+    },
+    "ai-energy-manager.0.status.backendReachable": {
+        "_id": "ai-energy-manager.0.status.backendReachable",
+        "type": "state",
+        "common": {
+            "name": "Backend reachable",
+            "type": "boolean",
+            "role": "indicator.reachable",
+            "read": true,
+            "write": false,
+            "def": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1783266480709,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": true,
+        "ack": true,
+        "q": 0,
+        "lc": 1780047439024
+    },
+    "ai-energy-manager.0.status.batteryControlMode": {
+        "_id": "ai-energy-manager.0.status.batteryControlMode",
+        "type": "state",
+        "common": {
+            "name": "Current battery control mode",
+            "type": "string",
+            "role": "text",
+            "read": true,
+            "write": false,
+            "def": ""
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1780044082347,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "",
+        "ack": true,
+        "q": 0,
+        "lc": 1779452274826
+    },
+    "ai-energy-manager.0.status.batteryControlResult": {
+        "_id": "ai-energy-manager.0.status.batteryControlResult",
+        "type": "state",
+        "common": {
+            "name": "Last battery control result",
+            "type": "string",
+            "role": "json",
+            "read": true,
+            "write": false,
+            "def": "{}"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1780044082348,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "{}",
+        "ack": true,
+        "q": 0,
+        "lc": 1780042447313
+    },
+    "ai-energy-manager.0.status.lastCommand": {
+        "_id": "ai-energy-manager.0.status.lastCommand",
+        "type": "state",
+        "common": {
+            "name": "Last command target",
+            "type": "string",
+            "role": "text",
+            "read": true,
+            "write": false,
+            "def": ""
+        },
+        "native": {},
+        "from": "system.host.my-vps.cli",
+        "ts": 1778338212876,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "",
+        "ack": true,
+        "q": 0,
+        "lc": 1778338212876
+    },
+    "ai-energy-manager.0.status.lastCommandResult": {
+        "_id": "ai-energy-manager.0.status.lastCommandResult",
+        "type": "state",
+        "common": {
+            "name": "Last command result",
+            "type": "string",
+            "role": "json",
+            "read": true,
+            "write": false,
+            "def": "{}"
+        },
+        "native": {},
+        "from": "system.host.my-vps.cli",
+        "ts": 1778338212877,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "{}",
+        "ack": true,
+        "q": 0,
+        "lc": 1778338212877
+    },
+    "ai-energy-manager.0.status.lastPayload": {
+        "_id": "ai-energy-manager.0.status.lastPayload",
+        "type": "state",
+        "common": {
+            "name": "Last payload summary",
+            "type": "string",
+            "role": "json",
+            "read": true,
+            "write": false,
+            "def": "{}"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "ts": 1780042312797,
+        "user": "system.user.admin",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "{\"timestamp\":\"2026-05-29T08:11:52.759Z\",\"keys\":[],\"missing\":[\"gridPower\",\"01d5ca7c-0cc2-4c71-8aa9-0bda28588e5f.batterySoc\",\"01d5ca7c-0cc2-4c71-8aa9-0bda28588e5f.batteryPower\",\"b3f5517b-c673-4e2d-8683-b04b14e2691e.batterySoc\",\"b3f5517b-c673-4e2d-8683-b04b14e2691e.batteryPower\",\"ed34de07-4367-4bb6-bcaa-2d9dc1b5f348.batteryPower\",\"bcc45807-18f1-4b9d-887d-b2c038a5a724.batteryPower\"]}",
+        "ack": true,
+        "q": 0,
+        "lc": 1780042312797
+    },
+    "ai-energy-manager.0.status.lastServerPull": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "date",
+            "name": "Last server pull",
+            "def": "",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266645127,
+        "_id": "ai-energy-manager.0.status.lastServerPull",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "2026-07-05T15:50:45.127Z",
+        "ack": true,
+        "q": 0,
+        "lc": 1783266645127
+    },
+    "ai-energy-manager.0.status.lastTelemetryBatch": {
+        "type": "state",
+        "common": {
+            "type": "string",
+            "role": "json",
+            "name": "Last telemetry batch",
+            "def": "{}",
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1780042395011,
+        "_id": "ai-energy-manager.0.status.lastTelemetryBatch",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "{\"timestamp\":\"2026-05-29T08:13:15.001Z\",\"generated\":0,\"sent\":0,\"remaining\":0}",
+        "ack": true,
+        "q": 0,
+        "lc": 1780042395011
+    },
+    "ai-energy-manager.0.telemetry": {
+        "_id": "ai-energy-manager.0.telemetry",
+        "type": "channel",
+        "common": {
+            "name": "Telemetry"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266480430,
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        }
+    },
+    "ai-energy-manager.0.telemetry.pollOffsetSeconds": {
+        "type": "state",
+        "common": {
+            "type": "number",
+            "role": "value",
+            "name": "Persistent telemetry polling offset",
+            "def": -1,
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1778361673318,
+        "_id": "ai-energy-manager.0.telemetry.pollOffsetSeconds",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 15,
+        "ack": true,
+        "q": 0,
+        "lc": 1778361673318
+    },
+    "ai-energy-manager.0.telemetry.queue": {
+        "type": "state",
+        "common": {
+            "name": "Pending telemetry queue",
+            "type": "string",
+            "role": "json",
+            "read": true,
+            "write": false,
+            "def": "[]"
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1778361660045,
+        "_id": "ai-energy-manager.0.telemetry.queue",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": "[]",
+        "ack": true,
+        "q": 0,
+        "lc": 1778361660045
+    },
+    "ai-energy-manager.0.telemetry.queueLength": {
+        "type": "state",
+        "common": {
+            "type": "number",
+            "role": "value",
+            "name": "Pending telemetry queue length",
+            "def": 0,
+            "read": true,
+            "write": false
+        },
+        "native": {},
+        "from": "system.adapter.ai-energy-manager.0",
+        "user": "system.user.admin",
+        "ts": 1783266480538,
+        "_id": "ai-energy-manager.0.telemetry.queueLength",
+        "acl": {
+            "object": 1636,
+            "state": 1636,
+            "file": 1632,
+            "owner": "system.user.admin",
+            "ownerGroup": "system.group.administrator"
+        },
+        "val": 0,
+        "ack": true,
+        "q": 0,
+        "lc": 1778361660046
+    }
+}
