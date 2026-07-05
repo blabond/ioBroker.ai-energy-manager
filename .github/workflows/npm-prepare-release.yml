@@ -111,7 +111,34 @@ jobs:
                   echo "BUMP=${BUMP}" >> "$GITHUB_ENV"
 
             - name: Prepare release commit
-              run: npm run release -- "$BUMP" --yes --all --noPush
+              run: |
+                  node <<'NODE'
+                  const fs = require("node:fs");
+
+                  const target = process.env.TARGET_VERSION;
+                  const ioPackage = require("./io-package.json");
+                  const news = ioPackage.common.news ?? {};
+
+                  if (Object.prototype.hasOwnProperty.call(news, target)) {
+                    throw new Error(
+                      `io-package.json already contains common.news.${target}. ` +
+                        "Add pending release notes below README.md's WORK IN PROGRESS heading instead.",
+                    );
+                  }
+
+                  const readme = fs.readFileSync("README.md", "utf8");
+                  const match = readme.match(
+                    /^### \*\*WORK IN PROGRESS\*\*\n\n([\s\S]*?)(?=\n### |\n\[Older changelogs|\n## |$)/m,
+                  );
+
+                  if (!match || !match[1].trim()) {
+                    throw new Error(
+                      "README.md must contain pending release notes below the WORK IN PROGRESS heading.",
+                    );
+                  }
+                  NODE
+
+                  npm run release -- "$BUMP" --yes --all --noPush
 
             - name: Ensure release commit is complete
               run: |
@@ -138,16 +165,6 @@ jobs:
 
                   const ioPackage = require("./io-package.json");
                   ioPackage.common.version = target;
-                  const news = ioPackage.common.news;
-                  if (news[prepared] && prepared !== target) {
-                    news[target] = news[prepared];
-                    delete news[prepared];
-                    ioPackage.common.news = Object.fromEntries(
-                      Object.entries(news).sort((left, right) =>
-                        right[0].localeCompare(left[0], undefined, { numeric: true }),
-                      ),
-                    );
-                  }
                   writeJson("io-package.json", ioPackage);
 
                   const readmePath = "README.md";

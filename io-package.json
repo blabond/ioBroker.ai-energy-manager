@@ -1,21 +1,8 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.3.3",
+        "version": "0.3.2",
         "news": {
-            "0.3.3": {
-                "en": "ioBroker checker changes.",
-                "de": "ioBroker-Checker-Aenderungen.",
-                "ru": "Изменения для проверки ioBroker.",
-                "pt": "Alteracoes do verificador ioBroker.",
-                "nl": "ioBroker-checkerwijzigingen.",
-                "fr": "Modifications pour le verificateur ioBroker.",
-                "it": "Modifiche per il controllo ioBroker.",
-                "es": "Cambios del verificador ioBroker.",
-                "pl": "Zmiany dla kontrolera ioBroker.",
-                "uk": "Зміни для перевірки ioBroker.",
-                "zh-cn": "ioBroker 检查器更改。"
-            },
             "0.3.2": {
                 "en": "Fix ApiClient timer fallback",
                 "de": "Fix ApiClient Timer Fallback",
