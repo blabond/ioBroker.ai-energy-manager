@@ -161,19 +161,6 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 - ioBroker checker changes.
 
-### 0.3.2 (2026-06-03)
-
-- Fix ApiClient timer fallback
-
-### 0.3.1 (2026-05-29)
-
-- Fix ioBroker checker warnings for formatting config and dev dependency declarations.
-- Update admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.
-
-### 0.2.3 (2026-05-28)
-
-- RepoCheck fixes.
-
 ### 0.2.0 (2026-05-22)
 
 - Initial release of the AI Energy Manager adapter.
