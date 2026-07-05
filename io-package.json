@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.3.2",
+        "version": "0.3.3",
         "news": {
             "0.3.2": {
                 "en": "Fix ApiClient timer fallback",
