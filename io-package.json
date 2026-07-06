@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.3.3",
+        "version": "0.3.4",
         "news": {
+            "0.3.4": {
+                "en": "Code Cleanup\nioBroker checker changes.\nUpdate admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.\nFix ApiClient timer fallback",
+                "de": "Codebereinigung\nÄnderungen im ioBroker-Prüfer.\nAktualisieren Sie die Admin-Abhängigkeiten und sorgen Sie dafür, dass die React/MUI-Admin-Benutzeroberfläche mit der ioBroker-Admin-Laufzeitumgebung kompatibel bleibt.\nBehebung des Timeout-Fehlers von ApiClient",
+                "ru": "Очистка кода\nИзменения в проверке ioBroker.\nОбновите зависимости административной панели и обеспечьте совместимость административного интерфейса React/MUI с средой выполнения ioBroker Admin.\nИсправлена ошибка резервного таймера ApiClient.",
+                "pt": "Limpeza de código\nAlterações no verificador ioBroker.\nAtualize as dependências administrativas e mantenha a interface de administração React/MUI compatível com o ambiente de execução do ioBroker Admin.\nCorrigir fallback do temporizador do ApiClient",
+                "nl": "Code opschonen\nWijzigingen in de ioBroker-checker.\nWerk de beheerdersafhankelijkheden bij en zorg ervoor dat de React/MUI-beheerdersinterface compatibel blijft met de ioBroker Admin-runtime.\nOplossing voor de ApiClient-timer-fallback",
+                "fr": "Nettoyage du code\nModifications apportées au vérificateur ioBroker.\nMettez à jour les dépendances d'administration et assurez la compatibilité de l'interface utilisateur d'administration React/MUI avec l'environnement d'exécution d'ioBroker Admin.\nCorrection du mécanisme de repli du minuteur d'ApiClient",
+                "it": "Pulizia del codice\nModifiche al controllo di ioBroker.\nAggiorna le dipendenze amministrative e mantieni l'interfaccia utente di amministrazione React/MUI compatibile con il runtime di amministrazione di ioBroker.\nCorrezione del fallback del timer di ApiClient",
+                "es": "Limpieza de código\nCambios en el verificador de ioBroker.\nActualizar las dependencias de administración y mantener la interfaz de administración de React/MUI compatible con el entorno de ejecución de ioBroker Admin.\nCorrección del mecanismo de reserva del temporizador de ApiClient",
+                "pl": "Czyszczenie kodu\nZmiany w programie sprawdzającym ioBroker.\nZaktualizuj zależności administracyjne i zachowaj zgodność interfejsu użytkownika administratora React/MUI ze środowiskiem wykonawczym administratora ioBroker.\nNapraw awarię timera ApiClient",
+                "uk": "Очищення коду\nЗміни в перевірці ioBroker.\nОновіть залежності адміністратора та забезпечте сумісність інтерфейсу адміністратора React/MUI з середовищем виконання ioBroker Admin.\nВиправлення резервного таймера ApiClient",
+                "zh-cn": "代码清理\nioBroker 检查器已更改。\n更新管理依赖项，并保持 React/MUI 管理 UI 与 ioBroker Admin 运行时兼容。\n修复 API 客户端定时器回退"
+            },
             "0.3.3": {
                 "en": "ioBroker checker changes.\nUpdate admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.\nFix ApiClient timer fallback",
                 "de": "Änderungen im ioBroker-Prüfer.\nAktualisieren Sie die Admin-Abhängigkeiten und sorgen Sie dafür, dass die React/MUI-Admin-Benutzeroberfläche mit der ioBroker-Admin-Laufzeitumgebung kompatibel bleibt.\nBehebung des Timeout-Fehlers von ApiClient",
