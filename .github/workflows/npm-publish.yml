@@ -96,12 +96,19 @@ jobs:
                     if [[ -n "${run}" ]]; then
                       status="$(echo "${run}" | base64 --decode | jq -r ".status")"
                       conclusion="$(echo "${run}" | base64 --decode | jq -r ".conclusion")"
+                      run_id="$(echo "${run}" | base64 --decode | jq -r ".databaseId")"
                       url="$(echo "${run}" | base64 --decode | jq -r ".url")"
 
                       echo "test-and-release.yml for ${TAG} is ${status}: ${url}"
 
                       if [[ "${status}" == "completed" ]]; then
                         if [[ "${conclusion}" == "success" ]]; then
+                          exit 0
+                        fi
+                        required_count="$(gh run view "${run_id}" --json jobs --jq '[.jobs[] | select(.name == "check-and-lint" or (.name | startswith("adapter-tests")))] | length')"
+                        required_failed="$(gh run view "${run_id}" --json jobs --jq '[.jobs[] | select(.name == "check-and-lint" or (.name | startswith("adapter-tests"))) | select(.conclusion != "success")] | length')"
+                        if [[ "${required_count}" -gt 0 && "${required_failed}" -eq 0 ]]; then
+                          echo "Required release checks passed; ignoring non-publish deploy job result in ${url}."
                           exit 0
                         fi
                         echo "test-and-release.yml for ${TAG} completed with ${conclusion}: ${url}" >&2

@@ -107,12 +107,7 @@ jobs:
 
     deploy:
         needs: [check-and-lint, adapter-tests]
-        if: |
-            always() &&
-            github.event_name == 'push' &&
-            startsWith(github.ref, 'refs/tags/v') &&
-            needs.check-and-lint.result == 'success' &&
-            needs.adapter-tests.result == 'success'
+        if: false
         runs-on: ubuntu-latest
         permissions:
             contents: write
