@@ -159,6 +159,8 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
+- Code Cleanup
+
 ### 0.3.3 (2026-07-05)
 
 - ioBroker checker changes.

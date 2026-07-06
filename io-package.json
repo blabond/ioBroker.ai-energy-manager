@@ -122,7 +122,6 @@
         "serverConfig": null,
         "serverConfigLastRequest": "",
         "serverConfigTokenFingerprint": "",
-        "datapoints": {},
         "datapointAssignments": []
     },
     "encryptedNative": ["adapterToken"],

@@ -99,11 +99,9 @@ test('builds household first and plant assignments from server config', () => {
         },
     });
 
-    const assignments = buildDatapointAssignments(
-        config,
-        [{ mappingKey: 'plant_a.batterySoc', stateId: 'battery.0.soc' }],
-        {},
-    );
+    const assignments = buildDatapointAssignments(config, [
+        { mappingKey: 'plant_a.batterySoc', stateId: 'battery.0.soc' },
+    ]);
 
     assert.equal(assignments[0].scopeName, 'Household');
     assert.deepEqual(
@@ -182,17 +180,13 @@ test('fixed power types override previous user selections', () => {
         },
     });
 
-    const assignments = buildDatapointAssignments(
-        config,
-        [
-            {
-                mappingKey: 'gridPower',
-                stateId: 'smartmeter.0.power',
-                powerType: 'DC',
-            },
-        ],
-        {},
-    );
+    const assignments = buildDatapointAssignments(config, [
+        {
+            mappingKey: 'gridPower',
+            stateId: 'smartmeter.0.power',
+            powerType: 'DC',
+        },
+    ]);
 
     const gridPower = assignments.find(item => item.key === 'gridPower');
     assert.equal(gridPower.powerType, 'AC');
@@ -226,17 +220,13 @@ test('preserves selected source units when rebuilding assignments', () => {
         },
     });
 
-    const assignments = buildDatapointAssignments(
-        config,
-        [
-            {
-                mappingKey: 'consumptionWh',
-                stateId: 'meter.0.import.local',
-                sourceUnit: 'kWh',
-            },
-        ],
-        {},
-    );
+    const assignments = buildDatapointAssignments(config, [
+        {
+            mappingKey: 'consumptionWh',
+            stateId: 'meter.0.import.local',
+            sourceUnit: 'kWh',
+        },
+    ]);
 
     const consumption = assignments.find(item => item.key === 'consumptionWh');
     const exportMeter = assignments.find(item => item.key === 'gridExportMeterWh');
@@ -264,16 +254,12 @@ test('preserves intentionally cleared state paths when rebuilding assignments', 
         },
     });
 
-    const assignments = buildDatapointAssignments(
-        config,
-        [
-            {
-                mappingKey: 'gridPower',
-                stateId: '',
-            },
-        ],
-        {},
-    );
+    const assignments = buildDatapointAssignments(config, [
+        {
+            mappingKey: 'gridPower',
+            stateId: '',
+        },
+    ]);
 
     const gridPower = assignments.find(item => item.key === 'gridPower');
     assert.equal(gridPower.stateId, '');
@@ -288,23 +274,19 @@ test('preserves battery control state and values when rebuilding assignments', (
             battery: true,
         },
     });
-    const assignments = buildDatapointAssignments(
-        config,
-        [
-            {
-                mappingKey: 'plant_a.batteryControlMode',
-                key: 'batteryControlMode',
-                stateId: 'battery.0.mode',
-                controlValues: {
-                    gridCharge: 'true',
-                    pv: 'false',
-                    hold: 'false',
-                },
-                gridChargingAllowed: true,
+    const assignments = buildDatapointAssignments(config, [
+        {
+            mappingKey: 'plant_a.batteryControlMode',
+            key: 'batteryControlMode',
+            stateId: 'battery.0.mode',
+            controlValues: {
+                gridCharge: 'true',
+                pv: 'false',
+                hold: 'false',
             },
-        ],
-        {},
-    );
+            gridChargingAllowed: true,
+        },
+    ]);
     const control = assignments.find(item => item.mappingKey === 'plant_a.batteryControlMode');
     assert.equal(control.stateId, 'battery.0.mode');
     assert.deepEqual(control.controlValues, {
@@ -336,7 +318,7 @@ test('maps plant grid charging permission to battery control assignment', () => 
         ],
     });
 
-    const assignments = buildDatapointAssignments(config, [], {});
+    const assignments = buildDatapointAssignments(config, []);
     const allowed = assignments.find(item => item.mappingKey === 'plant_allowed.batteryControlMode');
     const denied = assignments.find(item => item.mappingKey === 'plant_denied.batteryControlMode');
 
@@ -359,7 +341,7 @@ test('defaults battery grid charging permission to allowed', () => {
         ],
     });
 
-    const assignments = buildDatapointAssignments(config, [], {});
+    const assignments = buildDatapointAssignments(config, []);
     const control = assignments.find(item => item.mappingKey === 'plant_default.batteryControlMode');
 
     assert.equal(control.gridChargingAllowed, true);
@@ -384,17 +366,13 @@ test('preserves power type and removes unit examples from descriptions', () => {
         },
     });
 
-    const assignments = buildDatapointAssignments(
-        config,
-        [
-            {
-                mappingKey: 'plant_a.pvPower',
-                stateId: 'pv.0.power',
-                powerType: 'dc',
-            },
-        ],
-        {},
-    );
+    const assignments = buildDatapointAssignments(config, [
+        {
+            mappingKey: 'plant_a.pvPower',
+            stateId: 'pv.0.power',
+            powerType: 'dc',
+        },
+    ]);
 
     const pvPower = assignments.find(item => item.key === 'pvPower');
     assert.equal(pvPower.powerType, 'DC');

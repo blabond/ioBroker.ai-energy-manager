@@ -391,8 +391,8 @@ class AiEnergyManager extends utils.Adapter {
             this.serverConfig = normalized.valid ? normalized : null;
             this.config.serverConfig = normalized;
             this.config.datapointAssignments = this.demoAccountMode()
-                ? buildDatapointAssignments(normalized, [], {})
-                : buildDatapointAssignments(normalized, this.config.datapointAssignments, this.config.datapoints);
+                ? buildDatapointAssignments(normalized, [])
+                : buildDatapointAssignments(normalized, this.config.datapointAssignments);
             await this.persistDatapointAssignmentsIfChanged(this.config.datapointAssignments);
             await this.applyServerConfigStatus(
                 normalized,
@@ -421,7 +421,6 @@ class AiEnergyManager extends utils.Adapter {
         const datapointAssignments = buildDatapointAssignments(
             serverConfig,
             isDemoAccountToken(adapterToken) ? [] : this.previousAssignmentsForToken(adapterToken, storedNative),
-            isDemoAccountToken(adapterToken) ? {} : this.previousLegacyDatapointsForToken(adapterToken, storedNative),
         );
         object.native = {
             ...(object.native || {}),
@@ -454,7 +453,6 @@ class AiEnergyManager extends utils.Adapter {
         return buildDatapointAssignments(
             serverConfig,
             isDemoAccountToken(adapterToken) ? [] : this.previousAssignmentsForToken(adapterToken, this.config),
-            isDemoAccountToken(adapterToken) ? {} : this.previousLegacyDatapointsForToken(adapterToken, this.config),
         );
     }
 
@@ -462,14 +460,6 @@ class AiEnergyManager extends utils.Adapter {
         return this.sameStoredToken(adapterToken, nativeConfig) && Array.isArray(nativeConfig?.datapointAssignments)
             ? nativeConfig.datapointAssignments
             : [];
-    }
-
-    previousLegacyDatapointsForToken(adapterToken, nativeConfig = this.config) {
-        return this.sameStoredToken(adapterToken, nativeConfig) &&
-            nativeConfig?.datapoints &&
-            typeof nativeConfig.datapoints === 'object'
-            ? nativeConfig.datapoints
-            : {};
     }
 
     sameStoredToken(adapterToken, nativeConfig = this.config) {
