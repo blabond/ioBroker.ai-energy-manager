@@ -159,7 +159,7 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
-- FIX: React State-Objektauswahl fuer ioBroker-Datenpunktpfade
+- FIX: React state object selector for ioBroker datapoint paths
 
 ### 0.4.0 (2026-07-06)
 
