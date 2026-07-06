@@ -2,7 +2,7 @@
     "common": {
         "name": "ai-energy-manager",
         "version": "0.3.4",
-        "news": {           
+        "news": {
             "0.2.0": {
                 "en": "Initial release of the AI Energy Manager adapter.",
                 "de": "Erste Version des AI Energy Manager Adapters.",
