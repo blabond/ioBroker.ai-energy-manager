@@ -143,6 +143,7 @@ jobs:
             - name: Ensure release commit is complete
               run: |
                   PREPARED_VERSION="$(node -p 'require("./package.json").version')"
+                  export PREPARED_VERSION
 
                   node <<'NODE'
                   const fs = require("node:fs");
@@ -164,7 +165,13 @@ jobs:
                   writeJson("package-lock.json", packageLock);
 
                   const ioPackage = require("./io-package.json");
+                  ioPackage.common.news ??= {};
+                  const generatedNews = ioPackage.common.news?.[prepared];
                   ioPackage.common.version = target;
+                  if (prepared !== target && generatedNews) {
+                    delete ioPackage.common.news[prepared];
+                    ioPackage.common.news[target] = generatedNews;
+                  }
                   writeJson("io-package.json", ioPackage);
 
                   const readmePath = "README.md";
@@ -187,6 +194,27 @@ jobs:
                     echo "Release version did not change from ${OLD_VERSION}" >&2
                     exit 1
                   fi
+
+                  node <<'NODE'
+                  const target = process.env.TARGET_VERSION;
+                  const prepared = process.env.PREPARED_VERSION;
+                  const ioPackage = require("./io-package.json");
+                  const news = ioPackage.common.news || {};
+
+                  if (ioPackage.common.version !== target) {
+                    throw new Error(`io-package version ${ioPackage.common.version} does not match ${target}`);
+                  }
+
+                  if (!Object.prototype.hasOwnProperty.call(news, target)) {
+                    throw new Error(`io-package common.news is missing ${target}`);
+                  }
+
+                  if (prepared !== target && Object.prototype.hasOwnProperty.call(news, prepared)) {
+                    throw new Error(
+                      `io-package common.news still contains generated intermediate version ${prepared}`,
+                    );
+                  }
+                  NODE
 
                   if grep -Fq "### **WORK IN PROGRESS**" README.md; then
                     echo "README.md still contains the WORK IN PROGRESS changelog placeholder" >&2
