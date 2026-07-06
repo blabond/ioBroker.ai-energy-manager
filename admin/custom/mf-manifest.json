@@ -62,11 +62,11 @@
             "assets": {
                 "js": {
                     "async": [
-                        "assets/main-BdbIa8YR.js",
-                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-CHhTDdeW.js",
-                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DjcvbMVU.js"
+                        "assets/main-CLs7CkvY.js",
+                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-DVuewpP5.js",
+                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CF1YkzNy.js"
                     ],
-                    "sync": ["assets/main-BdbIa8YR.js"]
+                    "sync": ["assets/main-CLs7CkvY.js"]
                 },
                 "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },

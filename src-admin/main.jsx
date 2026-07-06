@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
     Alert,
@@ -341,7 +341,6 @@ function App({
     const [dashboardStatus, setDashboardStatus] = useState('');
     const [busyConfig, setBusyConfig] = useState(false);
     const [selectStateIndex, setSelectStateIndex] = useState(null);
-    const objectSelectionSocket = getObjectSelectionSocket(adminSocket);
     const updateAvailable = useUiUpdateAvailable();
     const observedThemeType = useObservedThemeType();
     const settingsRef = useRef(settings);
@@ -540,9 +539,33 @@ function App({
         });
     }
 
+    const readStateObjectsFromAdapter = useCallback(() => {
+        return new Promise((resolve, reject) => {
+            const callback = result => {
+                if (!result || result.ok === false) {
+                    reject(new Error(formatErrors(result)));
+                    return;
+                }
+                resolve(normalizeStateList(Array.isArray(result.states) ? result.states : []));
+            };
+            if (adminSocket?.sendTo) {
+                adminSocket
+                    .sendTo(`${adapterName}.${instance}`, 'readStateObjects', {})
+                    .then(callback)
+                    .catch(error => reject(error instanceof Error ? error : new Error(String(error))));
+                return;
+            }
+            if (window.sendTo) {
+                window.sendTo(null, 'readStateObjects', {}, callback);
+                return;
+            }
+            reject(new Error(t('adminConnectionUnavailable')));
+        });
+    }, [adapterName, adminSocket, instance]);
+
     async function selectStatePath(index) {
         const current = settings.datapointAssignments?.[index]?.stateId || '';
-        if (canReadStateObjects(objectSelectionSocket)) {
+        if (canSendToAdapter(adminSocket)) {
             setSelectStateIndex(index);
             return;
         }
@@ -637,8 +660,9 @@ function App({
                     </Stack>
                 </Paper>
             </Box>
-            {canReadStateObjects(objectSelectionSocket) && selectStateIndex !== null ? (
+            {canSendToAdapter(adminSocket) && selectStateIndex !== null ? (
                 <StateSelectDialog
+                    loadStates={readStateObjectsFromAdapter}
                     onClose={() => setSelectStateIndex(null)}
                     onOk={selected => {
                         if (typeof selected === 'string' && selected) {
@@ -647,7 +671,6 @@ function App({
                         setSelectStateIndex(null);
                     }}
                     selected={settings.datapointAssignments?.[selectStateIndex]?.stateId || ''}
-                    socket={objectSelectionSocket}
                     title={t('selectStatePathTitle')}
                 />
             ) : null}
@@ -655,7 +678,7 @@ function App({
     );
 }
 
-function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
+function StateSelectDialog({ loadStates, onClose, onOk, selected, title }) {
     const [filter, setFilter] = useState('');
     const [states, setStates] = useState([]);
     const [activeState, setActiveState] = useState(selected || '');
@@ -665,7 +688,7 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
 
     useEffect(() => {
         let active = true;
-        loadStateObjects(socket)
+        loadStates()
             .then(objects => {
                 if (!active) {
                     return;
@@ -683,7 +706,7 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
         return () => {
             active = false;
         };
-    }, [socket]);
+    }, [loadStates]);
 
     const tree = useMemo(() => buildStateTree(states, filter), [filter, states]);
 
@@ -773,7 +796,9 @@ function StateSelectDialog({ onClose, onOk, selected, socket, title }) {
                                 />
                             ))
                         ) : (
-                            <Typography color="text.secondary">{t('noDatapointAssignments')}</Typography>
+                            <Typography color="text.secondary">
+                                {states.length ? t('noStateObjectsForFilter') : t('noStateObjects')}
+                            </Typography>
                         )}
                     </Box>
                 ) : null}
@@ -1901,20 +1926,23 @@ function formatErrors(result) {
     return result?.errors?.length ? t('errorPrefix', result.errors.join(', ')) : t('errorUnknown');
 }
 
-async function loadStateObjects(socket) {
-    const objects = await readStateObjects(socket);
-    const states = Object.entries(objects || {})
-        .filter(([, object]) => object?.type === 'state')
-        .map(([id, object]) => ({
-            id,
-            name: localizedObjectName(object.common?.name) || id,
-            role: object.common?.role || '',
-            type: object.common?.type || '',
-            value: object.common?.def,
-        }))
+function normalizeStateList(states) {
+    return (Array.isArray(states) ? states : [])
+        .map(state => {
+            const id = String(state?.id || '').trim();
+            if (!id) {
+                return null;
+            }
+            return {
+                id,
+                name: localizedObjectName(state.name) || id,
+                role: String(state.role || ''),
+                type: String(state.type || ''),
+                value: state.value,
+            };
+        })
+        .filter(Boolean)
         .sort((left, right) => left.id.localeCompare(right.id));
-
-    return states;
 }
 
 function buildStateTree(states, filter) {
@@ -1993,31 +2021,8 @@ function getStateAncestorIds(stateId) {
     return parts.slice(0, -1).map((_, index) => parts.slice(0, index + 1).join('.'));
 }
 
-function getObjectSelectionSocket(adminSocket) {
-    return [adminSocket, window.socket, window.ioBrokerSocket, window.adminSocket].find(canReadStateObjects) || null;
-}
-
-function canReadStateObjects(socket) {
-    return Boolean(socket?.getObjectView || socket?.getObjects);
-}
-
-async function readStateObjects(socket) {
-    if (socket?.getObjects) {
-        const objects = await socket.getObjects(false);
-        if (objects && typeof objects === 'object') {
-            return objects;
-        }
-    }
-    if (socket?.getObjectView) {
-        const result = await socket.getObjectView('system', 'state', { startkey: '', endkey: '\u9999' });
-        if (Array.isArray(result?.rows)) {
-            return Object.fromEntries(result.rows.map(row => [row.id, row.value]));
-        }
-        if (result && typeof result === 'object') {
-            return result;
-        }
-    }
-    throw new Error(t('objectSelectionUnavailable'));
+function canSendToAdapter(adminSocket) {
+    return Boolean(adminSocket?.sendTo || window.sendTo);
 }
 
 function localizedObjectName(name) {

@@ -100,6 +100,8 @@
     "noPlanning": "No planning",
     "noReliableDecision": "No reliable decision",
     "noSixHourPlan": "No 6-hour plan available yet.",
+    "noStateObjects": "No ioBroker state objects found.",
+    "noStateObjectsForFilter": "No state objects found for this filter.",
     "objectSelectionUnavailable": "Object selection is not available.",
     "openSmartEnergyPortal": "Open SmartEnergy portal",
     "operationConfiguration": "Operation configuration",

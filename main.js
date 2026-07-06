@@ -197,6 +197,13 @@ class AiEnergyManager extends utils.Adapter {
             }
             return;
         }
+        if (obj.command === 'readStateObjects') {
+            const result = await this.readStateObjectsForAdmin();
+            if (obj.callback) {
+                this.sendTo(obj.from, obj.command, result, obj.callback);
+            }
+            return;
+        }
         if (obj.command === 'readDashboardLiteState') {
             const shouldRefresh = obj.message?.refresh === true;
             const result = shouldRefresh
@@ -364,6 +371,33 @@ class AiEnergyManager extends utils.Adapter {
         } catch (error) {
             return { ok: false, errors: [error.message] };
         }
+    }
+
+    async readStateObjectsForAdmin() {
+        try {
+            const objects = await this.readAllStateObjects();
+            const states = Object.entries(objects)
+                .filter(([, object]) => object?.type === 'state')
+                .map(([id, object]) => ({
+                    id,
+                    name: object.common?.name || id,
+                    role: object.common?.role || '',
+                    type: object.common?.type || '',
+                    value: object.common?.def,
+                }))
+                .sort((left, right) => left.id.localeCompare(right.id));
+            return { ok: true, states };
+        } catch (error) {
+            return { ok: false, errors: [error.message] };
+        }
+    }
+
+    async readAllStateObjects() {
+        if (typeof this.getForeignObjectsAsync !== 'function') {
+            throw new Error('Adapter object API is not available.');
+        }
+        const objects = await this.getForeignObjectsAsync('*', 'state');
+        return objects && typeof objects === 'object' ? objects : {};
     }
 
     async refreshAndReadDashboardLiteState() {

@@ -159,6 +159,8 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
+- FIX: React State-Objektauswahl fuer ioBroker-Datenpunktpfade
+
 ### 0.4.0 (2026-07-06)
 
 - Code Cleanup
