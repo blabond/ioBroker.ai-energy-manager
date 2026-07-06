@@ -159,8 +159,6 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
-### 0.3.4 (2026-07-06)
-
 - Code Cleanup
 - ioBroker checker changes.
 - Update admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.
