@@ -91,9 +91,8 @@ jobs:
     adapter-tests:
         needs: [check-and-lint]
         if: |
-            github.event_name != 'push' ||
-            github.event.head_commit == null ||
-            contains(github.event.head_commit.message, '[skip ci]') == false
+            always() &&
+            needs.check-and-lint.result == 'success'
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
@@ -109,9 +108,11 @@ jobs:
     deploy:
         needs: [check-and-lint, adapter-tests]
         if: |
-            (github.event_name != 'push' || github.event.head_commit == null || contains(github.event.head_commit.message, '[skip ci]') == false) &&
+            always() &&
             github.event_name == 'push' &&
-            startsWith(github.ref, 'refs/tags/v')
+            startsWith(github.ref, 'refs/tags/v') &&
+            needs.check-and-lint.result == 'success' &&
+            needs.adapter-tests.result == 'success'
         runs-on: ubuntu-latest
         permissions:
             contents: write
