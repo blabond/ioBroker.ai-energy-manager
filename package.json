@@ -1,6 +1,6 @@
 {
     "name": "iobroker.ai-energy-manager",
-    "version": "0.3.8",
+    "version": "0.4.0",
     "description": "ioBroker adapter for AI-based dynamic-tariff energy, telemetry, battery and wallbox management.",
     "main": "main.js",
     "scripts": {
