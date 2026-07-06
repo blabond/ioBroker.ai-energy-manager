@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.4.0",
+        "version": "0.4.1",
         "news": {
+            "0.4.1": {
+                "en": "FIX: React state object selector for ioBroker datapoint paths",
+                "de": "BEHOBEN: React-Zustandsobjektselektor für ioBroker-Datenpunktpfade",
+                "ru": "ИСПРАВЛЕНИЕ: Селектор объекта состояния React для путей к точкам данных ioBroker",
+                "pt": "CORREÇÃO: Seletor de objeto de estado React para caminhos de pontos de dados do ioBroker",
+                "nl": "FIX: React state object selector voor ioBroker datapointpaden",
+                "fr": "CORRECTION : Sélecteur d’objet d’état React pour les chemins de points de données ioBroker",
+                "it": "CORREZIONE: Selettore di oggetti di stato React per i percorsi dei punti dati di ioBroker",
+                "es": "CORRECCIÓN: Selector de objetos de estado de React para rutas de puntos de datos de ioBroker",
+                "pl": "NAPRAWIONO: Selektor obiektów stanu React dla ścieżek punktów danych ioBroker",
+                "uk": "ВИПРАВЛЕННЯ: Селектор об'єкта стану React для шляхів точок даних ioBroker",
+                "zh-cn": "修复：ioBroker 数据点路径的 React 状态对象选择器"
+            },
             "0.4.0": {
                 "en": "Code Cleanup\nioBroker checker changes.\nUpdate admin dependencies and keep the React/MUI admin UI compatible with the ioBroker Admin runtime.\nFix ApiClient timer fallback",
                 "de": "Codebereinigung\nÄnderungen im ioBroker-Prüfer.\nAktualisieren Sie die Admin-Abhängigkeiten und sorgen Sie dafür, dass die React/MUI-Admin-Benutzeroberfläche mit der ioBroker-Admin-Laufzeitumgebung kompatibel bleibt.\nBehebung des Timeout-Fehlers von ApiClient",
