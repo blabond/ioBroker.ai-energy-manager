@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.4.1",
+        "version": "0.4.2",
         "news": {
+            "0.4.2": {
+                "en": "General adapter improvements",
+                "de": "Allgemeine Adapterverbesserungen",
+                "ru": "Общие улучшения адаптера",
+                "pt": "Melhorias gerais no adaptador",
+                "nl": "Algemene adapterverbeteringen",
+                "fr": "Améliorations générales de l'adaptateur",
+                "it": "Miglioramenti generali all'adattatore",
+                "es": "Mejoras generales del adaptador",
+                "pl": "Ogólne ulepszenia adaptera",
+                "uk": "Загальні покращення адаптера",
+                "zh-cn": "通用适配器改进"
+            },
             "0.4.1": {
                 "en": "FIX: React state object selector for ioBroker datapoint paths",
                 "de": "BEHOBEN: React-Zustandsobjektselektor für ioBroker-Datenpunktpfade",
