@@ -100,6 +100,8 @@
     "noPlanning": "Geen planning",
     "noReliableDecision": "Geen betrouwbaar besluit",
     "noSixHourPlan": "Er is nog geen 6-urenplan beschikbaar.",
+    "noStateObjects": "Geen ioBroker-statusobjecten gevonden.",
+    "noStateObjectsForFilter": "Er zijn geen statusobjecten gevonden voor dit filter.",
     "objectSelectionUnavailable": "Objectselectie is niet beschikbaar.",
     "openSmartEnergyPortal": "Open het SmartEnergy-portaal",
     "operationConfiguration": "Bedieningsconfiguratie",

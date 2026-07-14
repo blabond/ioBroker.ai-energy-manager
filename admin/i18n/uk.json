@@ -100,6 +100,8 @@
     "noPlanning": "Ніякого планування",
     "noReliableDecision": "Немає надійного рішення",
     "noSixHourPlan": "6-годинний план ще не доступний.",
+    "noStateObjects": "Об’єктів стану ioBroker не знайдено.",
+    "noStateObjectsForFilter": "Для цього фільтра не знайдено об’єктів стану.",
     "objectSelectionUnavailable": "Вибір об'єкта недоступний.",
     "openSmartEnergyPortal": "Відкрийте портал SmartEnergy",
     "operationConfiguration": "Конфігурація роботи",

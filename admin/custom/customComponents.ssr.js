@@ -6,7 +6,7 @@ async function r() {
         (n ??= e(
             () =>
                 import(
-                    `./assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-By084d-b.js`
+                    `./assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-C58Whwnl.js`
                 ).then(e => e.default ?? e),
             [],
             import.meta.url,

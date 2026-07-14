@@ -100,6 +100,8 @@
     "noPlanning": "没有规划",
     "noReliableDecision": "没有可靠的决定",
     "noSixHourPlan": "尚无 6 小时计划。",
+    "noStateObjects": "未找到 ioBroker 状态对象。",
+    "noStateObjectsForFilter": "找不到此过滤器的状态对象。",
     "objectSelectionUnavailable": "对象选择不可用。",
     "openSmartEnergyPortal": "打开 SmartEnergy 门户",
     "operationConfiguration": "操作配置",

@@ -75,7 +75,13 @@
                 "email": "git@mr-bond.de"
             }
         ],
-        "keywords": ["energy", "battery", "dynamic tariff", "pv forecast", "wallbox"],
+        "keywords": [
+            "energy",
+            "battery",
+            "dynamic tariff",
+            "pv forecast",
+            "wallbox"
+        ],
         "licenseInformation": {
             "type": "free",
             "link": "https://opensource.org/license/mit",
@@ -124,8 +130,12 @@
         "serverConfigTokenFingerprint": "",
         "datapointAssignments": []
     },
-    "encryptedNative": ["adapterToken"],
-    "protectedNative": ["adapterToken"],
+    "encryptedNative": [
+        "adapterToken"
+    ],
+    "protectedNative": [
+        "adapterToken"
+    ],
     "objects": [],
     "instanceObjects": [
         {
@@ -274,6 +284,32 @@
                 "read": true,
                 "write": false,
                 "def": ""
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.serverConfigJson",
+            "type": "state",
+            "common": {
+                "name": "Current runtime server config",
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false,
+                "def": "null"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.datapointAssignmentsJson",
+            "type": "state",
+            "common": {
+                "name": "Current runtime datapoint assignments",
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false,
+                "def": "[]"
             },
             "native": {}
         },

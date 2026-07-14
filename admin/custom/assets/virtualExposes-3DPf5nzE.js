@@ -1,1 +1,0 @@
-import{t as e}from"./virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CF1YkzNy.js";export{e as default};

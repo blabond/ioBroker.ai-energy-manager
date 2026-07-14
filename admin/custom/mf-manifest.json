@@ -32,7 +32,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:@mui/material",
             "name": "@mui/material",
-            "version": "9.0.1",
+            "version": "9.2.0",
             "singleton": true,
             "requiredVersion": "^6.5.0",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -62,11 +62,11 @@
             "assets": {
                 "js": {
                     "async": [
-                        "assets/main-CLs7CkvY.js",
-                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-DVuewpP5.js",
-                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CF1YkzNy.js"
+                        "assets/main-CahRaY9H.js",
+                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-Bu9Dsn1Q.js",
+                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-zoHwZv05.js"
                     ],
-                    "sync": ["assets/main-CLs7CkvY.js"]
+                    "sync": ["assets/main-CahRaY9H.js"]
                 },
                 "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },

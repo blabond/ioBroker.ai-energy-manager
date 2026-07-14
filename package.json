@@ -4,7 +4,7 @@
     "description": "ioBroker adapter for AI-based dynamic-tariff energy, telemetry, battery and wallbox management.",
     "main": "main.js",
     "scripts": {
-        "check": "tsc --noEmit",
+        "check": "tsc --noEmit && npm run translate:check",
         "lint": "eslint -c eslint.config.mjs .",
         "lint:fix": "eslint -c eslint.config.mjs . --fix",
         "format": "prettier . --write \"!admin/custom/.vite/**\" \"!admin/custom/assets/**\"",
@@ -17,7 +17,8 @@
         "test:integration": "mocha test/integration --exit",
         "test:package": "mocha test/package --exit",
         "prepublishOnly": "npm run release:verify-tag && npm run build:admin && npm run check && npm run lint && npm test",
-        "translate": "translate-adapter"
+        "translate": "translate-adapter",
+        "translate:check": "node scripts/check-translations.mjs"
     },
     "keywords": [
         "ioBroker",
@@ -62,8 +63,8 @@
         "@iobroker/eslint-config": "^2.3.4",
         "@iobroker/testing": "^5.2.2",
         "@module-federation/vite": "^1.16.12",
-        "@mui/icons-material": "^9.0.1",
-        "@mui/material": "^9.0.1",
+        "@mui/icons-material": "^9.2.0",
+        "@mui/material": "^9.2.0",
         "@tsconfig/node22": "^22.0.5",
         "@types/node": "^22.19.21",
         "@vitejs/plugin-react": "^6.0.3",

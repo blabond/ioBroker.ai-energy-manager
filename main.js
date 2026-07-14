@@ -1300,11 +1300,20 @@ class AiEnergyManager extends utils.Adapter {
                 native: {},
             });
         }
-        await this.extendObjectAsync('dashboard.lite', {
-            common: {
-                name: 'Dashboard',
-            },
-        });
+        const stateNamesToRefresh = [
+            'dashboard.lite',
+            'dashboard.plan',
+            'dashboard.expectedConsumptionNext24hKwh',
+            'dashboard.expectedPvNext24hKwh',
+            'dashboard.energyGapNext24hKwh',
+        ];
+        for (const id of stateNamesToRefresh) {
+            await this.extendObjectAsync(id, {
+                common: {
+                    name: states[id].name,
+                },
+            });
+        }
     }
 
     async setError(message) {
