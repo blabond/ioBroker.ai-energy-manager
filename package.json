@@ -66,7 +66,7 @@
         "@mui/icons-material": "^9.2.0",
         "@mui/material": "^9.2.0",
         "@tsconfig/node22": "^22.0.5",
-        "@types/node": "^22.19.21",
+        "@types/node": "^22.20.1",
         "@vitejs/plugin-react": "^6.0.3",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
