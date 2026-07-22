@@ -45,7 +45,7 @@
         "LICENSE"
     ],
     "dependencies": {
-        "@iobroker/adapter-core": "^3.4.1"
+        "@iobroker/adapter-core": "^3.4.2"
     },
     "overrides": {
         "diff": "^8.0.3",
