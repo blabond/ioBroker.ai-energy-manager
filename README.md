@@ -176,6 +176,8 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+
 ### 0.4.3 (2026-07-28)
 
 - Update dependencies and GitHub Actions.
