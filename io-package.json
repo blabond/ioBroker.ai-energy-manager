@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ai-energy-manager",
-        "version": "0.4.2",
+        "version": "0.4.3",
         "news": {
+            "0.4.3": {
+                "en": "Update dependencies and GitHub Actions.\nExpose account-specific 15-minute electricity prices and the current web price classification.",
+                "de": "Aktualisieren Sie Abhängigkeiten und GitHub Aktionen.\nExpose Account-spezifische 15-Minuten-Strompreise und die aktuelle Web-Preisklassifizierung.",
+                "ru": "Обновление зависимостей и действий GitHub.\n15-минутные цены на электроэнергию и текущая классификация цен в Интернете.",
+                "pt": "Atualizar dependências e ações do GitHub.\nExpor os preços da electricidade de 15 minutos específicos da conta e a actual classificação dos preços web.",
+                "nl": "Afhankelijkheden en GitHub-acties bijwerken.\nStel rekening-specifieke 15 minuten elektriciteit prijzen en de huidige web prijs classificatie.",
+                "fr": "Mettre à jour les dépendances et les actions GitHub.\nExposer les prix de 15 minutes d'électricité spécifiques à un compte et la classification actuelle des prix Web.",
+                "it": "Aggiorna le dipendenze e GitHub Azioni.\nEsporre i prezzi dell'energia elettrica da 15 minuti e l'attuale classificazione dei prezzi web.",
+                "es": "Actualizar las dependencias y GitHub Actions.\nExaminar precios eléctricos específicos de cuenta de 15 minutos y la clasificación actual de precios web.",
+                "pl": "Aktualizuj zależności i działania GitHub.\nEkspozycja konkretnych 15-minutowych cen energii elektrycznej i bieżącej klasyfikacji cen internetowych.",
+                "uk": "Оновити залежності та дії GitHub.\nЕксплуатаційні ціни на електроенергію за 15 хвилин і поточна цінова класифікація.",
+                "zh-cn": "更新依赖和 GitHub 动作 .\n曝光账户专用15分钟电价及当前网络价格分类."
+            },
             "0.4.2": {
                 "en": "General adapter improvements",
                 "de": "Allgemeine Adapterverbesserungen",
