@@ -5,7 +5,7 @@
         _aiEnergyManagerConfig: {
             type: 'custom',
             bundlerType: 'module',
-            url: 'custom/customComponents.js?v=CahRaY9H',
+            url: 'custom/customComponents.js?v=BaWrcgQt',
             name: 'ConfigCustomAiEnergyManager/Components/AemConfig',
             xs: 12,
             sm: 12,

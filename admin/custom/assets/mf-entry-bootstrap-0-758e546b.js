@@ -24,9 +24,13 @@ const __mfImport = (src) =>
     : import(src);
 
 
+
 (async () => {
-  const __mfHostInit = await __mfImport("./hostInit-ClTawA8Q.js");
+  const __mfHostInit = await __mfImport("./hostInit-Dl_5oHO1.js");
   await __mfHostInit.__tla;
   const { initHost } = __mfHostInit;
   await initHost();
-})().then(() => __mfImport("./index-BcNOj8H7.js"));
+  if (__mfModuleCache.pendingShareLoads) {
+    await Promise.all(__mfModuleCache.pendingShareLoads);
+  }
+})().then(() => __mfImport("./index-DW2_aFQ8.js"));

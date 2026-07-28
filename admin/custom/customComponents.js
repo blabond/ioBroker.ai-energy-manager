@@ -1,5 +1,5 @@
 import {
     n as e,
     t,
-} from './assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DV89GkOs.js';
+} from './assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CkObQSz2.js';
 export { t as get, e as init };

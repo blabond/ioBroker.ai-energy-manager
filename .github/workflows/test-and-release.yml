@@ -39,7 +39,7 @@ jobs:
                   ref: ${{ github.ref_name }}
                   token: ${{ secrets.AUTOFIX_TOKEN }}
 
-            - uses: actions/setup-node@v6
+            - uses: actions/setup-node@v7
               with:
                   node-version: '24.x'
                   cache: npm
@@ -74,7 +74,7 @@ jobs:
     check-and-lint:
         needs: [autofix]
         if: |
-            always() &&
+            !cancelled() &&
             (github.event_name != 'push' || github.event.head_commit == null || contains(github.event.head_commit.message, '[skip ci]') == false) &&
             (needs.autofix.result == 'skipped' || needs.autofix.outputs.changed == 'false')
         runs-on: ubuntu-latest
@@ -96,9 +96,7 @@ jobs:
 
     adapter-tests:
         needs: [check-and-lint]
-        if: |
-            always() &&
-            needs.check-and-lint.result == 'success'
+        if: needs.check-and-lint.result == 'success'
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:

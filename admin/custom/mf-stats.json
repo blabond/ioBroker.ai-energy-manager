@@ -10,7 +10,7 @@
         "types": { "path": "", "name": "" },
         "globalName": "ConfigCustomAiEnergyManager",
         "pluginVersion": "0.2.5",
-        "publicPath": "./"
+        "publicPath": "auto"
     },
     "shared": [
         {
@@ -40,7 +40,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:react",
             "name": "react",
-            "version": "19.2.7",
+            "version": "19.2.8",
             "singleton": true,
             "requiredVersion": "^18.3.1",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -48,7 +48,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:react-dom",
             "name": "react-dom",
-            "version": "19.2.7",
+            "version": "19.2.8",
             "singleton": true,
             "requiredVersion": "^18.3.1",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -62,11 +62,11 @@
             "assets": {
                 "js": {
                     "async": [
-                        "assets/main-CahRaY9H.js",
-                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-Bu9Dsn1Q.js",
-                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-zoHwZv05.js"
+                        "assets/main-BaWrcgQt.js",
+                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager__mf_owner__1-FtBFl070.js",
+                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DYzhCY_p.js"
                     ],
-                    "sync": ["assets/main-CahRaY9H.js"]
+                    "sync": ["assets/main-BaWrcgQt.js"]
                 },
                 "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },
@@ -74,67 +74,68 @@
         }
     ],
     "buildOutput": [
-        { "fileName": "assets/hostInit-ClTawA8Q.js", "type": "chunk", "isEntry": false, "size": 2208 },
-        { "fileName": "assets/index-BcNOj8H7.js", "type": "chunk", "isEntry": true, "size": 725 },
-        { "fileName": "assets/main-CahRaY9H.js", "type": "chunk", "isEntry": true, "size": 139400 },
-        { "fileName": "assets/virtualExposes-xBqZHjRG.js", "type": "chunk", "isEntry": false, "size": 139 },
+        { "fileName": "assets/hostInit-Dl_5oHO1.js", "type": "chunk", "isEntry": false, "size": 2539 },
+        { "fileName": "assets/index-DW2_aFQ8.js", "type": "chunk", "isEntry": true, "size": 725 },
+        { "fileName": "assets/main-BaWrcgQt.js", "type": "chunk", "isEntry": true, "size": 139439 },
+        { "fileName": "assets/virtualExposes-6VBc_Gn5.js", "type": "chunk", "isEntry": false, "size": 139 },
         { "fileName": "customComponents.js", "type": "chunk", "isEntry": false, "size": 162 },
-        { "fileName": "customComponents.ssr.js", "type": "chunk", "isEntry": false, "size": 885 },
+        { "fileName": "customComponents.ssr.js", "type": "chunk", "isEntry": false, "size": 1055 },
         {
-            "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-Bu9Dsn1Q.js",
+            "fileName": "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager__mf_owner__1-FtBFl070.js",
             "type": "chunk",
             "isEntry": false,
-            "size": 1651
+            "size": 1739
         },
         {
-            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare___mf_0_mui_mf_1_material__loadShare__.js-CqfV5T_v.js",
+            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__mf_owner__1__loadShare___mf_0_mui_mf_1_material__loadShare__.js-DkzOv3-V.js",
             "type": "chunk",
             "isEntry": false,
-            "size": 10498
+            "size": 10599
         },
         {
-            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react__loadShare__.js-CffvSWAm.js",
+            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__mf_owner__1__loadShare__react__loadShare__.js-CGDJKrEF.js",
             "type": "chunk",
             "isEntry": false,
-            "size": 1748
+            "size": 1849
         },
         {
-            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__loadShare__react_mf_2_dom__loadShare__.js-Cf6vwhVf.js",
+            "fileName": "assets/_virtual_mf___mfe_internal__ConfigCustomAiEnergyManager__mf_owner__1__loadShare__react_mf_2_dom__loadShare__.js-DJ8USIlU.js",
             "type": "chunk",
             "isEntry": false,
-            "size": 1329
+            "size": 1430
         },
+        { "fileName": "assets/dist-DVC7SdfC.js", "type": "chunk", "isEntry": false, "size": 63241 },
         {
-            "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DV89GkOs.js",
+            "fileName": "assets/virtual_mf-REMOTE_ENTRY_ID___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CkObQSz2.js",
             "type": "chunk",
             "isEntry": false,
-            "size": 66995
+            "size": 15613
         },
         {
-            "fileName": "assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-C58Whwnl.js",
+            "fileName": "assets/virtual_mf-exposes-ssr___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-CkquPQQl.js",
             "type": "chunk",
             "isEntry": false,
             "size": 286
         },
         {
-            "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-zoHwZv05.js",
+            "fileName": "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DYzhCY_p.js",
             "type": "chunk",
             "isEntry": false,
-            "size": 922
+            "size": 983
         },
-        { "fileName": "assets/vite-preload-helper-DuG8C5Si.js", "type": "chunk", "isEntry": false, "size": 1303 },
+        { "fileName": "assets/vite-preload-helper-B7qeedMF.js", "type": "chunk", "isEntry": false, "size": 1243 },
         { "fileName": "assets/main-Dgno3P3r.css", "type": "asset", "isEntry": false, "size": 6489 },
-        { "fileName": "index.html", "type": "asset", "isEntry": false, "size": 1408 },
-        { "fileName": "assets/mf-entry-bootstrap-0-8f5f14cc.js", "type": "asset", "isEntry": false, "size": 1246 }
+        { "fileName": "index.html", "type": "asset", "isEntry": false, "size": 1460 },
+        { "fileName": "assets/mf-entry-bootstrap-0-758e546b.js", "type": "asset", "isEntry": false, "size": 1352 }
     ],
     "assetAnalysis": {
         "./main.jsx": {
             "js": {
-                "sync": ["assets/main-CahRaY9H.js"],
+                "sync": ["assets/main-BaWrcgQt.js"],
                 "async": [
-                    "assets/main-CahRaY9H.js",
-                    "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-Bu9Dsn1Q.js",
-                    "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-zoHwZv05.js"
+                    "assets/main-BaWrcgQt.js",
+                    "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager__mf_owner__1-FtBFl070.js",
+                    "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DYzhCY_p.js"
                 ]
             },
             "css": { "sync": ["assets/main-Dgno3P3r.css"], "async": [] }

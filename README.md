@@ -159,6 +159,8 @@ If a command is not applied, verify that the selected ioBroker state is writable
 
 ### **WORK IN PROGRESS**
 
+- Update dependencies and GitHub Actions.
+
 ### 0.4.2 (2026-07-14)
 
 - General adapter improvements
