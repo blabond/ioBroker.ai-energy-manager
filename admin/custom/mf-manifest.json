@@ -10,7 +10,7 @@
         "types": { "path": "", "name": "" },
         "globalName": "ConfigCustomAiEnergyManager",
         "pluginVersion": "0.2.5",
-        "publicPath": "./"
+        "publicPath": "auto"
     },
     "shared": [
         {
@@ -40,7 +40,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:react",
             "name": "react",
-            "version": "19.2.7",
+            "version": "19.2.8",
             "singleton": true,
             "requiredVersion": "^18.3.1",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -48,7 +48,7 @@
         {
             "id": "ConfigCustomAiEnergyManager:react-dom",
             "name": "react-dom",
-            "version": "19.2.7",
+            "version": "19.2.8",
             "singleton": true,
             "requiredVersion": "^18.3.1",
             "assets": { "js": { "async": [], "sync": [] }, "css": { "async": [], "sync": [] } }
@@ -62,11 +62,11 @@
             "assets": {
                 "js": {
                     "async": [
-                        "assets/main-CahRaY9H.js",
-                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager-Bu9Dsn1Q.js",
-                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-zoHwZv05.js"
+                        "assets/main-BaWrcgQt.js",
+                        "assets/_virtual_mf-localSharedImportMap___mfe_internal__ConfigCustomAiEnergyManager__mf_owner__1-FtBFl070.js",
+                        "assets/virtual_mf-exposes___mfe_internal__ConfigCustomAiEnergyManager__customComponents_js-DYzhCY_p.js"
                     ],
-                    "sync": ["assets/main-CahRaY9H.js"]
+                    "sync": ["assets/main-BaWrcgQt.js"]
                 },
                 "css": { "async": [], "sync": ["assets/main-Dgno3P3r.css"] }
             },
