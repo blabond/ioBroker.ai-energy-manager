@@ -22,6 +22,7 @@ Der Adapter sendet fortlaufend normalisierte Energiedaten an das Backend, erhäl
 - Dynamische Datenpunkttabellen je Haushalt und Anlage
 - ioBroker-Objektbrowser zur Auswahl der Datenpunkte
 - Dashboard Lite mit Systemkacheln, 6-Stunden-Plan und Mustererkennung
+- Vorheriger, aktueller und nächster 15-Minuten-Strompreis für den im Benutzerkonto gewählten Tarif
 - Kontrollierte Batteriebefehle zum Laden, Entladen und Halten einer Reserve
 - Schreibschutz: Befehle werden nur für konfigurierte und schreibbare Datenpunkte ausgeführt
 
@@ -131,6 +132,24 @@ Der Adapter legt interne States unterhalb seiner Instanz an:
 - `status.lastCommandResult`
 
 Das Adapter-Token wird nie in States geschrieben.
+
+### Börsenstrompreise
+
+Der Channel `electricityPrices` stellt die Tarifpreise bereit, die auch das SmartEnergy Webfrontend verwendet. Die Werte enthalten den Aufschlag des im Benutzerkonto gewählten Tarifanbieters sowie das für die Anlage konfigurierte Netzentgelt:
+
+- `electricityPrices.last`: vorheriger 15-Minuten-Preis in `ct/kWh`
+- `electricityPrices.current`: aktuell gültiger 15-Minuten-Preis in `ct/kWh`
+- `electricityPrices.next`: nächster 15-Minuten-Preis in `ct/kWh`
+- `electricityPrices.status`: Einstufung des aktuellen Preises
+
+Der Status verwendet dieselben Preisfenster und Farben wie das Webfrontend:
+
+- `0` — Standardbereich oder keine Einstufung
+- `1` — günstiger Ladeslot (gelb)
+- `2` — Brückenladeslot (blau)
+- `3` — Strom meiden / niemals laden (schwarz; mindestens 150 % des 7-Tage-Maximums)
+
+Wenn keine aktuellen Backend-Daten verfügbar sind, werden die Preis-States auf `0` zurückgesetzt.
 
 ## Sicherheit
 

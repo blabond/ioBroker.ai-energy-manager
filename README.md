@@ -23,6 +23,7 @@ The adapter continuously sends normalized energy telemetry to the backend, recei
 - Dynamic datapoint tables grouped by household and plant
 - ioBroker object browser for selecting datapoints
 - Dashboard Lite with system cards, 6-hour plan and pattern detection
+- Previous, current and next 15-minute electricity prices for the tariff selected in the user account
 - Controlled battery commands for charging, discharging and holding reserve
 - Explicit write protection: commands are accepted only for configured writable datapoints
 
@@ -133,6 +134,24 @@ The adapter creates internal states below its instance namespace:
 
 The adapter token is never written to states.
 
+### Electricity prices
+
+The `electricityPrices` channel exposes the tariff prices used by the SmartEnergy web frontend. The values include the selected tariff provider's markup and the grid fee configured for the installation:
+
+- `electricityPrices.last`: previous 15-minute price in `ct/kWh`
+- `electricityPrices.current`: currently valid 15-minute price in `ct/kWh`
+- `electricityPrices.next`: next 15-minute price in `ct/kWh`
+- `electricityPrices.status`: classification of the current price
+
+The status uses the same price-window rules and colors as the web frontend:
+
+- `0` — standard range or no classification
+- `1` — cheap charging slot (yellow)
+- `2` — bridge charging slot (blue)
+- `3` — avoid electricity / never charge (black; at least 150% of the seven-day maximum)
+
+Price states are reset to `0` when no current backend data is available.
+
 ## Security
 
 - The adapter token is stored as encrypted and protected native configuration.
@@ -160,6 +179,7 @@ If a command is not applied, verify that the selected ioBroker state is writable
 ### **WORK IN PROGRESS**
 
 - Update dependencies and GitHub Actions.
+- Expose account-specific 15-minute electricity prices and the current web price classification.
 
 ### 0.4.2 (2026-07-14)
 

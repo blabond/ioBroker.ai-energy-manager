@@ -13,6 +13,7 @@ const { buildDatapointAssignments } = require('./lib/datapointAssignments');
 const { TelemetryQueue } = require('./lib/telemetryQueue');
 const { TelemetrySampler } = require('./lib/telemetrySampler');
 const { isBackendRequestTimeout, shouldLogBackendError } = require('./lib/errorLogPolicy');
+const { electricityPriceSnapshot } = require('./lib/electricityPrices');
 
 const TELEMETRY_CYCLE_SECONDS = 60;
 const SERVER_PULL_DELAY_SECONDS = 30;
@@ -846,6 +847,7 @@ class AiEnergyManager extends utils.Adapter {
 
     async writeDashboardLiteStates(dashboardLite, updatedAt) {
         const cards = Array.isArray(dashboardLite.cards) ? dashboardLite.cards : [];
+        const electricityPrices = dashboardLite.electricityPrices || {};
         const cardValue = (...labels) => {
             const card = cards.find(item => labels.includes(item.label));
             const number = Number(card?.value);
@@ -876,6 +878,10 @@ class AiEnergyManager extends utils.Adapter {
             dashboardBatteryChargingActive(dashboardLite),
             true,
         );
+        await this.setStateAsync('electricityPrices.last', electricityPrices.last ?? 0, true);
+        await this.setStateAsync('electricityPrices.current', electricityPrices.current ?? 0, true);
+        await this.setStateAsync('electricityPrices.next', electricityPrices.next ?? 0, true);
+        await this.setStateAsync('electricityPrices.status', Number(electricityPrices.status || 0), true);
         await this.applyBatteryControlFromDashboard(dashboardLite);
     }
 
@@ -892,6 +898,10 @@ class AiEnergyManager extends utils.Adapter {
         await this.setStateAsync('dashboard.horizonHours', 0, true);
         await this.setStateAsync('dashboard.operatingMode', '', true);
         await this.setStateAsync('dashboard.batteryChargingActive', false, true);
+        await this.setStateAsync('electricityPrices.last', 0, true);
+        await this.setStateAsync('electricityPrices.current', 0, true);
+        await this.setStateAsync('electricityPrices.next', 0, true);
+        await this.setStateAsync('electricityPrices.status', 0, true);
         await this.setStateAsync('status.batteryControlMode', '', true);
         await this.setStateAsync('status.batteryControlResult', '{}', true);
     }
@@ -1070,6 +1080,7 @@ class AiEnergyManager extends utils.Adapter {
             status: 'Runtime status',
             telemetry: 'Telemetry',
             dashboard: 'Dashboard',
+            electricityPrices: 'Electricity prices',
         };
         for (const [id, name] of Object.entries(groups)) {
             await this.setObjectNotExistsAsync(id, {
@@ -1286,6 +1297,41 @@ class AiEnergyManager extends utils.Adapter {
                 role: 'indicator',
                 name: 'Battery charging active',
                 def: false,
+            },
+            'electricityPrices.last': {
+                type: 'number',
+                role: 'value',
+                name: 'Previous 15-minute electricity price',
+                unit: 'ct/kWh',
+                def: 0,
+            },
+            'electricityPrices.current': {
+                type: 'number',
+                role: 'value',
+                name: 'Current 15-minute electricity price',
+                unit: 'ct/kWh',
+                def: 0,
+            },
+            'electricityPrices.next': {
+                type: 'number',
+                role: 'value',
+                name: 'Next 15-minute electricity price',
+                unit: 'ct/kWh',
+                def: 0,
+            },
+            'electricityPrices.status': {
+                type: 'number',
+                role: 'value',
+                name: 'Current electricity price status',
+                min: 0,
+                max: 3,
+                states: {
+                    0: 'Standard',
+                    1: 'Cheap charging slot',
+                    2: 'Bridge charging slot',
+                    3: 'Avoid electricity',
+                },
+                def: 0,
             },
         };
         for (const [id, common] of Object.entries(states)) {
@@ -1522,6 +1568,7 @@ function dashboardLiteFromDecision(response = {}) {
 
     return {
         source: response.source || '',
+        electricityPrices: electricityPriceSnapshot(response.electricity_prices),
         decisionTime: decision.decision_time || '',
         validUntil: decision.valid_until || '',
         horizonHours,
